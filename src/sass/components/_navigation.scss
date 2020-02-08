@@ -32,8 +32,8 @@ BOTTOM NAVIGATION ON MOBILE VIEW
   position: fixed;
   bottom: 0;
   width: 100%;
-  height: 5rem;
-  padding: 0 3rem;
+  height: 5.4rem;
+  padding-top: 0.6rem;
   background-color: $color-light;
   display: flex;
   justify-content: space-between;
@@ -42,15 +42,48 @@ BOTTOM NAVIGATION ON MOBILE VIEW
   box-shadow: $box-shadow-top;
 
   &--icon {
+    position: relative;
+    z-index: 20;
     font-size: 2rem;
     display: block;
     text-shadow: 0 0 2px #000;
     color: #fff;
+
+    &-active {
+      text-shadow: none;
+    }
   }
-  a {
-    text-decoration: none;
+
+  &__link {
+    position: relative;
     height: 100%;
+    text-decoration: none;
     display: flex;
     align-items: center;
+    justify-content: center;
+    width: 25%;
   }
+  &__tab {
+    position: absolute;
+    z-index: 10;
+    width: 4.8rem;
+    height: 100%;
+    border-top-left-radius: 39%;
+    border-top-right-radius: 39%;
+    transform: translateY(4rem);
+    transition: all 0.18s ease-in;
+
+    &--active {
+      background-color: $color-red;
+      transform: translateY(0);
+    }
+  }
+}
+
+.home {
+  padding-top: 4rem;
+}
+
+.collection {
+  padding-top: 4rem;
 }

@@ -55,8 +55,8 @@ BOTTOM NAVIGATION ON MOBILE VIEW
   position: fixed;
   bottom: 0;
   width: 100%;
-  height: 5rem;
-  padding: 0 3rem;
+  height: 5.4rem;
+  padding-top: 0.6rem;
   background-color: #f8fcfb;
   display: flex;
   justify-content: space-between;
@@ -64,12 +64,37 @@ BOTTOM NAVIGATION ON MOBILE VIEW
   -webkit-box-shadow: 3px -4px 25px -4px rgba(0, 0, 0, 0.68);
   box-shadow: 3px -4px 25px -4px rgba(0, 0, 0, 0.68); }
   .bottom-navigation--icon {
+    position: relative;
+    z-index: 20;
     font-size: 2rem;
     display: block;
     text-shadow: 0 0 2px #000;
     color: #fff; }
-  .bottom-navigation a {
-    text-decoration: none;
+    .bottom-navigation--icon-active {
+      text-shadow: none; }
+  .bottom-navigation__link {
+    position: relative;
     height: 100%;
+    text-decoration: none;
     display: flex;
-    align-items: center; }
+    align-items: center;
+    justify-content: center;
+    width: 25%; }
+  .bottom-navigation__tab {
+    position: absolute;
+    z-index: 10;
+    width: 4.8rem;
+    height: 100%;
+    border-top-left-radius: 39%;
+    border-top-right-radius: 39%;
+    transform: translateY(4rem);
+    transition: all 0.18s ease-in; }
+    .bottom-navigation__tab--active {
+      background-color: #f15e55;
+      transform: translateY(0); }
+
+.home {
+  padding-top: 4rem; }
+
+.collection {
+  padding-top: 4rem; }
