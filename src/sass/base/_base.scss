@@ -1,0 +1,33 @@
+/************
+COLOR PALLETE
+*************/
+$color-light: #f8fcfb;
+$color-light-2: #eaeceb;
+$color-light-3: #dddddc;
+$color-yellow: #f1e918;
+$color-red: #f15e55;
+$color-blue: #b4ddc8;
+$color-blue-2: #10b0d5;
+
+/**********
+BOX SHADOW
+***********/
+$box-shadow: 4px 6px 25px -4px rgba(0, 0, 0, 0.68);
+$box-shadow-top: 3px -4px 25px -4px rgba(0, 0, 0, 0.68);
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  box-sizing: border-box;
+  font-family: "Lato", sans-serif;
+}
+
+body {
+  background-color: $color-light-2;
+}

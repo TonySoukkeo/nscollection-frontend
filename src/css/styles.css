@@ -1,0 +1,75 @@
+/************
+COLOR PALLETE
+*************/
+/**********
+BOX SHADOW
+***********/
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; }
+
+html {
+  box-sizing: border-box;
+  font-family: "Lato", sans-serif; }
+
+body {
+  background-color: #eaeceb; }
+
+.container {
+  padding: 0 1rem; }
+
+.logo {
+  height: 40%; }
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 4rem;
+  background-color: #dddddc;
+  -webkit-box-shadow: 4px 6px 25px -4px rgba(0, 0, 0, 0.68);
+  box-shadow: 4px 6px 25px -4px rgba(0, 0, 0, 0.68);
+  position: fixed;
+  top: 0; }
+  .main-nav--about-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    background-color: #f15e55;
+    border-radius: 50%;
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.3rem; }
+
+/********************************
+BOTTOM NAVIGATION ON MOBILE VIEW
+*********************************/
+.bottom-navigation {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 5rem;
+  padding: 0 3rem;
+  background-color: #f8fcfb;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  -webkit-box-shadow: 3px -4px 25px -4px rgba(0, 0, 0, 0.68);
+  box-shadow: 3px -4px 25px -4px rgba(0, 0, 0, 0.68); }
+  .bottom-navigation--icon {
+    font-size: 2rem;
+    display: block;
+    text-shadow: 0 0 2px #000;
+    color: #fff; }
+  .bottom-navigation a {
+    text-decoration: none;
+    height: 100%;
+    display: flex;
+    align-items: center; }
