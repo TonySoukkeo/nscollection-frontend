@@ -98,3 +98,49 @@ BOTTOM NAVIGATION ON MOBILE VIEW
 
 .collection {
   padding-top: 4rem; }
+
+.game-showcase {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 0 1rem;
+  width: 100%; }
+  .game-showcase--box {
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(50% - 0.5rem);
+    height: 8rem;
+    margin-bottom: 1rem;
+    border-radius: 3px;
+    box-shadow: 4px 6px 25px -4px rgba(0, 0, 0, 0.68); }
+  .game-showcase__new {
+    background: url("../assets/images/new_games_poster.jpg"); }
+    .game-showcase__new::after {
+      background-image: linear-gradient(to bottom right, rgba(239, 65, 54, 0.6), rgba(194, 181, 155, 0.6)); }
+  .game-showcase__coming-soon {
+    background: url("../assets/images/comingsoon_poster.jpeg"); }
+  .game-showcase__sale {
+    background: url("../assets/images/salegames_poster.jpg"); }
+  .game-showcase__demo {
+    background: url("../assets/images/demo_poster.jpg"); }
+  .game-showcase__all {
+    background: url("../assets/images/allgames_poster.jpg"); }
+  .game-showcase__new, .game-showcase__coming-soon, .game-showcase__sale, .game-showcase__demo, .game-showcase__all {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    overflow: hidden; }
+    .game-showcase__new::after, .game-showcase__coming-soon::after, .game-showcase__sale::after, .game-showcase__demo::after, .game-showcase__all::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0; }
+  .game-showcase__all {
+    width: 100%;
+    height: 9rem; }
