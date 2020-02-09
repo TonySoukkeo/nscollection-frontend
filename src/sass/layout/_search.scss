@@ -34,15 +34,17 @@
     border-radius: 4px;
     box-shadow: $box-shadow;
     margin-bottom: 1rem;
-    min-height: 10rem;
+
     overflow: hidden;
 
     &-image {
       width: 20%;
+      height: 100%;
     }
 
     &-content {
       padding: 0 1rem;
+
       * {
         margin-bottom: 0.6rem;
       }

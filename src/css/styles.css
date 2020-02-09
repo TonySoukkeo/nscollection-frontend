@@ -263,10 +263,10 @@ BOTTOM NAVIGATION ON MOBILE VIEW
     border-radius: 4px;
     box-shadow: 4px 6px 25px -4px rgba(0, 0, 0, 0.68);
     margin-bottom: 1rem;
-    min-height: 10rem;
     overflow: hidden; }
     .search__item-image {
-      width: 20%; }
+      width: 20%;
+      height: 100%; }
     .search__item-content {
       padding: 0 1rem; }
       .search__item-content * {
