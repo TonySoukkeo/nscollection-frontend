@@ -8,6 +8,7 @@
   -webkit-box-shadow: $box-shadow;
   box-shadow: $box-shadow;
   position: fixed;
+  z-index: 100;
   top: 0;
 
   &--about-icon {
@@ -40,6 +41,7 @@ BOTTOM NAVIGATION ON MOBILE VIEW
   align-items: center;
   -webkit-box-shadow: $box-shadow-top;
   box-shadow: $box-shadow-top;
+  z-index: 100;
 
   &--icon {
     position: relative;
@@ -80,10 +82,23 @@ BOTTOM NAVIGATION ON MOBILE VIEW
   }
 }
 
-.home {
-  padding-top: 4rem;
-}
+.sub-navigation {
+  position: fixed;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  top: 4rem;
+  width: 100%;
+  padding: 1.3rem 0.8rem;
+  background-color: $color-light-3;
 
-.collection {
-  padding-top: 4rem;
+  i {
+    font-size: 1.5rem;
+  }
+
+  h2 {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 }

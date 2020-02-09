@@ -24,6 +24,13 @@ body {
 .logo {
   height: 40%; }
 
+.text-box {
+  display: inline-block;
+  padding: 0.5rem 1rem 0.5rem 0.8rem; }
+  .text-box--dark {
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff; }
+
 .main-nav {
   display: flex;
   align-items: center;
@@ -34,6 +41,7 @@ body {
   -webkit-box-shadow: 4px 6px 25px -4px rgba(0, 0, 0, 0.68);
   box-shadow: 4px 6px 25px -4px rgba(0, 0, 0, 0.68);
   position: fixed;
+  z-index: 100;
   top: 0; }
   .main-nav--about-icon {
     display: flex;
@@ -62,7 +70,8 @@ BOTTOM NAVIGATION ON MOBILE VIEW
   justify-content: space-between;
   align-items: center;
   -webkit-box-shadow: 3px -4px 25px -4px rgba(0, 0, 0, 0.68);
-  box-shadow: 3px -4px 25px -4px rgba(0, 0, 0, 0.68); }
+  box-shadow: 3px -4px 25px -4px rgba(0, 0, 0, 0.68);
+  z-index: 100; }
   .bottom-navigation--icon {
     position: relative;
     z-index: 20;
@@ -93,11 +102,21 @@ BOTTOM NAVIGATION ON MOBILE VIEW
       background-color: #f15e55;
       transform: translateY(0); }
 
-.home {
-  padding-top: 4rem; }
-
-.collection {
-  padding-top: 4rem; }
+.sub-navigation {
+  position: fixed;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  top: 4rem;
+  width: 100%;
+  padding: 1.3rem 0.8rem;
+  background-color: #dddddc; }
+  .sub-navigation i {
+    font-size: 1.5rem; }
+  .sub-navigation h2 {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%); }
 
 .game-showcase {
   margin-top: 1rem;
@@ -109,9 +128,6 @@ BOTTOM NAVIGATION ON MOBILE VIEW
   .game-showcase--box {
     position: relative;
     cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     width: calc(50% - 0.5rem);
     height: 8rem;
     margin-bottom: 1rem;
@@ -123,12 +139,20 @@ BOTTOM NAVIGATION ON MOBILE VIEW
       background-image: linear-gradient(to bottom right, rgba(239, 65, 54, 0.6), rgba(194, 181, 155, 0.6)); }
   .game-showcase__coming-soon {
     background: url("../assets/images/comingsoon_poster.jpeg"); }
+    .game-showcase__coming-soon::after {
+      background-image: linear-gradient(to bottom right, rgba(122, 207, 228, 0.6), rgba(30, 169, 225, 0.6)); }
   .game-showcase__sale {
     background: url("../assets/images/salegames_poster.jpg"); }
+    .game-showcase__sale::after {
+      background-image: linear-gradient(to bottom right, rgba(194, 218, 99, 0.6), rgba(236, 237, 149, 0.6)); }
   .game-showcase__demo {
     background: url("../assets/images/demo_poster.jpg"); }
+    .game-showcase__demo::after {
+      background-image: linear-gradient(to bottom right, rgba(118, 96, 169, 0.6), rgba(128, 124, 186, 0.6)); }
   .game-showcase__all {
     background: url("../assets/images/allgames_poster.jpg"); }
+    .game-showcase__all::after {
+      background-image: linear-gradient(to bottom right, rgba(254, 238, 234, 0.6), rgba(65, 64, 66, 0.6)); }
   .game-showcase__new, .game-showcase__coming-soon, .game-showcase__sale, .game-showcase__demo, .game-showcase__all {
     background-size: cover;
     background-repeat: no-repeat;
@@ -141,6 +165,64 @@ BOTTOM NAVIGATION ON MOBILE VIEW
       left: 0;
       right: 0;
       bottom: 0; }
+    .game-showcase__new h1, .game-showcase__coming-soon h1, .game-showcase__sale h1, .game-showcase__demo h1, .game-showcase__all h1 {
+      position: absolute;
+      bottom: 0.8rem;
+      z-index: 50; }
+  .game-showcase__new h1:first-of-type, .game-showcase__coming-soon h1:first-of-type {
+    bottom: 3.6rem; }
   .game-showcase__all {
     width: 100%;
-    height: 9rem; }
+    height: 11rem; }
+    .game-showcase__all h1 {
+      bottom: 0; }
+
+.home {
+  margin-top: 4rem;
+  padding: 1rem 0 5.5rem 0; }
+
+.collection {
+  padding: 1rem;
+  margin-top: 8rem;
+  padding-bottom: 5.5rem;
+  width: 100%; }
+  .collection__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 1rem; }
+    .collection__list a {
+      display: flex;
+      width: 30%;
+      text-decoration: none; }
+    .collection__list-item {
+      position: relative;
+      height: auto;
+      display: flex;
+      width: 49%;
+      margin-bottom: 1rem;
+      background: #f2f2f2;
+      border-radius: 9px;
+      box-shadow: 4px 6px 25px -4px rgba(0, 0, 0, 0.68);
+      padding: 0.6rem;
+      min-height: 7.5rem; }
+    .collection__list-image {
+      width: 100%;
+      align-self: center; }
+    .collection__list-title {
+      position: absolute;
+      font-size: 0.6rem;
+      width: 50%;
+      left: 40%;
+      color: #231f20; }
+    .collection__list-btn {
+      position: absolute;
+      bottom: 1rem;
+      right: 1rem;
+      outline: none;
+      padding: 0.3rem 0.5rem;
+      border-radius: 4px;
+      color: #fff;
+      background: #f15e55;
+      border: none;
+      font-size: 0.8rem; }

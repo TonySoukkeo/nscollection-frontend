@@ -6,5 +6,12 @@
   height: 40%;
 }
 
-.active {
+.text-box {
+  display: inline-block;
+  padding: 0.5rem 1rem 0.5rem 0.8rem;
+
+  &--dark {
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+  }
 }

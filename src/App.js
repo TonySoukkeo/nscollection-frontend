@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Navigation from "./components/search/navigation/Navigation";
-import BottomNavigation from "./components/search/navigation/BottomNavigation";
+import Navigation from "./components/navigation/Navigation";
+import BottomNavigation from "./components/navigation/BottomNavigation";
 import "./css/styles.css";
 
 // Components
