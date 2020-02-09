@@ -1,0 +1,79 @@
+.search {
+  padding: 1rem;
+  margin-top: 8rem;
+  padding-bottom: 5.5rem;
+  text-align: center;
+
+  &__bar {
+    border: none;
+    outline: none;
+    width: 90%;
+    padding: 1rem 2rem;
+    box-shadow: $box-shadow;
+    border-radius: 2rem;
+    font-size: 1rem;
+    margin: 1rem 0;
+  }
+
+  &__list {
+    margin-top: 1rem;
+    list-style-type: none;
+    text-align: left;
+
+    a {
+      text-decoration: none;
+      color: $color-dark;
+    }
+  }
+
+  &__item {
+    position: relative;
+    display: flex;
+    padding: 0.6rem;
+    background: $color-light-4;
+    border-radius: 4px;
+    box-shadow: $box-shadow;
+    margin-bottom: 1rem;
+    min-height: 10rem;
+    overflow: hidden;
+
+    &-image {
+      width: 20%;
+    }
+
+    &-content {
+      padding: 0 1rem;
+      * {
+        margin-bottom: 0.6rem;
+      }
+    }
+
+    &-title {
+      font-weight: bold;
+    }
+
+    &-price {
+      color: $color-green;
+    }
+
+    &-owned {
+      position: absolute;
+      bottom: -7rem;
+      right: -2rem;
+      height: 13rem;
+      width: 8rem;
+      transform: rotate(50deg);
+      background-color: $color-red;
+
+      span {
+        position: absolute;
+        transform: rotate(-50deg);
+        top: 4.3rem;
+        left: 0.6rem;
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: #fff;
+      }
+    }
+  }
+}

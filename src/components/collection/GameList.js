@@ -14,6 +14,7 @@ const GameList = ({ title, image }) => {
       <Link to="/">
         <img className="collection__list-image" src={image} />
       </Link>
+
       {/**** Game Title ****/}
       <Link to="/">
         <h2 className="collection__list-title">{gameTitle}</h2>

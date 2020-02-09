@@ -99,13 +99,23 @@
       position: absolute;
       bottom: 0.8rem;
       z-index: 50;
+      box-shadow: $box-shadow;
     }
   }
 
   &__new,
   &__coming-soon {
     h1:first-of-type {
+      padding: 0.2rem 0.8rem;
+      color: $color-yellow;
       bottom: 3.6rem;
+    }
+  }
+
+  &__coming-soon,
+  &__demo {
+    h1 {
+      right: 0;
     }
   }
 

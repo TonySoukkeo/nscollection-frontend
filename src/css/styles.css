@@ -31,6 +31,9 @@ body {
     background: rgba(0, 0, 0, 0.5);
     color: #fff; }
 
+.text-bold {
+  font-weight: bold; }
+
 .main-nav {
   display: flex;
   align-items: center;
@@ -168,9 +171,14 @@ BOTTOM NAVIGATION ON MOBILE VIEW
     .game-showcase__new h1, .game-showcase__coming-soon h1, .game-showcase__sale h1, .game-showcase__demo h1, .game-showcase__all h1 {
       position: absolute;
       bottom: 0.8rem;
-      z-index: 50; }
+      z-index: 50;
+      box-shadow: 4px 6px 25px -4px rgba(0, 0, 0, 0.68); }
   .game-showcase__new h1:first-of-type, .game-showcase__coming-soon h1:first-of-type {
+    padding: 0.2rem 0.8rem;
+    color: #f1e918;
     bottom: 3.6rem; }
+  .game-showcase__coming-soon h1, .game-showcase__demo h1 {
+    right: 0; }
   .game-showcase__all {
     width: 100%;
     height: 11rem; }
@@ -197,7 +205,6 @@ BOTTOM NAVIGATION ON MOBILE VIEW
       text-decoration: none; }
     .collection__list-item {
       position: relative;
-      height: auto;
       display: flex;
       width: 49%;
       margin-bottom: 1rem;
@@ -226,3 +233,61 @@ BOTTOM NAVIGATION ON MOBILE VIEW
       background: #f15e55;
       border: none;
       font-size: 0.8rem; }
+
+.search {
+  padding: 1rem;
+  margin-top: 8rem;
+  padding-bottom: 5.5rem;
+  text-align: center; }
+  .search__bar {
+    border: none;
+    outline: none;
+    width: 90%;
+    padding: 1rem 2rem;
+    box-shadow: 4px 6px 25px -4px rgba(0, 0, 0, 0.68);
+    border-radius: 2rem;
+    font-size: 1rem;
+    margin: 1rem 0; }
+  .search__list {
+    margin-top: 1rem;
+    list-style-type: none;
+    text-align: left; }
+    .search__list a {
+      text-decoration: none;
+      color: #231f20; }
+  .search__item {
+    position: relative;
+    display: flex;
+    padding: 0.6rem;
+    background: #f2f2f2;
+    border-radius: 4px;
+    box-shadow: 4px 6px 25px -4px rgba(0, 0, 0, 0.68);
+    margin-bottom: 1rem;
+    min-height: 10rem;
+    overflow: hidden; }
+    .search__item-image {
+      width: 20%; }
+    .search__item-content {
+      padding: 0 1rem; }
+      .search__item-content * {
+        margin-bottom: 0.6rem; }
+    .search__item-title {
+      font-weight: bold; }
+    .search__item-price {
+      color: #9aca3b; }
+    .search__item-owned {
+      position: absolute;
+      bottom: -7rem;
+      right: -2rem;
+      height: 13rem;
+      width: 8rem;
+      transform: rotate(50deg);
+      background-color: #f15e55; }
+      .search__item-owned span {
+        position: absolute;
+        transform: rotate(-50deg);
+        top: 4.3rem;
+        left: 0.6rem;
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: #fff; }
