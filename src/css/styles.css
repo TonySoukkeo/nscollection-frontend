@@ -115,6 +115,7 @@ BOTTOM NAVIGATION ON MOBILE VIEW
   padding: 1.3rem 0.8rem;
   background-color: #dddddc; }
   .sub-navigation i {
+    cursor: pointer;
     font-size: 1.5rem; }
   .sub-navigation h2 {
     position: absolute;
@@ -295,4 +296,4 @@ BOTTOM NAVIGATION ON MOBILE VIEW
 .game-display {
   padding: 1rem;
   margin-top: 8rem;
-  padding-bottom: 5.5rem; }
+  padding-bottom: 7rem; }
