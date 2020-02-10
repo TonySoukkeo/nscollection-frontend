@@ -34,6 +34,16 @@ body {
 .text-bold {
   font-weight: bold; }
 
+.horizontal-line {
+  width: 100%;
+  height: 0.1rem;
+  background-color: #424141;
+  margin: 2rem auto 1rem auto; }
+
+.center {
+  width: 100%;
+  text-align: center; }
+
 .main-nav {
   display: flex;
   align-items: center;
@@ -113,7 +123,8 @@ BOTTOM NAVIGATION ON MOBILE VIEW
   top: 4rem;
   width: 100%;
   padding: 1.3rem 0.8rem;
-  background-color: #dddddc; }
+  background-color: #dddddc;
+  font-size: 0.8rem; }
   .sub-navigation i {
     cursor: pointer;
     font-size: 1.5rem; }
@@ -294,6 +305,123 @@ BOTTOM NAVIGATION ON MOBILE VIEW
         color: #fff; }
 
 .game-display {
-  padding: 1rem;
+  padding-top: 2rem;
+  display: grid;
+  grid-template-columns: [full-start] 1rem [col-start] 1fr [col-end] 1rem [full-end];
+  grid-row-gap: 2rem;
   margin-top: 8rem;
-  padding-bottom: 7rem; }
+  padding-bottom: 7rem;
+  background-color: #f8fcfb;
+  width: 100%; }
+  .game-display__group {
+    display: flex;
+    flex-wrap: wrap;
+    grid-column: col-start / col-end; }
+    .game-display__group img {
+      width: 40%;
+      height: 100%; }
+    .game-display__group-price {
+      display: block;
+      color: #9aca3b;
+      font-size: 1.4rem;
+      font-weight: bold; }
+    .game-display__group-meta {
+      width: 60%;
+      padding-left: 1rem; }
+      .game-display__group-meta h1 {
+        font-size: 1.3rem; }
+      .game-display__group-meta * {
+        margin-bottom: 1rem; }
+  .game-display__online {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 2rem;
+    grid-column: col-start / col-end; }
+    .game-display__online span {
+      text-align: right;
+      display: block;
+      width: 49%; }
+    .game-display__online-icon {
+      display: flex;
+      align-items: center;
+      width: 49%; }
+      .game-display__online-icon img {
+        width: 20%;
+        margin-right: 0.4rem; }
+      .game-display__online-icon i {
+        color: #10b0d5;
+        font-size: 1.3rem; }
+  .game-display__action {
+    color: #231f20;
+    padding: 1rem;
+    background: #dddddc;
+    grid-column: full-start / full-end;
+    width: 100%;
+    box-shadow: 4px 6px 25px -4px rgba(0, 0, 0, 0.68); }
+    .game-display__action p {
+      text-align: center;
+      font-weight: bold;
+      font-size: 1.2rem;
+      margin-bottom: 1rem; }
+  .game-display__addto {
+    display: flex;
+    align-items: center; }
+    .game-display__addto span {
+      display: block;
+      font-size: 1.5rem;
+      width: 25%; }
+    .game-display__addto button:nth-of-type(1) {
+      margin-right: 1rem; }
+  .game-display__btn {
+    cursor: pointer;
+    border: none;
+    padding: 0.5rem 0.8rem;
+    width: 8rem;
+    border-radius: 1rem;
+    background: #f15e55;
+    color: #f8fcfb;
+    font-size: 1.3rem;
+    box-shadow: 4px 6px 25px -4px rgba(0, 0, 0, 0.68);
+    transition: all 0.1s; }
+    .game-display__btn:active {
+      transform: scale(105%); }
+  .game-display__gallery {
+    display: grid;
+    grid-column: col-start / col-end; }
+    .game-display__gallery-display {
+      position: relative;
+      width: 100%;
+      transition: all 0.2s;
+      height: 50vw; }
+      .game-display__gallery-display-img {
+        opacity: 0;
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        transition: all 0.3s ease-in; }
+        .game-display__gallery-display-img--active {
+          opacity: 1; }
+    .game-display__gallery-select {
+      grid-column: 1 / -1;
+      display: flex;
+      overflow-x: scroll;
+      overflow-y: hidden;
+      -webkit-overflow-scrolling: touch;
+      width: 100%;
+      padding-top: 0.2rem; }
+    .game-display__gallery-box {
+      cursor: pointer;
+      width: 8rem;
+      height: 4rem;
+      margin-right: 0.2rem;
+      flex: none; }
+      .game-display__gallery-box--active {
+        border: 2px solid #f15e55; }
+      .game-display__gallery-box img {
+        height: 100%;
+        width: 100%; }
+  .game-display__info {
+    grid-column: col-start / col-end;
+    font-size: 1rem; }

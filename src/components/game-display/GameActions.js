@@ -11,11 +11,12 @@ const GameActions = () => {
         <button className="game-display__btn">Wishlist</button>
       </div>
 
-      <hr />
+      <div className="horizontal-line"></div>
 
       <p>Let me know when this game goes on sale</p>
-
-      <div className="game-display__btn">Watch</div>
+      <div className="center">
+        <button className="game-display__btn center">Watch</button>
+      </div>
     </div>
   );
 };
