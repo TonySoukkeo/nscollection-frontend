@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navigation from "./components/navigation/Navigation";
 import BottomNavigation from "./components/navigation/BottomNavigation";
 import "./css/styles.css";
+import { store } from "./context/StateProvider";
 
 // Components
 import Home from "./layout/home/Home";
@@ -12,7 +13,9 @@ import Profile from "./layout/profile/Profile";
 import GameDisplay from "./layout/game/GameDisplay";
 import Register from "./layout/auth/Register";
 
-function App() {
+const App = () => {
+  const { isAuth, userId } = useContext(store);
+
   return (
     <Router>
       <div className="App">
@@ -29,6 +32,6 @@ function App() {
       </div>
     </Router>
   );
-}
+};
 
 export default App;

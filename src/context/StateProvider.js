@@ -22,9 +22,9 @@ const StateProvider = ({ children }) => {
 
   const value = {
     ...gameState,
-    ...gameDispatch,
+    gameDispatch,
     ...authState,
-    ...authDispatch
+    authDispatch
   };
 
   return <Provider value={value}>{children}</Provider>;

@@ -1,51 +1,87 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 // Components
 import SubNavigation from "../../components/navigation/SubNavigation";
+import TextInput from "../../components/inputs/TextInput";
+
+const state = {
+  firstName: "",
+  lastName: "",
+  password: "",
+  confirmPassword: "",
+  email: ""
+};
 
 const Register = () => {
-  useEffect(() => {
-    console.log("Component Mounted");
-  });
+  const [input, setInput] = useState(state);
+  const { firstName, lastName, password, confirmPassword, email } = input;
+
+  const onChange = e => {
+    setInput({
+      ...input,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  // Check if user email is valid
+  let validEmail;
+  const emailRe = /^\S+@\S+\.\S+$/gi;
+
+  !emailRe.test(email) ? (validEmail = true) : (validEmail = false);
+
   return (
     <React.Fragment>
       <SubNavigation title="Register" />
 
       <section className="register">
         <form className="form">
-          <div className="form__group">
-            <label className="form__label" htmlFor="firstName">
-              First Name
-            </label>
-            <input type="text" id="firstName" className="form__input" />
-          </div>
+          <TextInput
+            label="First Name"
+            labelId="firstName"
+            type="text"
+            onChange={onChange}
+          />
 
-          <div className="form__group">
-            <label className="form__label" htmlFor="lastName">
-              Last Name
-            </label>
-            <input type="text" id="lastName" className="form__input" />
-          </div>
+          <TextInput
+            label="Last Name"
+            labelId="lastName"
+            type="text"
+            onChange={onChange}
+          />
 
-          <div className="form__group">
-            <label className="form__label" htmlFor="email">
-              Email
-            </label>
-            <input type="email" id="email" className="form__input" />
-          </div>
+          <TextInput
+            label="Email"
+            labelId="email"
+            type="email"
+            err={validEmail}
+            errText="Enter a valid email"
+            onChange={onChange}
+          />
 
-          <div className="form__group">
-            <label className="form__label" htmlFor="password">
-              Password
-            </label>
-            <input type="password" id="password" className="form__input" />
-          </div>
+          <TextInput
+            label="Password"
+            labelId="password"
+            type="password"
+            err={password.length < 10}
+            errText="Password must be at least 10 characters long"
+            onChange={onChange}
+          />
 
-          <div className="form__group">
-            <label className="form__label" htmlFor="confirmPassword">
-              Confirm Password
-            </label>
-            <input type="text" id="confirmPassword" className="form__input" />
+          <TextInput
+            label="Confirm Password"
+            labelId="confirmPassword"
+            type="password"
+            err={password !== confirmPassword}
+            errText="Passwords do not match"
+            onChange={onChange}
+          />
+
+          <div className="form__actions mt-md">
+            <Link to="/login">Already have an account? Login here.</Link>
+            <button className="btn btn--register" type="submit">
+              Register
+            </button>
           </div>
         </form>
       </section>

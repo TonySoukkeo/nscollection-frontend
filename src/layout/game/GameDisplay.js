@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { store } from "../../context/StateProvider";
 
 // Actions
@@ -15,22 +15,27 @@ const GameDisplay = () => {
   const { game, gameDispatch } = useContext(store);
 
   useEffect(() => {
-    console.log("Fetching game");
-    getGame("5e302842531c626d1fcb5176", gameDispatch);
-  }, [game]);
+    const urlParams = new URLSearchParams(window.location.search);
+    const gameId = urlParams.get("gameId");
 
-  console.log(game);
+    getGame(gameId, gameDispatch);
+  }, []);
+
   return (
     <React.Fragment>
       <SubNavigation title="Super Mario Odyssey" />
       <section className="game-display">
-        <GameHeader />
+        {game.data ? (
+          <React.Fragment>
+            <GameHeader />
 
-        <GameActions />
+            <GameActions />
 
-        <GameGallery />
+            <GameGallery />
 
-        <GameInfo />
+            <GameInfo />
+          </React.Fragment>
+        ) : null}
       </section>
     </React.Fragment>
   );
