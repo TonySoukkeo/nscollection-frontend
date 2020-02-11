@@ -10,6 +10,7 @@ import Collection from "./layout/collection/Collection";
 import Search from "./layout/search/Search";
 import Profile from "./layout/profile/Profile";
 import GameDisplay from "./layout/game/GameDisplay";
+import Register from "./layout/auth/Register";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/collection" component={Collection} />
           <Route path="/search" component={Search} />
           <Route path="/profile" component={Profile} />
+          <Route path={"/register"} component={Register} />
           <Route path="/game" component={GameDisplay} />
         </Switch>
       </div>

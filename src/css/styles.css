@@ -197,6 +197,13 @@ BOTTOM NAVIGATION ON MOBILE VIEW
     .game-showcase__all h1 {
       bottom: 0; }
 
+.form {
+  width: 100%;
+  height: 100%;
+  background-color: blue; }
+  .form__label {
+    display: block; }
+
 .home {
   margin-top: 4rem;
   padding: 1rem 0 5.5rem 0; }
@@ -409,14 +416,14 @@ BOTTOM NAVIGATION ON MOBILE VIEW
       overflow-x: scroll;
       overflow-y: hidden;
       -webkit-overflow-scrolling: touch;
-      width: 100%;
-      padding-top: 0.2rem; }
+      width: 100%; }
     .game-display__gallery-box {
       cursor: pointer;
       width: 8rem;
       height: 4rem;
       margin-right: 0.2rem;
-      flex: none; }
+      flex: none;
+      margin-top: 0.3rem; }
       .game-display__gallery-box--active {
         border: 2px solid #f15e55; }
       .game-display__gallery-box img {
@@ -425,3 +432,8 @@ BOTTOM NAVIGATION ON MOBILE VIEW
   .game-display__info {
     grid-column: col-start / col-end;
     font-size: 1rem; }
+
+.register {
+  padding: 1rem;
+  margin-top: 8rem;
+  padding-bottom: 5.5rem; }
