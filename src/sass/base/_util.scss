@@ -34,15 +34,31 @@
 
 // Buttons
 .btn {
-  padding: 0.4rem 0.8rem;
+  display: inline-block;
+  cursor: pointer;
+  width: 5rem;
+  height: 2.5rem;
   border: none;
+  outline: none;
   font-size: 1rem;
   border-radius: 4px;
   box-shadow: $box-shadow;
+  transition: all 0.2s;
 
   &--register {
-    border: 1px solid $color-red;
+    border: 1px solid $color-green;
     background-color: $color-light;
+    color: $color-dark;
+  }
+
+  &:active {
+    transform: scale(0.9);
+  }
+
+  &--disabled {
+    background: $color-light-3;
+    color: grey;
+    border: 1px solid $color-red;
   }
 }
 
@@ -53,4 +69,18 @@
 
 .mt-md {
   margin-top: 2rem;
+}
+
+.mr-sm {
+  margin-right: 1rem;
+}
+
+.mb-sm {
+  margin-bottom: 1rem;
+}
+
+// Displays
+.d-flex {
+  display: flex;
+  align-items: center;
 }

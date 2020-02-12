@@ -45,20 +45,42 @@ body {
   text-align: center; }
 
 .btn {
-  padding: 0.4rem 0.8rem;
+  display: inline-block;
+  cursor: pointer;
+  width: 5rem;
+  height: 2.5rem;
   border: none;
+  outline: none;
   font-size: 1rem;
   border-radius: 4px;
-  box-shadow: 4px 6px 25px -4px rgba(0, 0, 0, 0.68); }
+  box-shadow: 4px 6px 25px -4px rgba(0, 0, 0, 0.68);
+  transition: all 0.2s; }
   .btn--register {
-    border: 1px solid #f15e55;
-    background-color: #f8fcfb; }
+    border: 1px solid #9aca3b;
+    background-color: #f8fcfb;
+    color: #231f20; }
+  .btn:active {
+    transform: scale(0.9); }
+  .btn--disabled {
+    background: #dddddc;
+    color: grey;
+    border: 1px solid #f15e55; }
 
 .mt-sm {
   margin-top: 1rem; }
 
 .mt-md {
   margin-top: 2rem; }
+
+.mr-sm {
+  margin-right: 1rem; }
+
+.mb-sm {
+  margin-bottom: 1rem; }
+
+.d-flex {
+  display: flex;
+  align-items: center; }
 
 .main-nav {
   display: flex;
@@ -228,9 +250,9 @@ BOTTOM NAVIGATION ON MOBILE VIEW
     font-size: 1rem;
     outline: none;
     border-radius: 4px; }
-    .form__input--invalid:focus {
+    .form__input--invalid {
       border: 1px solid #f15e55; }
-    .form__input--valid:focus {
+    .form__input--valid {
       border: 1px solid #9aca3b; }
   .form__err {
     opacity: 0;
@@ -239,8 +261,8 @@ BOTTOM NAVIGATION ON MOBILE VIEW
     font-size: 0.8rem;
     font-weight: bold;
     color: #f15e55; }
-  .form__input:focus ~ .form__err {
-    opacity: 1; }
+    .form__err--active {
+      opacity: 1; }
   .form__actions {
     display: flex;
     justify-content: space-between;
@@ -249,6 +271,33 @@ BOTTOM NAVIGATION ON MOBILE VIEW
       font-size: 0.8rem;
       text-decoration: none;
       color: #231f20; }
+  .form__radio-input {
+    visibility: hidden; }
+  .form__radio-label {
+    cursor: pointer;
+    position: relative; }
+    .form__radio-label::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      width: 1.5rem;
+      height: 1.5rem;
+      border-radius: 50%;
+      background-color: #f8fcfb;
+      border: 2px solid #9aca3b;
+      z-index: 5; }
+    .form__radio-label span {
+      margin-left: 2rem; }
+  .form__radio-input:checked + .form__radio-label::before {
+    content: "";
+    position: absolute;
+    z-index: 10;
+    top: 0.34rem;
+    left: 0.35rem;
+    width: 0.8rem;
+    height: 0.8rem;
+    border-radius: 50%;
+    background-color: #f15e55; }
 
 .home {
   margin-top: 4rem;
@@ -483,6 +532,8 @@ BOTTOM NAVIGATION ON MOBILE VIEW
   padding: 1rem;
   margin-top: 8rem;
   padding-bottom: 7rem; }
+  .register h2 {
+    font-size: 1.2rem; }
 
 .profile {
   padding: 1rem;
