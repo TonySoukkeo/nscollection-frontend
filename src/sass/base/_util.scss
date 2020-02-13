@@ -84,3 +84,16 @@
   display: flex;
   align-items: center;
 }
+
+// Alerts
+.alert {
+  width: 100%;
+  text-align: center;
+  padding: 1rem 0;
+  border-radius: 3px;
+
+  &--error {
+    background-color: $color-red;
+    color: $color-light;
+  }
+}

@@ -3,7 +3,23 @@
   height: 100%;
 
   &__group {
+    position: relative;
     margin-bottom: 1rem;
+
+    &-validate-icon {
+      position: absolute;
+      right: 0;
+      top: 2.6rem;
+      right: 0.7rem;
+
+      &--valid {
+        color: $color-green;
+      }
+
+      &--invalid {
+        color: $color-red;
+      }
+    }
   }
 
   &__label {
@@ -28,13 +44,25 @@
     }
   }
 
-  &__err {
+  &__err,
+  &__success {
     opacity: 0;
     margin-top: 0.5rem;
     padding-left: 0.5rem;
     font-size: 0.8rem;
     font-weight: bold;
+  }
+
+  &__err {
     color: $color-red;
+
+    &--active {
+      opacity: 1;
+    }
+  }
+
+  &__success {
+    color: $color-green;
 
     &--active {
       opacity: 1;

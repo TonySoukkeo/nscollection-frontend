@@ -14,10 +14,12 @@ export const registerUser = async ({
   allowEmail
 }) => {
   try {
-    const newUser = await axios({
-      method: "post",
-      url: "http://localhost:3000/auth/register",
-      data: {
+    const newUser = await fetch("http://localhost:3000/auth/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
         firstName,
         lastName,
         email,
@@ -25,18 +27,26 @@ export const registerUser = async ({
         confirmPassword,
         userName,
         allowEmail
-      }
-    });
+      })
+    })
+      .then(res => res.json())
+      .then(data => data)
+      .catch(err => console.log(err));
+
+    if (newUser.status !== 200) {
+      const error = new Error();
+      error.statusCode = newUser.status;
+      error.message = newUser.message;
+
+      throw error;
+    }
 
     return {
       status: newUser.status,
       message: newUser.message
     };
   } catch (err) {
-    return {
-      status: err.statusCode,
-      message: err.message
-    };
+    throw err;
   }
 };
 
@@ -71,10 +81,11 @@ export const validateUsername = async username => {
     }
 
     return {
-      message: usernameExists.data.message,
-      field: "userName"
+      message: usernameExists.message,
+      field: "userName",
+      status: usernameExists.status
     };
   } catch (err) {
-    throw err;
+    return err;
   }
 };

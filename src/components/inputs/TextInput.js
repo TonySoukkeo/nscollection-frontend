@@ -12,7 +12,8 @@ const TextInput = ({
   autocomplete,
   onFocus,
   focused,
-  validField
+  validField,
+  validUsername
 }) => {
   return (
     <div className="form__group">
@@ -36,8 +37,25 @@ const TextInput = ({
             : "form__input"
         }
       />
+
+      {/**** display icon visualizing if input is valid or not ****/}
+      {validField && focused ? (
+        <span className="form__group-validate-icon form__group-validate-icon--valid">
+          <i className="fas fa-check-circle"></i>
+        </span>
+      ) : !validField && focused ? (
+        <span className="form__group-validate-icon form__group-validate-icon--invalid">
+          <i className="fas fa-times-circle"></i>
+        </span>
+      ) : null}
+
+      {/*** display any error messages ***/}
       {err && focused ? (
         <span className="form__err form__err--active">{errText}</span>
+      ) : focused && validUsername ? (
+        <span className="form__success form__success--active">
+          {validUsername}
+        </span>
       ) : null}
     </div>
   );

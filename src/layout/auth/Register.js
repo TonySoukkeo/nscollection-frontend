@@ -3,8 +3,7 @@ import { Link } from "react-router-dom";
 
 // Components
 import SubNavigation from "../../components/navigation/SubNavigation";
-import TextInput from "../../components/inputs/TextInput";
-import RadioInput from "../../components/inputs/RadioInput";
+import RegisterForm from "../../components/register/RegisterForm";
 
 // Actions
 import {
@@ -12,25 +11,17 @@ import {
   validateUsername
 } from "../../reducers/actions/AuthActions";
 
-const state = {
-  firstName: "",
-  lastName: "",
-  password: "",
-  confirmPassword: "",
-  email: "",
-  userName: "",
-  firstNameFocused: false,
-  lastNameFocused: false,
-  userNameFocused: false,
-  emailFocused: false,
-  passwordFocused: false,
-  confirmPasswordFocused: false,
-  allowEmail: false,
-  fieldErr: null
-};
+// Custom hooks
+import useError from "../../hooks/useError";
+import useInputs from "../../hooks/useInputs";
 
 const Register = () => {
-  const [input, setInput] = useState(state);
+  const { setError, errorMessage, fieldErr, error } = useError();
+  const [userNameCheck, setUserNameCheck] = useState({ validUsername: "" });
+  const [formSubmit, setFormSubmit] = useState(false);
+
+  const { validUsername } = userNameCheck;
+
   const {
     userName,
     firstName,
@@ -39,19 +30,59 @@ const Register = () => {
     confirmPassword,
     email,
     allowEmail,
-    fieldErr,
-    userNameFocused,
-    emailFocused,
-    passwordFocused,
-    confirmPasswordFocused,
-    firstNameFocused,
-    lastNameFocused
-  } = input;
+    setInput,
+    input
+  } = useInputs();
+
+  useEffect(() => {
+    if (userName.value.length) {
+      const validUsername = async () => {
+        try {
+          const username = await validateUsername(userName.value);
+
+          if (username.status !== 200) {
+            const error = new Error();
+            error.status = username.status;
+            error.message = username.message;
+            error.field = username.field;
+
+            throw error;
+          }
+
+          setUserNameCheck({
+            validUsername: username.message
+          });
+
+          setError({
+            ...error,
+            fieldErr: null
+          });
+        } catch (err) {
+          setUserNameCheck({
+            validUsername: ""
+          });
+
+          setError({
+            ...error,
+            fieldErr: {
+              message: err.message,
+              field: err.field
+            }
+          });
+        }
+      };
+
+      validUsername();
+    }
+  }, [userName.value]);
 
   const onChange = e => {
     setInput({
       ...input,
-      [e.target.name]: e.target.value
+      [e.target.name]: {
+        focused: true,
+        value: e.target.value
+      }
     });
   };
 
@@ -59,7 +90,7 @@ const Register = () => {
   let validEmail;
   const emailRe = /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/;
 
-  !emailRe.test(email) ? (validEmail = false) : (validEmail = true);
+  !emailRe.test(email.value) ? (validEmail = false) : (validEmail = true);
 
   // onClick function to set allowEmail
   const setAllowEmail = value => {
@@ -69,180 +100,91 @@ const Register = () => {
     });
   };
 
-  // Onsubmit for register form
-  const submitRegister = e => {
-    e.preventDefault();
-
-    const newUserInfo = {
-      userName,
-      firstName,
-      lastName,
-      email,
-      password,
-      confirmPassword,
-      allowEmail
-    };
-
-    registerUser(newUserInfo);
-  };
-
-  // Set focused state for fields
-  const setFocused = field => {
-    setInput({
-      ...input,
-      [field]: true
-    });
-  };
-
-  // Check if username exsits
-  const checkUsername = async () => {
-    try {
-      const test = await validateUsername(userName);
-    } catch (err) {
-      setInput({
-        ...input,
-        userNameFocused: true,
-        fieldErr: {
-          message: err.message,
-          field: err.field
-        }
-      });
-    }
-  };
-
+  // Disable submit button if there are any form errors
   let btnDisable = false;
 
   if (
-    !firstName ||
-    !lastName ||
+    !firstName.value ||
+    !lastName.value ||
     !validEmail ||
-    password.length < 10 ||
-    password !== confirmPassword
+    password.value.length < 10 ||
+    password.value !== confirmPassword.value ||
+    fieldErr
   ) {
     btnDisable = true;
   }
+
+  // Onsubmit for register form
+  const submitRegister = async e => {
+    try {
+      e.preventDefault();
+
+      if (errorMessage) {
+        setError({ errorMessage: "" });
+      }
+
+      const newUserInfo = {
+        userName: userName.value,
+        firstName: firstName.value,
+        lastName: lastName.value,
+        email: email.value,
+        password: password.value,
+        confirmPassword: confirmPassword.value,
+        allowEmail
+      };
+
+      await registerUser(newUserInfo);
+
+      setFormSubmit(true);
+    } catch (err) {
+      setError({ errorMessage: err.message });
+
+      window.scrollTo(0, 0);
+    }
+  };
 
   return (
     <React.Fragment>
       <SubNavigation title="Register" />
 
       <section className="register">
-        <form autoComplete="off" onSubmit={submitRegister} className="form">
-          <TextInput
-            focused={userNameFocused}
+        {errorMessage ? (
+          <div className="alert alert--error mb-sm">{errorMessage}</div>
+        ) : null}
+
+        {!formSubmit ? (
+          <RegisterForm
+            validUsername={validUsername}
             onChange={onChange}
-            label="Username"
-            labelId="userName"
-            type="text"
-            name="userName"
-            onChange={onChange}
-            onBlur={checkUsername}
-            maxLength="15"
-            err={fieldErr}
-            errText={fieldErr && fieldErr.message}
-            validField={userName.length > 3 && userName.length < 15}
+            fieldErr={fieldErr}
+            userName={userName}
+            firstName={firstName}
+            lastName={lastName}
+            email={email}
+            validEmail={validEmail}
+            password={password}
+            confirmPassword={confirmPassword}
+            setAllowEmail={setAllowEmail}
+            btnDisable={btnDisable}
+            submitRegister={submitRegister}
           />
+        ) : (
+          <div className="register__confirmation">
+            <div className="register__confirmation--icon">
+              <i className="far fa-paper-plane"></i>
+            </div>
+            <h2>Email confirmation sent!</h2>
 
-          <TextInput
-            onFocus={() => setFocused("firstNameFocused")}
-            focused={firstNameFocused}
-            label="First Name"
-            labelId="firstName"
-            type="text"
-            onChange={onChange}
-            err={firstName.length < 2}
-            errText="First name is too short"
-            validField={firstName.length > 1}
-          />
+            <p>Please confirm your email to activate your account.</p>
 
-          <TextInput
-            onFocus={() => setFocused("lastNameFocused")}
-            focused={lastNameFocused}
-            label="Last Name"
-            labelId="lastName"
-            type="text"
-            onChange={onChange}
-            err={lastName.length < 2}
-            errText="Last name is too short"
-            validField={lastName.length > 1}
-          />
-
-          <TextInput
-            focused={emailFocused}
-            onFocus={() => setFocused("emailFocused")}
-            label="Email"
-            labelId="email"
-            type="email"
-            err={!validEmail}
-            errText="Enter a valid email"
-            onChange={onChange}
-            validField={validEmail}
-          />
-
-          <TextInput
-            focused={passwordFocused}
-            onFocus={() => setFocused("passwordFocused")}
-            label="Password"
-            labelId="password"
-            type="password"
-            err={password.length < 10}
-            errText="Password must be at least 10 characters long"
-            onChange={onChange}
-            validField={password.length > 9}
-          />
-
-          <TextInput
-            focused={confirmPasswordFocused}
-            onFocus={() => setFocused("confirmPasswordFocused")}
-            label="Confirm Password"
-            labelId="confirmPassword"
-            type="password"
-            err={password !== confirmPassword}
-            errText="Passwords do not match"
-            onChange={onChange}
-            validField={password === confirmPassword}
-          />
-
-          <h2 className="mb-sm mt-md">
-            Would you like to recieve email notifications when your games goes
-            on sale?
-          </h2>
-
-          <div className="form__group d-flex">
-            <RadioInput
-              labelFor="optIn"
-              name="allowEmail"
-              text="Yes"
-              value={true}
-              type="radio"
-              onClick={setAllowEmail}
-            />
-
-            <RadioInput
-              labelFor="optOut"
-              name="allowEmail"
-              text="No"
-              value={false}
-              type="radio"
-              onClick={setAllowEmail}
-            />
+            <p>
+              Once activated, you may{" "}
+              <Link className="emphasize" to="/login">
+                login
+              </Link>
+            </p>
           </div>
-
-          <div className="form__actions mt-md">
-            <Link to="/login">Already have an account? Login here.</Link>
-            <button
-              disabled={btnDisable}
-              className={
-                btnDisable
-                  ? "btn btn--register btn--disabled"
-                  : "btn btn--register"
-              }
-              type="submit"
-            >
-              Register
-            </button>
-          </div>
-        </form>
+        )}
       </section>
     </React.Fragment>
   );

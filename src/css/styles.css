@@ -82,6 +82,15 @@ body {
   display: flex;
   align-items: center; }
 
+.alert {
+  width: 100%;
+  text-align: center;
+  padding: 1rem 0;
+  border-radius: 3px; }
+  .alert--error {
+    background-color: #f15e55;
+    color: #f8fcfb; }
+
 .main-nav {
   display: flex;
   align-items: center;
@@ -239,7 +248,17 @@ BOTTOM NAVIGATION ON MOBILE VIEW
   width: 100%;
   height: 100%; }
   .form__group {
+    position: relative;
     margin-bottom: 1rem; }
+    .form__group-validate-icon {
+      position: absolute;
+      right: 0;
+      top: 2.6rem;
+      right: 0.7rem; }
+      .form__group-validate-icon--valid {
+        color: #9aca3b; }
+      .form__group-validate-icon--invalid {
+        color: #f15e55; }
   .form__label {
     display: block;
     margin-bottom: 0.5rem; }
@@ -254,14 +273,19 @@ BOTTOM NAVIGATION ON MOBILE VIEW
       border: 1px solid #f15e55; }
     .form__input--valid {
       border: 1px solid #9aca3b; }
-  .form__err {
+  .form__err, .form__success {
     opacity: 0;
     margin-top: 0.5rem;
     padding-left: 0.5rem;
     font-size: 0.8rem;
-    font-weight: bold;
+    font-weight: bold; }
+  .form__err {
     color: #f15e55; }
     .form__err--active {
+      opacity: 1; }
+  .form__success {
+    color: #9aca3b; }
+    .form__success--active {
       opacity: 1; }
   .form__actions {
     display: flex;
@@ -534,6 +558,26 @@ BOTTOM NAVIGATION ON MOBILE VIEW
   padding-bottom: 7rem; }
   .register h2 {
     font-size: 1.2rem; }
+  .register__confirmation {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: calc(50% - 8rem); }
+    .register__confirmation--icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 8rem;
+      width: 8rem;
+      background-color: #9aca3b;
+      border-radius: 50%;
+      margin-bottom: 1rem; }
+      .register__confirmation--icon i {
+        font-size: 3.5rem;
+        color: #eaeceb; }
+    .register__confirmation h2 {
+      margin-bottom: 0.8rem; }
 
 .profile {
   padding: 1rem;
