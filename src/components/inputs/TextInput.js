@@ -13,19 +13,27 @@ const TextInput = ({
   onFocus,
   focused,
   validField,
-  validUsername
+  validUsername,
+  placeholder,
+  value,
+  name
 }) => {
   return (
     <div className="form__group">
-      <label className="form__label" htmlFor={labelId}>
-        {label}
-      </label>
+      {label ? (
+        <label className="form__label" htmlFor={labelId}>
+          {label}
+        </label>
+      ) : null}
+
       <input
+        value={value}
+        placeholder={placeholder}
         onFocus={onFocus}
         autoComplete={autocomplete}
         maxLength={maxLength}
         onBlur={onBlur}
-        name={labelId}
+        name={labelId || name}
         onChange={onChange}
         type={type}
         id={labelId}

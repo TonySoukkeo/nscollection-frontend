@@ -14,13 +14,18 @@ import {
 // Custom hooks
 import useError from "../../hooks/useError";
 import useInputs from "../../hooks/useInputs";
+import useIsLoading from "../../hooks/useIsLoading";
 
-const Register = () => {
+const Register = ({ history }) => {
   const { setError, errorMessage, fieldErr, error } = useError();
+
   const [userNameCheck, setUserNameCheck] = useState({ validUsername: "" });
+
   const [formSubmit, setFormSubmit] = useState(false);
 
   const { validUsername } = userNameCheck;
+
+  const { loading, setLoading } = useIsLoading();
 
   const {
     userName,
@@ -119,6 +124,8 @@ const Register = () => {
     try {
       e.preventDefault();
 
+      setLoading(true);
+
       if (errorMessage) {
         setError({ errorMessage: "" });
       }
@@ -135,6 +142,7 @@ const Register = () => {
 
       await registerUser(newUserInfo);
 
+      setLoading(false);
       setFormSubmit(true);
     } catch (err) {
       setError({ errorMessage: err.message });
@@ -145,7 +153,9 @@ const Register = () => {
 
   return (
     <React.Fragment>
-      <SubNavigation title="Register" />
+      {!formSubmit ? (
+        <SubNavigation history={history} title="Register" />
+      ) : null}
 
       <section className="register">
         {errorMessage ? (
@@ -167,6 +177,7 @@ const Register = () => {
             setAllowEmail={setAllowEmail}
             btnDisable={btnDisable}
             submitRegister={submitRegister}
+            isLoading={loading}
           />
         ) : (
           <div className="register__confirmation">
@@ -178,10 +189,7 @@ const Register = () => {
             <p>Please confirm your email to activate your account.</p>
 
             <p>
-              Once activated, you may{" "}
-              <Link className="emphasize" to="/login">
-                login
-              </Link>
+              Once activated, you may <Link to="/login">login</Link>
             </p>
           </div>
         )}

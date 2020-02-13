@@ -1,0 +1,14 @@
+.login {
+  padding: 1rem;
+  margin-top: 8rem;
+  padding-bottom: 5.5rem;
+
+  &__pwreset {
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: $color-dark-2;
+
+    align-self: flex-end;
+  }
+}

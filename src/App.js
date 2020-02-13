@@ -12,6 +12,8 @@ import Search from "./layout/search/Search";
 import Profile from "./layout/profile/Profile";
 import GameDisplay from "./layout/game/GameDisplay";
 import Register from "./layout/auth/Register";
+import ConfirmEmail from "./layout/auth/ConfirmEmail";
+import Login from "./layout/auth/Login";
 
 const App = () => {
   const { isAuth, userId } = useContext(store);
@@ -26,8 +28,10 @@ const App = () => {
           <Route path="/collection" component={Collection} />
           <Route path="/search" component={Search} />
           <Route path="/profile" component={Profile} />
-          <Route path={"/register"} component={Register} />
+          <Route path="/register" component={Register} />
           <Route path="/game" component={GameDisplay} />
+          <Route path="/confirm" component={ConfirmEmail} />
+          <Route path="/login" component={Login} />
         </Switch>
       </div>
     </Router>

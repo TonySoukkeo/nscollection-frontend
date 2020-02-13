@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 // Components
 import TextInput from "../../components/inputs/TextInput";
 import RadioInput from "../../components/inputs/RadioInput";
+import Loading from "../../components/loading/Loading";
 
 const RegisterForm = ({
   validUsername,
@@ -18,7 +19,8 @@ const RegisterForm = ({
   confirmPassword,
   setAllowEmail,
   btnDisable,
-  submitRegister
+  submitRegister,
+  isLoading
 }) => {
   return (
     <form autoComplete="off" onSubmit={submitRegister} className="form">
@@ -120,15 +122,22 @@ const RegisterForm = ({
 
       <div className="form__actions mt-md">
         <Link to="/login">Already have an account? Login here.</Link>
-        <button
-          disabled={btnDisable}
-          className={
-            btnDisable ? "btn btn--register btn--disabled" : "btn btn--register"
-          }
-          type="submit"
-        >
-          Register
-        </button>
+
+        {isLoading ? (
+          <Loading styles={{ width: "10%" }} />
+        ) : (
+          <button
+            disabled={btnDisable}
+            className={
+              btnDisable
+                ? "btn btn--register btn--disabled"
+                : "btn btn--register"
+            }
+            type="submit"
+          >
+            Register
+          </button>
+        )}
       </div>
     </form>
   );

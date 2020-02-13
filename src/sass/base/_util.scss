@@ -51,6 +51,10 @@
     color: $color-dark;
   }
 
+  &--login {
+    color: $color-blue-2;
+  }
+
   &:active {
     transform: scale(0.9);
   }
@@ -83,6 +87,14 @@
 .d-flex {
   display: flex;
   align-items: center;
+
+  &--col {
+    flex-direction: column;
+  }
+
+  &--justify {
+    justify-content: space-between;
+  }
 }
 
 // Alerts

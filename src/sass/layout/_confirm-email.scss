@@ -1,0 +1,58 @@
+.confirm-email {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+  margin-top: 8rem;
+  padding-bottom: 5.5rem;
+
+  &__verified {
+    display: flex;
+    flex-direction: column;
+
+    &-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 4rem;
+      height: 4rem;
+      background-color: $color-green;
+      align-self: center;
+      border-radius: 50%;
+      margin-bottom: 1rem;
+
+      i {
+        font-size: 2rem;
+        color: $color-light;
+      }
+    }
+
+    h2 {
+      margin-bottom: 0.3rem;
+    }
+
+    p {
+      align-self: center;
+      margin-bottom: 1rem;
+    }
+
+    a {
+      text-decoration: none;
+      align-self: center;
+      background-color: $color-green;
+      color: $color-light;
+      padding: 0.6rem 0.8rem;
+    }
+  }
+
+  &__invalid {
+    p {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    a {
+      text-decoration: none;
+      color: $color-red;
+    }
+  }
+}

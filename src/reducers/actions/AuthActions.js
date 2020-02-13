@@ -89,3 +89,29 @@ export const validateUsername = async username => {
     return err;
   }
 };
+
+/*************
+ CONFIRM EMAIL
+ *************/
+export const confirmEmail = async (token, id) => {
+  try {
+    // Do stuff
+    const verified = await fetch(
+      `http://localhost:3000/auth/verify?id=${id}&token=${token}`
+    )
+      .then(res => res.json())
+      .then(data => data);
+
+    if (verified.status !== 200) {
+      const error = new Error();
+      error.status = verified.status;
+      error.message = verified.message;
+
+      throw error;
+    }
+
+    return { message: verified.message, status: verified.status };
+  } catch (err) {
+    return err;
+  }
+};
