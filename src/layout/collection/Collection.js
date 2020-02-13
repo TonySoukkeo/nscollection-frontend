@@ -4,7 +4,13 @@ import React from "react";
 import SubNavigation from "../../components/navigation/SubNavigation";
 import GameList from "../../components/collection/GameList";
 
+// Custom hooks
+import usePath from "../../hooks/usePath";
+
 const Collection = () => {
+  // Set path name for bottom navigation active items
+  usePath();
+
   const games = [
     {
       title: "Animal Crossing: New Horizons",

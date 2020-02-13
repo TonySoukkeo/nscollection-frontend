@@ -5,7 +5,13 @@ import SubNavigation from "../../components/navigation/SubNavigation";
 import SearchBar from "../../components/search/SearchBar";
 import SearchDisplay from "../../components/search/SearchDisplay";
 
+// Custom hooks
+import usePath from "../../hooks/usePath";
+
 const Search = () => {
+  // Set path name for bottom navigation active items
+  usePath();
+
   const results = [
     {
       title: "Super Mario Odyssey: Starter Pack",
@@ -35,7 +41,14 @@ const Search = () => {
 
         <ul className="search__list">
           {results.map(result => (
-            <SearchDisplay title={result.title} image={result.image} players={result.players} releaseDate={result.releaseDate} own={result.own} price={result.price} />
+            <SearchDisplay
+              title={result.title}
+              image={result.image}
+              players={result.players}
+              releaseDate={result.releaseDate}
+              own={result.own}
+              price={result.price}
+            />
           ))}
         </ul>
       </section>

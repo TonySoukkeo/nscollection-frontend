@@ -1,7 +1,24 @@
 .login {
   padding: 1rem;
-  margin-top: 8rem;
+  margin-top: 6rem;
   padding-bottom: 5.5rem;
+  text-align: center;
+
+  h2 {
+    font-size: 1.7rem;
+    margin-bottom: 1rem;
+  }
+
+  &__register {
+    margin-top: 8rem;
+
+    a {
+      text-decoration: none;
+      font-style: italic;
+      font-weight: bold;
+      color: $color-red;
+    }
+  }
 
   &__pwreset {
     text-decoration: none;

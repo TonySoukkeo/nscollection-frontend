@@ -1,22 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
+import { SET_PATH } from "../../reducers/constants/PathConstants";
+
+// Context
+import { StateContext, DispatchContext } from "../../context/StateProvider";
 
 const BottomNavigation = () => {
-  const [{ path }, setPath] = useState({ path: "/" });
-
-  const currentPath = window.location.pathname;
-
-  useEffect(() => {
-    setPath({ path: window.location.pathname }, [path]);
-  }, [path]);
+  const { path } = useContext(StateContext);
+  const { pathDispatch } = useContext(DispatchContext);
 
   return (
     <nav className="bottom-navigation">
-      <Link
-        onClick={() => setPath(currentPath)}
-        className="bottom-navigation__link"
-        to="/"
-      >
+      <Link className="bottom-navigation__link" to="/">
         <i
           className={
             path === "/"
@@ -35,7 +30,7 @@ const BottomNavigation = () => {
       </Link>
 
       <Link
-        onClick={() => setPath(currentPath)}
+        // onClick={() => pathDispatch({ type: SET_PATH, payload: currentPath })}
         className="bottom-navigation__link"
         to="/collection"
       >
@@ -57,7 +52,7 @@ const BottomNavigation = () => {
       </Link>
 
       <Link
-        onClick={() => setPath(currentPath)}
+        // onClick={() => pathDispatch({ type: SET_PATH, payload: currentPath })}
         className="bottom-navigation__link"
         to="/search"
       >
@@ -78,7 +73,7 @@ const BottomNavigation = () => {
       </Link>
 
       <Link
-        onClick={() => setPath(currentPath)}
+        // onClick={() => pathDispatch({ type: SET_PATH, payload: currentPath })}
         className="bottom-navigation__link"
         to="/profile"
       >

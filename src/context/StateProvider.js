@@ -12,22 +12,40 @@ import {
   authReducer
 } from "../reducers/reducers/AuthReducer";
 
-const store = createContext();
-const { Provider } = store;
+// Path state / reducer
+import {
+  pathInitialState,
+  pathReducer
+} from "../reducers/reducers/PathReducer";
+
+const StateContext = createContext();
+const DispatchContext = React.createContext();
 
 const StateProvider = ({ children }) => {
   const [gameState, gameDispatch] = useReducer(gameReducer, gameInitialState);
+  const [pathState, pathDispatch] = useReducer(pathReducer, pathInitialState);
 
   const [authState, authDispatch] = useReducer(authReducer, authInitialState);
 
-  const value = {
+  const stateValue = {
     ...gameState,
-    gameDispatch,
     ...authState,
-    authDispatch
+    ...pathState
   };
 
-  return <Provider value={value}>{children}</Provider>;
+  const dispatchValue = {
+    gameDispatch,
+    authDispatch,
+    pathDispatch
+  };
+
+  return (
+    <DispatchContext.Provider value={dispatchValue}>
+      <StateContext.Provider value={stateValue}>
+        {children}
+      </StateContext.Provider>
+    </DispatchContext.Provider>
+  );
 };
 
-export { store, StateProvider };
+export { StateContext, DispatchContext, StateProvider };

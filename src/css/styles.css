@@ -632,8 +632,19 @@ BOTTOM NAVIGATION ON MOBILE VIEW
 
 .login {
   padding: 1rem;
-  margin-top: 8rem;
-  padding-bottom: 5.5rem; }
+  margin-top: 6rem;
+  padding-bottom: 5.5rem;
+  text-align: center; }
+  .login h2 {
+    font-size: 1.7rem;
+    margin-bottom: 1rem; }
+  .login__register {
+    margin-top: 8rem; }
+    .login__register a {
+      text-decoration: none;
+      font-style: italic;
+      font-weight: bold;
+      color: #f15e55; }
   .login__pwreset {
     text-decoration: none;
     font-size: 0.8rem;

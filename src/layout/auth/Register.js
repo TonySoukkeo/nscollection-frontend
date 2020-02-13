@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 
 // Components
 import SubNavigation from "../../components/navigation/SubNavigation";
@@ -16,6 +17,9 @@ import useError from "../../hooks/useError";
 import useInputs from "../../hooks/useInputs";
 import useIsLoading from "../../hooks/useIsLoading";
 
+// Context
+import { StateContext } from "../../context/StateProvider";
+
 const Register = ({ history }) => {
   const { setError, errorMessage, fieldErr, error } = useError();
 
@@ -26,6 +30,8 @@ const Register = ({ history }) => {
   const { validUsername } = userNameCheck;
 
   const { loading, setLoading } = useIsLoading();
+
+  const { isAuth } = useContext(StateContext);
 
   const {
     userName,
@@ -152,49 +158,57 @@ const Register = ({ history }) => {
   };
 
   return (
-    <React.Fragment>
-      {!formSubmit ? (
-        <SubNavigation history={history} title="Register" />
-      ) : null}
+    <Route
+      render={() =>
+        !isAuth ? (
+          <React.Fragment>
+            {!formSubmit ? (
+              <SubNavigation history={history} title="Register" />
+            ) : null}
 
-      <section className="register">
-        {errorMessage ? (
-          <div className="alert alert--error mb-sm">{errorMessage}</div>
-        ) : null}
+            <section className="register">
+              {errorMessage ? (
+                <div className="alert alert--error mb-sm">{errorMessage}</div>
+              ) : null}
 
-        {!formSubmit ? (
-          <RegisterForm
-            validUsername={validUsername}
-            onChange={onChange}
-            fieldErr={fieldErr}
-            userName={userName}
-            firstName={firstName}
-            lastName={lastName}
-            email={email}
-            validEmail={validEmail}
-            password={password}
-            confirmPassword={confirmPassword}
-            setAllowEmail={setAllowEmail}
-            btnDisable={btnDisable}
-            submitRegister={submitRegister}
-            isLoading={loading}
-          />
+              {!formSubmit ? (
+                <RegisterForm
+                  validUsername={validUsername}
+                  onChange={onChange}
+                  fieldErr={fieldErr}
+                  userName={userName}
+                  firstName={firstName}
+                  lastName={lastName}
+                  email={email}
+                  validEmail={validEmail}
+                  password={password}
+                  confirmPassword={confirmPassword}
+                  setAllowEmail={setAllowEmail}
+                  btnDisable={btnDisable}
+                  submitRegister={submitRegister}
+                  isLoading={loading}
+                />
+              ) : (
+                <div className="register__confirmation">
+                  <div className="register__confirmation--icon">
+                    <i className="far fa-paper-plane"></i>
+                  </div>
+                  <h2>Email confirmation sent!</h2>
+
+                  <p>Please confirm your email to activate your account.</p>
+
+                  <p>
+                    Once activated, you may <Link to="/login">login</Link>
+                  </p>
+                </div>
+              )}
+            </section>
+          </React.Fragment>
         ) : (
-          <div className="register__confirmation">
-            <div className="register__confirmation--icon">
-              <i className="far fa-paper-plane"></i>
-            </div>
-            <h2>Email confirmation sent!</h2>
-
-            <p>Please confirm your email to activate your account.</p>
-
-            <p>
-              Once activated, you may <Link to="/login">login</Link>
-            </p>
-          </div>
-        )}
-      </section>
-    </React.Fragment>
+          <Redirect to="/" />
+        )
+      }
+    />
   );
 };
 

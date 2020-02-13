@@ -1,5 +1,5 @@
-import React, { useContext, useEffect, useState } from "react";
-import { store } from "../../context/StateProvider";
+import React, { useContext, useEffect } from "react";
+import { StateContext, DispatchContext } from "../../context/StateProvider";
 
 // Actions
 import { getGame } from "../../reducers/actions/GameActions";
@@ -12,7 +12,8 @@ import GameGallery from "../../components/game-display/GameGallery";
 import GameInfo from "../../components/game-display/GameInfo";
 
 const GameDisplay = () => {
-  const { game, gameDispatch } = useContext(store);
+  const { game } = useContext(StateContext);
+  const { gameDispatch } = useContext(DispatchContext);
 
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);

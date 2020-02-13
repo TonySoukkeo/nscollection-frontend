@@ -1,13 +1,19 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import { store } from "../../context/StateProvider";
+import { StateContext } from "../../context/StateProvider";
+
+// Custom hooks
+import usePath from "../../hooks/usePath";
 
 const Profile = () => {
-  const { isAuth, userId } = useContext(store);
+  const { isAuth } = useContext(StateContext);
+
+  // Set path name for bottom navigation active items
+  usePath();
 
   let display;
 
-  if (!isAuth || !userId) {
+  if (!isAuth) {
     display = (
       <React.Fragment>
         <h1>Register or log in to view your profile page</h1>
