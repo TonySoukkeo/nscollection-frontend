@@ -15,6 +15,7 @@ import GameDisplay from "./layout/game/GameDisplay";
 import Register from "./layout/auth/Register";
 import ConfirmEmail from "./layout/auth/ConfirmEmail";
 import Login from "./layout/auth/Login";
+import Reset from "./layout/reset/Reset";
 
 // Actions
 import { setAuth } from "./reducers/actions/AuthActions";
@@ -59,6 +60,7 @@ const App = () => {
           <Route path="/game" component={GameDisplay} />
           <Route path="/confirm" component={ConfirmEmail} />
           <Route path="/login" component={Login} />
+          <Route path="/reset" component={Reset} />
         </Switch>
       </div>
     </Router>

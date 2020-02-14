@@ -66,6 +66,12 @@
   }
 }
 
+.btn-group {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
 // Margins / Padding
 .mt-sm {
   margin-top: 1rem;
@@ -95,6 +101,10 @@
   &--justify {
     justify-content: space-between;
   }
+
+  &--flex-end {
+    justify-content: flex-end;
+  }
 }
 
 // Alerts
@@ -107,5 +117,10 @@
   &--error {
     background-color: $color-red;
     color: $color-light;
+  }
+
+  &--success {
+    background-color: $color-green;
+    color: $color-dark;
   }
 }

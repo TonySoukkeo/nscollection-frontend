@@ -16,15 +16,16 @@ const Profile = () => {
   if (!isAuth) {
     display = (
       <React.Fragment>
-        <h1>Register or log in to view your profile page</h1>
-        <div className="btn-group btn-group--col">
-          <Link className="btn btn--login" to="/login">
-            Login
-          </Link>
+        <h1>
+          <span style={{ color: "#f15e55" }}>Register</span> or{" "}
+          <span style={{ color: "#10b0d5" }}>Log in</span>
+        </h1>
+        <p>to view your profile page</p>
 
-          <Link className="btn btn--register" to="/register">
-            Register
-          </Link>
+        <div className="btn-group btn-group--col mt-md">
+          <Link to="/login">Login</Link>
+
+          <Link to="/register">Register</Link>
         </div>
       </React.Fragment>
     );

@@ -68,6 +68,11 @@ body {
     color: grey;
     border: 1px solid #f15e55; }
 
+.btn-group {
+  display: flex;
+  align-items: center;
+  flex-direction: column; }
+
 .mt-sm {
   margin-top: 1rem; }
 
@@ -87,6 +92,8 @@ body {
     flex-direction: column; }
   .d-flex--justify {
     justify-content: space-between; }
+  .d-flex--flex-end {
+    justify-content: flex-end; }
 
 .alert {
   width: 100%;
@@ -96,6 +103,9 @@ body {
   .alert--error {
     background-color: #f15e55;
     color: #f8fcfb; }
+  .alert--success {
+    background-color: #9aca3b;
+    color: #231f20; }
 
 .main-nav {
   display: flex;
@@ -588,7 +598,21 @@ BOTTOM NAVIGATION ON MOBILE VIEW
 .profile {
   padding: 1rem;
   margin-top: 8rem;
-  padding-bottom: 5.5rem; }
+  padding-bottom: 5.5rem;
+  text-align: center; }
+  .profile h1 {
+    font-size: 2rem; }
+  .profile p {
+    font-size: 1.2rem; }
+  .profile a {
+    text-decoration: none;
+    background: #f8fcfb;
+    width: 6rem;
+    padding: 0.4rem 0;
+    border-radius: 3px;
+    margin-bottom: 1rem;
+    color: #231f20;
+    box-shadow: 4px 6px 25px -4px rgba(0, 0, 0, 0.68); }
 
 .confirm-email {
   display: flex;
@@ -632,14 +656,14 @@ BOTTOM NAVIGATION ON MOBILE VIEW
 
 .login {
   padding: 1rem;
-  margin-top: 6rem;
+  margin-top: 8rem;
   padding-bottom: 5.5rem;
   text-align: center; }
   .login h2 {
     font-size: 1.7rem;
     margin-bottom: 1rem; }
   .login__register {
-    margin-top: 8rem; }
+    margin-top: 5rem; }
     .login__register a {
       text-decoration: none;
       font-style: italic;
@@ -651,3 +675,48 @@ BOTTOM NAVIGATION ON MOBILE VIEW
     font-weight: bold;
     color: #424141;
     align-self: flex-end; }
+
+.reset {
+  padding: 1rem;
+  margin-top: 8rem;
+  padding-bottom: 5.5rem; }
+  .reset-btn {
+    cursor: pointer;
+    margin-bottom: 2rem;
+    border-radius: 3px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    display: block;
+    width: 80%;
+    background-color: #f8fcfb;
+    padding: 2rem 0;
+    border: none;
+    box-shadow: 4px 6px 25px -4px rgba(0, 0, 0, 0.68); }
+  .reset-submit-btn {
+    cursor: pointer;
+    font-size: 1rem;
+    border: none;
+    font-weight: bold;
+    display: block;
+    padding: 0.5rem 1rem;
+    box-shadow: 4px 6px 25px -4px rgba(0, 0, 0, 0.68);
+    outline: none;
+    border-radius: 4px;
+    border: 1px solid #9aca3b;
+    transition: all 0.1s;
+    align-self: flex-end; }
+    .reset-submit-btn:active {
+      transform: scale(0.9); }
+  .reset--err-text {
+    display: block;
+    margin-top: -0.6rem;
+    margin-left: 0.2rem;
+    color: #f15e55;
+    font-weight: bold;
+    font-size: 0.9rem; }
+  .reset__success-link {
+    display: block;
+    text-decoration: none;
+    margin-top: 1rem;
+    color: #424141;
+    font-weight: bold; }

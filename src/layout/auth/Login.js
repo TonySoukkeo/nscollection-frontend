@@ -5,6 +5,7 @@ import { Route, Redirect } from "react-router-dom";
 // Components
 import TextInput from "../../components/inputs/TextInput";
 import Loading from "../../components/loading/Loading";
+import SubNavigation from "../../components/navigation/SubNavigation";
 
 // Actions
 import { userLogin, setAuth } from "../../reducers/actions/AuthActions";
@@ -90,62 +91,65 @@ const Login = () => {
     <Route
       render={() =>
         !isAuth ? (
-          <section className="login">
-            {errorMessage ? (
-              <div className="alert alert--error mb-sm">{errorMessage}</div>
-            ) : null}
+          <React.Fragment>
+            <SubNavigation />
+            <section className="login">
+              {errorMessage ? (
+                <div className="alert alert--error mb-sm">{errorMessage}</div>
+              ) : null}
 
-            <h2>Login</h2>
-            <form className="form" onSubmit={loginUser}>
-              <div className="form__group">
-                <TextInput
-                  placeholder="Email or Username"
-                  type="text"
-                  onChange={onChange}
-                  name="loginHandle"
-                  value={loginHandle}
-                />
+              <h2>Login</h2>
+              <form className="form" onSubmit={loginUser}>
+                <div className="form__group">
+                  <TextInput
+                    placeholder="Email or Username"
+                    type="text"
+                    onChange={onChange}
+                    name="loginHandle"
+                    value={loginHandle}
+                  />
+                </div>
+
+                <div className="form__group">
+                  <TextInput
+                    placeholder="Password"
+                    type="password"
+                    onChange={onChange}
+                    name="password"
+                    value={password}
+                  />
+                </div>
+
+                <div className="d-flex d-flex--justify">
+                  <Link to="/reset" className="login__pwreset">
+                    Forgot password? Or need a new email verification link?
+                  </Link>
+
+                  {loading ? (
+                    <Loading styles={{ width: "5%" }} />
+                  ) : (
+                    <button
+                      disabled={!password || !loginHandle}
+                      className={
+                        !password || !loginHandle
+                          ? "btn btn--disabled "
+                          : "btn btn--login "
+                      }
+                    >
+                      Login
+                    </button>
+                  )}
+                </div>
+              </form>
+
+              <div className="login__register">
+                <h2>Don't have an account?</h2>
+                <p>
+                  Click <Link to="/register">here</Link> to sign up
+                </p>
               </div>
-
-              <div className="form__group">
-                <TextInput
-                  placeholder="Password"
-                  type="password"
-                  onChange={onChange}
-                  name="password"
-                  value={password}
-                />
-              </div>
-
-              <div className="d-flex d-flex--justify">
-                <Link to="/reset" className="login__pwreset">
-                  Forgot password? Or need a new email verification link?
-                </Link>
-
-                {loading ? (
-                  <Loading styles={{ width: "5%" }} />
-                ) : (
-                  <button
-                    disabled={!password || !loginHandle}
-                    className={
-                      !password || !loginHandle
-                        ? "btn btn--disabled "
-                        : "btn btn--login "
-                    }
-                  >
-                    Login
-                  </button>
-                )}
-              </div>
-            </form>
-
-            <div className="login__register">
-              <h2>Don't have an account?</h2>
-              <p>
-                Click <Link to="/login">here</Link> to sign up
-              </p>
-            </div>
-          </section>
+            </section>
+          </React.Fragment>
         ) : (
           <Redirect to="/" />
         )

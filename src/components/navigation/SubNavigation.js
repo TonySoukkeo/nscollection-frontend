@@ -3,7 +3,7 @@ import React from "react";
 const SubNavigation = ({ title, history }) => {
   let headerTitle;
 
-  if (title.length > 16) {
+  if (title && title.length > 16) {
     headerTitle = `${title.slice(0, 16)}...`;
   } else headerTitle = title;
 
