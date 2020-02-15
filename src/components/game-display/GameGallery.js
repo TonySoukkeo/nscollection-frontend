@@ -1,16 +1,7 @@
 import React, { useState } from "react";
 
-const GameGallery = () => {
-  const images = [
-    "https://www.nintendo.com/content/dam/noa/en_US/games/switch/s/super-mario-odyssey-switch/screenshot-gallery/Switch_SuperMarioOdyssey_01.jpg",
-    "https://www.nintendo.com/content/dam/noa/en_US/games/switch/s/super-mario-odyssey-switch/screenshot-gallery/Switch_SuperMarioOdyssey_02.jpg",
-    "https://www.nintendo.com/content/dam/noa/en_US/games/switch/s/super-mario-odyssey-switch/screenshot-gallery/Switch_SuperMarioOdyssey_03.jpg",
-    "https://www.nintendo.com/content/dam/noa/en_US/games/switch/s/super-mario-odyssey-switch/screenshot-gallery/Switch_SuperMarioOdyssey_04.jpg",
-    "https://www.nintendo.com/content/dam/noa/en_US/games/switch/s/super-mario-odyssey-switch/screenshot-gallery/Switch_SuperMarioOdyssey_05.jpg",
-    "https://www.nintendo.com/content/dam/noa/en_US/games/switch/s/super-mario-odyssey-switch/screenshot-gallery/Switch_SuperMarioOdyssey_06.jpg"
-  ];
-
-  const [activeImage, setActiveImage] = useState(images[0]);
+const GameGallery = ({ gallery, title, id }) => {
+  const [activeImage, setActiveImage] = useState(gallery[0]);
 
   const selectImage = image => {
     setActiveImage(image);
@@ -19,23 +10,24 @@ const GameGallery = () => {
   return (
     <div className="game-display__gallery">
       <div className="game-display__gallery-display">
-        {images.map(image => (
+        {gallery.map((image, index) => (
           <img
+            key={id}
             className={
               image === activeImage
                 ? "game-display__gallery-display-img game-display__gallery-display-img--active"
                 : "game-display__gallery-display-img"
             }
             src={image}
-            alt="Stuff"
+            alt={`${title}-${index}`}
           />
         ))}
       </div>
 
       <div className="game-display__gallery-select">
-        {images.map(image => (
+        {gallery.map((image, index) => (
           <div
-            key={image}
+            key={id}
             onClick={() => selectImage(image)}
             className={
               image === activeImage
@@ -43,7 +35,7 @@ const GameGallery = () => {
                 : "game-display__gallery-box"
             }
           >
-            <img src={image} alt="Mario Odyseey" />
+            <img src={image} alt={`${title}-${index}`} />
           </div>
         ))}
       </div>

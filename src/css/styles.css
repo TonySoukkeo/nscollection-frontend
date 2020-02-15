@@ -16,6 +16,7 @@ html {
   font-family: "Lato", sans-serif; }
 
 body {
+  line-height: 1.5;
   background-color: #eaeceb; }
 
 .container {
@@ -84,6 +85,9 @@ body {
 
 .mb-sm {
   margin-bottom: 1rem; }
+
+.mb-md {
+  margin-bottom: 2rem; }
 
 .d-flex {
   display: flex;
@@ -389,6 +393,7 @@ BOTTOM NAVIGATION ON MOBILE VIEW
       font-size: 0.8rem; }
 
 .search {
+  position: relative;
   padding: 1rem;
   margin-top: 8rem;
   padding-bottom: 5.5rem;
@@ -567,6 +572,58 @@ BOTTOM NAVIGATION ON MOBILE VIEW
   .game-display__info {
     grid-column: col-start / col-end;
     font-size: 1rem; }
+    .game-display__info-list {
+      margin-bottom: 1.2rem; }
+      .game-display__info-list h2 {
+        margin-bottom: 1rem;
+        font-size: 1.2rem; }
+    .game-display__info-item {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin-bottom: 1.2rem; }
+      .game-display__info-item--description {
+        overflow: hidden;
+        max-height: 0;
+        margin-top: 1rem;
+        transition: all 1s;
+        margin-bottom: 1rem; }
+      .game-display__info-item input {
+        visibility: hidden;
+        width: 100%; }
+      .game-display__info-item label {
+        position: relative;
+        cursor: pointer;
+        font-weight: bold;
+        color: #424141; }
+        .game-display__info-item label::after {
+          content: "";
+          cursor: pointer;
+          position: absolute;
+          -webkit-clip-path: polygon(100% 50%, 0 0, 0 100%);
+          clip-path: polygon(100% 50%, 0 0, 0 100%);
+          top: 50%;
+          right: -1rem;
+          transform: translateY(-50%);
+          width: 0.5rem;
+          height: 0.5rem;
+          background-color: #424141;
+          transition: transform 0.5s; }
+      input:checked ~ .game-display__info-item--description {
+        max-height: 200rem; }
+      .game-display__info-item input:checked ~ label::after {
+        transform: translateY(-50%) rotate(90deg); }
+      .game-display__info-item img {
+        width: 40%;
+        height: 20vw; }
+      .game-display__info-item--details-box {
+        width: 56%; }
+        .game-display__info-item--details-box h3 {
+          font-size: 0.9rem;
+          font-weight: bold;
+          margin-bottom: 0.4rem; }
+      .game-display__info-item--price {
+        color: #9aca3b; }
 
 .register {
   padding: 1rem;

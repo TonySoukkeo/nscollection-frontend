@@ -3,8 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navigation from "./components/navigation/Navigation";
 import BottomNavigation from "./components/navigation/BottomNavigation";
 import "./css/styles.css";
-import { StateContext, DispatchContext } from "./context/StateProvider";
-import { SET_AUTH } from "./reducers/constants/AuthConstants";
+import { DispatchContext } from "./context/StateProvider";
 
 // Components
 import Home from "./layout/home/Home";

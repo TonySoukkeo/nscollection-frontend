@@ -172,5 +172,83 @@
   &__info {
     grid-column: col-start / col-end;
     font-size: 1rem;
+
+    &-list {
+      margin-bottom: 1.2rem;
+
+      h2 {
+        margin-bottom: 1rem;
+        font-size: 1.2rem;
+      }
+    }
+
+    &-item {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin-bottom: 1.2rem;
+
+      &--description {
+        overflow: hidden;
+        max-height: 0;
+        margin-top: 1rem;
+        transition: all 1s;
+        margin-bottom: 1rem;
+      }
+
+      input {
+        visibility: hidden;
+        width: 100%;
+      }
+
+      label {
+        position: relative;
+        cursor: pointer;
+        font-weight: bold;
+        color: $color-dark-2;
+
+        &::after {
+          content: "";
+          cursor: pointer;
+          position: absolute;
+          -webkit-clip-path: polygon(100% 50%, 0 0, 0 100%);
+          clip-path: polygon(100% 50%, 0 0, 0 100%);
+          top: 50%;
+          right: -1rem;
+          transform: translateY(-50%);
+          width: 0.5rem;
+          height: 0.5rem;
+          background-color: $color-dark-2;
+          transition: transform 0.5s;
+        }
+      }
+
+      input:checked ~ &--description {
+        max-height: 200rem;
+      }
+
+      input:checked ~ label::after {
+        transform: translateY(-50%) rotate(90deg);
+      }
+
+      img {
+        width: 40%;
+        height: 20vw;
+      }
+
+      &--details-box {
+        width: 56%;
+
+        h3 {
+          font-size: 0.9rem;
+          font-weight: bold;
+          margin-bottom: 0.4rem;
+        }
+      }
+
+      &--price {
+        color: $color-green;
+      }
+    }
   }
 }

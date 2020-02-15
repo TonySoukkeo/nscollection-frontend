@@ -1,9 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const SearchDisplay = ({ title, price, image, players, releaseDate, own }) => {
+const SearchDisplay = ({
+  title,
+  price,
+  image,
+  players,
+  releaseDate,
+  own,
+  id
+}) => {
   return (
-    <Link to="/">
+    <Link to={`/game?gameId=${id}`}>
       <li className="search__item">
         <img src={image} className="search__item-image" />
         <div className="search__item-content">
