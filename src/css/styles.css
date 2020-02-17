@@ -111,6 +111,11 @@ body {
     background-color: #9aca3b;
     color: #231f20; }
 
+.strike {
+  color: #231f20;
+  text-decoration: line-through;
+  margin-right: 1rem; }
+
 .main-nav {
   display: flex;
   align-items: center;
@@ -475,6 +480,9 @@ BOTTOM NAVIGATION ON MOBILE VIEW
     .game-display__group-meta {
       width: 60%;
       padding-left: 1rem; }
+      .game-display__group-meta img {
+        width: 15%;
+        height: 15%; }
       .game-display__group-meta h1 {
         font-size: 1.3rem; }
       .game-display__group-meta * {
@@ -534,6 +542,9 @@ BOTTOM NAVIGATION ON MOBILE VIEW
     transition: all 0.1s; }
     .game-display__btn:active {
       transform: scale(105%); }
+    .game-display__btn--true {
+      background-color: #9aca3b;
+      color: #424141; }
   .game-display__gallery {
     display: grid;
     grid-column: col-start / col-end; }

@@ -6,8 +6,8 @@ import { StateContext } from "../../context/StateProvider";
 import usePath from "../../hooks/usePath";
 
 const Profile = () => {
-  const { isAuth } = useContext(StateContext);
-
+  const { isAuth, user } = useContext(StateContext);
+  console.log(user);
   // Set path name for bottom navigation active items
   usePath();
 

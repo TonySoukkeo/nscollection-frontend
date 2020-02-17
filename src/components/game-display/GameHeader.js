@@ -8,10 +8,27 @@ const GameHeader = ({
   players,
   category,
   publisher,
+  rating,
   demo,
   onlinePlay,
-  cloudSave
+  cloudSave,
+  salePrice
 }) => {
+  let priceDisplay;
+
+  if (salePrice) {
+    priceDisplay = (
+      <React.Fragment>
+        <span className="strike">${price}</span>
+        <span className="sale-price">${salePrice}</span>
+      </React.Fragment>
+    );
+  } else if (price) {
+    priceDisplay = `$${price}`;
+  } else {
+    priceDisplay = "Free";
+  }
+
   return (
     <React.Fragment>
       <div className="game-display__group">
@@ -22,7 +39,9 @@ const GameHeader = ({
         <div className="game-display__group-meta">
           <h1>{title}</h1>
 
-          <span className="game-display__group-price">${price}</span>
+          <span className="game-display__group-price">{priceDisplay}</span>
+
+          <img src={rating} alt="ESRB Rating" />
 
           <p>
             <span className="text-bold">Release Date</span> {releaseDate}

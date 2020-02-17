@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 
 // Components
 import SubNavigation from "../../components/navigation/SubNavigation";
@@ -10,6 +10,10 @@ import Loading from "../../components/loading/Loading";
 import usePath from "../../hooks/usePath";
 import useError from "../../hooks/useError";
 import useIsLoading from "../../hooks/useIsLoading";
+import useUser from "../../hooks/useUser";
+
+// Context
+import { StateContext } from "../../context/StateProvider";
 
 const Search = () => {
   const [title, setTitle] = useState("");
@@ -17,39 +21,61 @@ const Search = () => {
 
   const { loading, setLoading } = useIsLoading();
 
+  const { user } = useContext(StateContext);
+
+  const { checkUserLibrary } = useUser();
+
   const { errorMessage, setError } = useError();
 
   // Set path name for bottom navigation active items
   usePath();
 
   useEffect(() => {
-    try {
-      setLoading(true);
-      const search = async () => {
-        const gameResults = await fetch("http://localhost:3000/games/search", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({ gameTitle: title })
-        });
+    const controller = new AbortController();
+    const signal = controller.signal;
 
-        const data = await gameResults.json();
+    const search = async () => {
+      try {
+        if (title !== "") {
+          setLoading(true);
+          const gameResults = await fetch(
+            `${process.env.REACT_APP_BASE_URL}/games/search`,
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json"
+              },
+              body: JSON.stringify({ gameTitle: title }),
+              signal
+            }
+          );
 
-        if (data.status !== 200) {
-          const error = new Error();
-          error.message = data.message;
-          throw error;
+          const data = await gameResults.json();
+
+          if (data.status !== 200) {
+            const error = new Error();
+            error.message = data.message;
+            throw error;
+          }
+
+          setResults(data.results);
+          setLoading(false);
         }
         setLoading(false);
-        setResults(data.results);
-      };
+      } catch (err) {
+        if (err.name === "AbortError") return;
+        else {
+          setError({ errorMessage: err.message });
+          setLoading(false);
+        }
+      }
+    };
 
-      search();
-    } catch (err) {
-      setLoading(false);
-      setError({ errorMessage: err.message });
-    }
+    search();
+    return () => {
+      controller.abort();
+      setResults([]);
+    };
   }, [title]);
 
   const gameSearch = e => {
@@ -72,12 +98,15 @@ const Search = () => {
               <SearchDisplay
                 key={result.id}
                 id={result.id}
+                checkUserLibrary={checkUserLibrary}
                 title={result.title}
                 image={result.image}
                 players={result.players}
                 releaseDate={result.releaseDate}
-                own={result.own}
+                ownedBy={result.own}
                 price={result.price}
+                userId={user._id}
+                salePrice={result.salePrice || null}
               />
             ))}
           </ul>

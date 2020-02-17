@@ -128,3 +128,13 @@
     color: $color-dark;
   }
 }
+
+// Text
+.strike {
+  color: $color-dark;
+  text-decoration: line-through;
+  margin-right: 1rem;
+}
+
+.sale-price {
+}

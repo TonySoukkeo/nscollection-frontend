@@ -6,11 +6,16 @@ const getGame = async (gameId, dispatch) => {
       dispatch({ type: GET_GAME, payload: {} });
     } else {
       // Get call from api
-      const game = await fetch(`http://localhost:3000/games/?gameId=${gameId}`);
+      const game = await fetch(
+        `${process.env.REACT_APP_BASE_URL}/games/?gameId=${gameId}`
+      );
 
       const data = await game.json();
 
       dispatch({ type: GET_GAME, payload: data });
+
+      // Return game data back to client
+      return { game: data, status: 200 };
     }
   } catch (err) {
     console.log(err);

@@ -29,6 +29,12 @@
       width: 60%;
       padding-left: 1rem;
 
+      // ESRB Rating img
+      img {
+        width: 15%;
+        height: 15%;
+      }
+
       h1 {
         font-size: 1.3rem;
       }
@@ -115,6 +121,11 @@
 
     &:active {
       transform: scale(105%);
+    }
+
+    &--true {
+      background-color: $color-green;
+      color: $color-dark-2;
     }
   }
 

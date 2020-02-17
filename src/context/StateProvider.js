@@ -23,6 +23,7 @@ const DispatchContext = React.createContext();
 
 const StateProvider = ({ children }) => {
   const [gameState, gameDispatch] = useReducer(gameReducer, gameInitialState);
+
   const [pathState, pathDispatch] = useReducer(pathReducer, pathInitialState);
 
   const [authState, authDispatch] = useReducer(authReducer, authInitialState);

@@ -17,13 +17,14 @@ import Login from "./layout/auth/Login";
 import Reset from "./layout/reset/Reset";
 
 // Actions
-import { setAuth } from "./reducers/actions/AuthActions";
+import { setAuth, setUser } from "./reducers/actions/AuthActions";
 
 const App = () => {
   const { authDispatch } = useContext(DispatchContext);
 
   useEffect(() => {
     try {
+      console.log("Make API call");
       const userId = localStorage.getItem("userId");
       const token = localStorage.getItem("token");
 
@@ -35,7 +36,9 @@ const App = () => {
         const data = await response.json();
 
         if (data.status === 200) {
-          setAuth(true, authDispatch);
+          setAuth({ isAuth: data.isAuth, token }, authDispatch);
+
+          setUser(data.user, authDispatch);
         }
       };
 

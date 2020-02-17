@@ -3,7 +3,9 @@ import { useState } from "react";
 const useIsLoading = () => {
   const [loading, setLoading] = useState(false);
 
-  return { loading, setLoading };
+  const [loadingType, setLoadingType] = useState("");
+
+  return { loading, setLoading, loadingType, setLoadingType };
 };
 
 export default useIsLoading;

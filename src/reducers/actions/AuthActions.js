@@ -1,10 +1,26 @@
-import { LOGIN_USER, SET_AUTH } from "../constants/AuthConstants";
+import {
+  SET_USER,
+  SET_AUTH,
+  ADD_TO_COLLECTION,
+  ADD_TO_SALE_WATCH,
+  ADD_TO_WISHLIST
+} from "../constants/AuthConstants";
+
+/********
+ SET USER
+ ********/
+export const setUser = (user, dispatch) => {
+  dispatch({ type: SET_USER, payload: user });
+};
 
 /********
  SET AUTH 
  ********/
-export const setAuth = (value, dispatch) => {
-  dispatch({ type: SET_AUTH, payload: value });
+export const setAuth = (data, dispatch) => {
+  dispatch({
+    type: SET_AUTH,
+    payload: { isAuth: data.isAuth, token: data.token }
+  });
 };
 
 /*********** 
@@ -29,7 +45,7 @@ export const userLogin = async (loginHandle, password) => {
       throw error;
     }
 
-    const user = await fetch("http://localhost:3000/auth/login", {
+    const user = await fetch(`${process.env.REACT_APP_BASE_URL}/auth/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -68,21 +84,24 @@ export const registerUser = async ({
   allowEmail
 }) => {
   try {
-    const newUser = await fetch("http://localhost:3000/auth/register", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        firstName,
-        lastName,
-        email,
-        password,
-        confirmPassword,
-        userName,
-        allowEmail
-      })
-    });
+    const newUser = await fetch(
+      `${process.env.REACT_APP_BASE_URL}/auth/register`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          firstName,
+          lastName,
+          email,
+          password,
+          confirmPassword,
+          userName,
+          allowEmail
+        })
+      }
+    );
 
     const data = await newUser.json();
 
@@ -119,7 +138,7 @@ export const validateUsername = async username => {
 
     // Check if username already exists in db
     const usernameExists = await fetch(
-      `http://localhost:3000/auth/check-username?userName=${username}`
+      `${process.env.REACT_APP_BASE_URL}/auth/check-username?userName=${username}`
     );
 
     const data = await usernameExists.json();
@@ -150,7 +169,7 @@ export const confirmEmail = async (token, id) => {
   try {
     // Do stuff
     const verified = await fetch(
-      `http://localhost:3000/auth/verify?id=${id}&token=${token}`
+      `${process.env.REACT_APP_BASE_URL}/auth/verify?id=${id}&token=${token}`
     );
 
     const data = await verified.json();
@@ -164,6 +183,80 @@ export const confirmEmail = async (token, id) => {
     }
 
     return { message: data.message, status: data.status };
+  } catch (err) {
+    return err;
+  }
+};
+
+/*********************** 
+ ADD GAME TO USE PROFILE
+ ***********************/
+export const modifyGameToProfile = async ({
+  type,
+  user,
+  token,
+  gameId,
+  method
+}) => {
+  try {
+    let addedGame, data;
+
+    switch (type) {
+      case "collection":
+        addedGame = await fetch(
+          `${process.env.REACT_APP_BASE_URL}/user/collection?gameId=${gameId}`,
+          {
+            method: method === "add" ? "POST" : "DELETE",
+            headers: {
+              Authorization: `Bearer ${token}`
+            }
+          }
+        );
+
+        data = await addedGame.json();
+        break;
+
+      case "wishlist":
+        addedGame = await fetch(
+          `${process.env.REACT_APP_BASE_URL}/user/wishlist?gameId=${gameId}`,
+          {
+            method: method === "add" ? "POST" : "DELETE",
+            headers: {
+              Authorization: `Bearer ${token}`
+            }
+          }
+        );
+
+        data = await addedGame.json();
+        break;
+
+      case "salewatch":
+        addedGame = await fetch(
+          `${process.env.REACT_APP_BASE_URL}/user/salewatch?gameId=${gameId}`,
+          {
+            method: method === "add" ? "POST" : "DELETE",
+            headers: {
+              Authorization: `Bearer ${token}`
+            }
+          }
+        );
+
+        data = await addedGame.json();
+        break;
+
+      default:
+        break;
+    }
+
+    if (data.status !== 200) {
+      const error = new Error();
+      error.message = data.message;
+      error.status = data.status;
+
+      throw error;
+    }
+
+    return { status: data.status };
   } catch (err) {
     return err;
   }

@@ -4,12 +4,32 @@ import { Link } from "react-router-dom";
 const SearchDisplay = ({
   title,
   price,
+  salePrice,
   image,
   players,
   releaseDate,
-  own,
+  ownedBy,
+  userId,
+  checkUserLibrary,
   id
 }) => {
+  let priceDisplay;
+
+  const owned = checkUserLibrary(ownedBy, userId);
+
+  if (salePrice) {
+    priceDisplay = (
+      <React.Fragment>
+        <span className="strike">${price}</span>
+        <span className="sale-price">${salePrice}</span>
+      </React.Fragment>
+    );
+  } else if (price) {
+    priceDisplay = `$${price}`;
+  } else {
+    priceDisplay = "Free";
+  }
+
   return (
     <Link to={`/game?gameId=${id}`}>
       <li className="search__item">
@@ -22,9 +42,9 @@ const SearchDisplay = ({
           <div className="search__item-players">
             <span className="text-bold">No. of Players</span> {players}
           </div>
-          <div className="search__item-price">${price}</div>
+          <div className="search__item-price">{priceDisplay}</div>
         </div>
-        {own ? (
+        {owned ? (
           <div className="search__item-owned">
             <span>Own</span>
           </div>

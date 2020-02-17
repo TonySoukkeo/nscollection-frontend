@@ -1,17 +1,31 @@
-import { LOGIN_USER, SET_AUTH } from "../constants/AuthConstants";
+import {
+  SET_USER,
+  SET_AUTH,
+  ADD_TO_COLLECTION
+} from "../constants/AuthConstants";
 
 const authInitialState = {
   isAuth: false,
-  userId: ""
+  token: "",
+  user: {}
 };
 
 const authReducer = (state = authInitialState, action) => {
   switch (action.type) {
+    case SET_USER: {
+      return {
+        ...state,
+        user: action.payload
+      };
+    }
+
     case SET_AUTH:
       return {
         ...state,
-        isAuth: action.payload
+        isAuth: action.payload.isAuth,
+        token: action.payload.token
       };
+
     default:
       return;
   }
