@@ -99,6 +99,10 @@ body {
   .d-flex--flex-end {
     justify-content: flex-end; }
 
+.col-2 {
+  flex-wrap: wrap;
+  justify-content: space-between; }
+
 .alert {
   width: 100%;
   text-align: center;
@@ -204,6 +208,24 @@ BOTTOM NAVIGATION ON MOBILE VIEW
     position: absolute;
     left: 50%;
     transform: translateX(-50%); }
+  .sub-navigation--collection {
+    text-align: center;
+    justify-content: space-around; }
+    .sub-navigation--collection div {
+      cursor: pointer;
+      width: 100%; }
+      .sub-navigation--collection div i,
+      .sub-navigation--collection div p {
+        color: #8d8c8c;
+        transition: all 0.2s ease-in; }
+    .sub-navigation--collection div:not(:last-child) {
+      border-right: 1px solid #231f20; }
+  .sub-navigation--active i {
+    color: #10b0d5 !important; }
+  .sub-navigation--active p {
+    font-weight: bold;
+    transform: scale(1.2);
+    color: #000 !important; }
 
 .game-showcase {
   margin-top: 1rem;
@@ -354,7 +376,7 @@ BOTTOM NAVIGATION ON MOBILE VIEW
 
 .collection {
   padding: 1rem;
-  margin-top: 8rem;
+  margin-top: 10rem;
   padding-bottom: 5.5rem;
   width: 100%; }
   .collection__list {
@@ -664,15 +686,31 @@ BOTTOM NAVIGATION ON MOBILE VIEW
       margin-bottom: 0.8rem; }
 
 .profile {
-  padding: 1rem;
-  margin-top: 8rem;
+  padding: 9rem 1rem 5.5rem 1rem;
   padding-bottom: 5.5rem;
   text-align: center; }
+  .profile__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    top: 4rem;
+    padding: 1rem;
+    width: 100%;
+    background-color: #dddddc; }
+    .profile__header-signout, .profile__header-username {
+      font-weight: bold; }
+    .profile__header-username {
+      font-size: 1.2rem;
+      color: #10b0d5; }
+    .profile__header-signout {
+      cursor: pointer;
+      font-size: 0.9rem; }
   .profile h1 {
     font-size: 2rem; }
   .profile p {
     font-size: 1.2rem; }
-  .profile a {
+  .profile__auth-link {
     text-decoration: none;
     background: #f8fcfb;
     width: 6rem;
@@ -681,6 +719,68 @@ BOTTOM NAVIGATION ON MOBILE VIEW
     margin-bottom: 1rem;
     color: #231f20;
     box-shadow: 4px 6px 25px -4px rgba(0, 0, 0, 0.68); }
+  .profile__edit, .profile__collection, .profile__wishlist, .profile__salewatch, .profile__notifications {
+    position: relative;
+    cursor: pointer;
+    text-decoration: none;
+    background-color: #fff;
+    border-radius: 0.5rem;
+    box-shadow: 4px 6px 25px -4px rgba(0, 0, 0, 0.68);
+    overflow: hidden; }
+    .profile__edit h4, .profile__collection h4, .profile__wishlist h4, .profile__salewatch h4, .profile__notifications h4 {
+      position: absolute;
+      z-index: 10;
+      bottom: 0.5rem;
+      left: 1rem;
+      color: #231f20;
+      font-weight: bold; }
+    .profile__edit span, .profile__collection span, .profile__wishlist span, .profile__salewatch span, .profile__notifications span {
+      position: absolute; }
+      .profile__edit span i, .profile__collection span i, .profile__wishlist span i, .profile__salewatch span i, .profile__notifications span i {
+        font-size: 8rem; }
+  .profile__edit, .profile__collection, .profile__wishlist, .profile__salewatch {
+    width: 49%;
+    height: 8rem;
+    margin-bottom: 0.7rem; }
+    .profile__edit h4, .profile__collection h4, .profile__wishlist h4, .profile__salewatch h4 {
+      font-size: 1.5rem; }
+    .profile__edit span, .profile__collection span, .profile__wishlist span, .profile__salewatch span {
+      top: 2rem;
+      z-index: 5; }
+  .profile__edit span {
+    color: #eaeceb; }
+  .profile__collection span {
+    color: #10b0d5; }
+  .profile__wishlist span {
+    color: #231f20; }
+  .profile__salewatch span {
+    color: #9aca3b;
+    right: 0; }
+  .profile__notifications {
+    height: 10rem;
+    margin-top: 2rem;
+    width: 100%; }
+    .profile__notifications h4 {
+      font-size: 2rem; }
+    .profile__notifications span {
+      color: #f15e55;
+      left: 0;
+      top: -1.5rem; }
+  .profile__notifications-count {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3px;
+    top: 1rem;
+    font-size: 1.4rem;
+    right: 1rem;
+    color: #231f20;
+    width: 2rem;
+    height: 2rem;
+    background-color: #c9c8c8; }
+    .profile__notifications-count--green {
+      color: #9aca3b; }
 
 .confirm-email {
   display: flex;

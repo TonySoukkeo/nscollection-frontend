@@ -1,8 +1,33 @@
 .profile {
-  padding: 1rem;
-  margin-top: 8rem;
+  padding: 9rem 1rem 5.5rem 1rem;
   padding-bottom: 5.5rem;
   text-align: center;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    top: 4rem;
+    padding: 1rem;
+    width: 100%;
+    background-color: $color-light-3;
+
+    &-signout,
+    &-username {
+      font-weight: bold;
+    }
+
+    &-username {
+      font-size: 1.2rem;
+      color: $color-blue-2;
+    }
+
+    &-signout {
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+  }
 
   h1 {
     font-size: 2rem;
@@ -12,7 +37,7 @@
     font-size: 1.2rem;
   }
 
-  a {
+  &__auth-link {
     text-decoration: none;
     background: $color-light;
     width: 6rem;
@@ -21,5 +46,114 @@
     margin-bottom: 1rem;
     color: $color-dark;
     box-shadow: $box-shadow;
+  }
+
+  &__edit,
+  &__collection,
+  &__wishlist,
+  &__salewatch,
+  &__notifications {
+    position: relative;
+    cursor: pointer;
+    text-decoration: none;
+    background-color: #fff;
+    border-radius: 0.5rem;
+    box-shadow: $box-shadow;
+    overflow: hidden;
+
+    h4 {
+      position: absolute;
+      z-index: 10;
+      bottom: 0.5rem;
+      left: 1rem;
+      color: $color-dark;
+      font-weight: bold;
+    }
+
+    span {
+      position: absolute;
+
+      i {
+        font-size: 8rem;
+      }
+    }
+  }
+
+  &__edit,
+  &__collection,
+  &__wishlist,
+  &__salewatch {
+    width: 49%;
+    height: 8rem;
+    margin-bottom: 0.7rem;
+
+    h4 {
+      font-size: 1.5rem;
+    }
+
+    span {
+      top: 2rem;
+      z-index: 5;
+    }
+  }
+
+  &__edit {
+    span {
+      color: $color-light-2;
+    }
+  }
+
+  &__collection {
+    span {
+      color: $color-blue-2;
+    }
+  }
+
+  &__wishlist {
+    span {
+      color: $color-dark;
+    }
+  }
+
+  &__salewatch {
+    span {
+      color: $color-green;
+      right: 0;
+    }
+  }
+
+  &__notifications {
+    height: 10rem;
+    margin-top: 2rem;
+    width: 100%;
+
+    h4 {
+      font-size: 2rem;
+    }
+
+    span {
+      color: $color-red;
+      left: 0;
+      top: -1.5rem;
+    }
+  }
+
+  &__notifications-count {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3px;
+    top: 1rem;
+    font-size: 1.4rem;
+    right: 1rem;
+    color: $color-dark;
+    width: 2rem;
+    height: 2rem;
+    background-color: $color-light-5;
+
+    &--green {
+      color: $color-green;
+    }
   }
 }

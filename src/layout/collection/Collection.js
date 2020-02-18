@@ -1,69 +1,118 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 // Components
-import SubNavigation from "../../components/navigation/SubNavigation";
-import GameList from "../../components/collection/GameList";
+import CollectionSubNavigation from "../../components/navigation/CollectionSubNavigation";
+import CollectionDisplay from "../../components/collection/CollectionDisplay";
 
 // Custom hooks
 import usePath from "../../hooks/usePath";
+import useError from "../../hooks/useError";
+import useIsLoading from "../../hooks/useIsLoading";
 
 const Collection = () => {
+  const [collectionPath, setCollectionPath] = useState("collection");
+
+  const [gameList, setGameList] = useState({
+    game: [],
+    loadMore: false
+  });
+
+  const { loading, setLoading } = useIsLoading();
+  const { errorMessage, setError } = useError();
+
+  useEffect(() => {
+    const getUserLibrary = async () => {
+      try {
+        setLoading(true);
+        // Get userId
+        const userId = localStorage.getItem("userId");
+
+        let library, data;
+        console.log("make collection api call");
+        switch (collectionPath) {
+          case "collection":
+            library = await fetch(
+              `${process.env.REACT_APP_BASE_URL}/user/get-collection?userId=${userId}`,
+              {
+                method: "POST"
+              }
+            );
+
+            data = await library.json();
+            break;
+
+          case "wishlist":
+            library = await fetch(
+              `${process.env.REACT_APP_BASE_URL}/user/get-wishlist?userId=${userId}`,
+              {
+                method: "POST"
+              }
+            );
+
+            data = await library.json();
+            break;
+
+          case "salewatch":
+            break;
+
+          default:
+            break;
+        }
+
+        // Check for any errors
+        if (data.status !== 200) {
+          const error = new Error();
+          error.message = data.message;
+
+          throw error;
+        }
+
+        // Set gameList
+        setGameList({
+          game:
+            collectionPath === "collection"
+              ? data.gameCollection
+              : collectionPath === "wishlist"
+              ? data.wishlist
+              : data.salewatch,
+          loadMore: data.loadMore
+        });
+
+        setLoading(false);
+      } catch (err) {
+        setLoading(false);
+        setError({
+          errorMessage
+        });
+      }
+    };
+
+    getUserLibrary();
+
+    // Cleanup
+    return () => {
+      setGameList({
+        game: [],
+        loadMore: false
+      });
+    };
+  }, [collectionPath]);
+
+  // Change collection path
+  const changeCollectionPath = value => {
+    setCollectionPath(value);
+  };
+
   // Set path name for bottom navigation active items
   usePath();
 
-  const games = [
-    {
-      title: "Animal Crossing: New Horizons",
-      image:
-        "https://www.nintendo.com/content/dam/noa/en_US/games/switch/a/animal-crossing-new-horizons-switch/Switch_ACNH_box.png"
-    },
-    {
-      title: "Tokyo Mirage Sessions #FE Encore",
-      image:
-        "https://www.nintendo.com/content/dam/noa/en_US/games/switch/t/tokyo-mirage-sessions-fe-encore-switch/Switch_TokyoMirageSessionsFE-Encore_box.png"
-    },
-    {
-      title:
-        "LAYTON'S MYSTERY JOURNEY: Katrielle and the Millionaires' Conspiracy Deluxe Edition",
-      image:
-        "https://www.nintendo.com/content/dam/noa/en_US/games/switch/l/laytons-mystery-journey-katrielle-and-the-millionaires-conspiracy-deluxe-edition-switch/Switch_LaytonsMysteryJourney_box.png"
-    },
-    {
-      title: "The Stretchers",
-      image:
-        "https://www.nintendo.com/content/dam/noa/en_US/games/switch/t/the-stretchers-switch/Switch_TheStretchers_box_eShop.png"
-    },
-    {
-      title: "Luigi's Mansion 3",
-      image:
-        "https://www.nintendo.com/content/dam/noa/en_US/games/switch/l/luigis-mansion-3-switch/Switch_LuigisMansion3_box.png"
-    },
-    {
-      title: "Ring Fit Adventure",
-      image:
-        "https://www.nintendo.com/content/dam/noa/en_US/games/switch/r/ring-fit-adventure-switch/Switch_RingFitAdventure_box.png"
-    },
-    {
-      title: "The Legend of Zelda: Link's Awakening",
-      image:
-        "https://www.nintendo.com/content/dam/noa/en_US/games/switch/t/the-legend-of-zelda-links-awakening-switch/Switch_TLOZ-LinksAwakening_box.png"
-    }
-  ];
-
-  const countTitle =
-    games.length > 0 ? `${games.length} in collection` : "0 in collection";
-
   return (
     <React.Fragment>
-      <SubNavigation title="Game Collection" />
-      <section className="collection">
-        <span className="collection__count">{countTitle}</span>
-        <ul className="collection__list">
-          {games.map(game => (
-            <GameList title={game.title} image={game.image} />
-          ))}
-        </ul>
-      </section>
+      <CollectionSubNavigation
+        changeCollectionPath={changeCollectionPath}
+        path={collectionPath}
+      />
+      <CollectionDisplay loading={loading} games={gameList.game} />
     </React.Fragment>
   );
 };

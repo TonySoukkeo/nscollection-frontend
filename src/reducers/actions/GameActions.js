@@ -18,7 +18,7 @@ const getGame = async (gameId, dispatch) => {
       return { game: data, status: 200 };
     }
   } catch (err) {
-    console.log(err);
+    return err;
   }
 };
 

@@ -111,6 +111,11 @@
   }
 }
 
+.col-2 {
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
 // Alerts
 .alert {
   width: 100%;

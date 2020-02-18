@@ -1,10 +1,4 @@
-import {
-  SET_USER,
-  SET_AUTH,
-  ADD_TO_COLLECTION,
-  ADD_TO_SALE_WATCH,
-  ADD_TO_WISHLIST
-} from "../constants/AuthConstants";
+import { SET_USER, SET_AUTH } from "../constants/AuthConstants";
 
 /********
  SET USER
@@ -191,13 +185,7 @@ export const confirmEmail = async (token, id) => {
 /*********************** 
  ADD GAME TO USE PROFILE
  ***********************/
-export const modifyGameToProfile = async ({
-  type,
-  user,
-  token,
-  gameId,
-  method
-}) => {
+export const modifyGameToProfile = async ({ type, token, gameId, method }) => {
   try {
     let addedGame, data;
 

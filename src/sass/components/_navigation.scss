@@ -103,4 +103,36 @@ BOTTOM NAVIGATION ON MOBILE VIEW
     left: 50%;
     transform: translateX(-50%);
   }
+
+  &--collection {
+    text-align: center;
+    justify-content: space-around;
+
+    div {
+      cursor: pointer;
+      width: 100%;
+
+      i,
+      p {
+        color: $color-grey;
+        transition: all 0.2s ease-in;
+      }
+    }
+
+    div:not(:last-child) {
+      border-right: 1px solid $color-dark;
+    }
+  }
+
+  &--active {
+    i {
+      color: $color-blue-2 !important;
+    }
+
+    p {
+      font-weight: bold;
+      transform: scale(1.2);
+      color: #000 !important;
+    }
+  }
 }

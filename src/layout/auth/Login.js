@@ -60,10 +60,12 @@ const Login = () => {
       localStorage.setItem("token", login.token);
       localStorage.setItem("userId", login.userId);
 
+      const token = localStorage.getItem("token");
+
       setLoading(false);
 
       // Set auth to true
-      setAuth(true, authDispatch);
+      setAuth({ isAuth: true, token }, authDispatch);
     } catch (err) {
       setLoading(false);
 

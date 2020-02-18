@@ -97,7 +97,6 @@ const GameDisplay = () => {
   // Onclick to add game to user profile, depending on the type
   const modifyGameTo = async (type, method) => {
     try {
-      console.log(method, type);
       setLoading(true);
 
       // Reset error message
@@ -113,7 +112,6 @@ const GameDisplay = () => {
 
       const options = {
         type,
-        user,
         token,
         gameId,
         method
