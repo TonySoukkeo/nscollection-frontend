@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import uuidv4 from "uuid/v4";
 
 const DlcDisplay = ({ dlc }) => {
   const [check, setCheck] = useState({});
@@ -43,7 +44,10 @@ const DlcDisplay = ({ dlc }) => {
                     <input
                       id="more-info"
                       type="checkbox"
-                      checked={check[content.title]}
+                      checked={
+                        check.hasOwnProperty(content.title) &&
+                        check[content.title]
+                      }
                     />
 
                     <label

@@ -12,7 +12,7 @@ const GameGallery = ({ gallery, title, id }) => {
       <div className="game-display__gallery-display">
         {gallery.map((image, index) => (
           <img
-            key={id}
+            key={image}
             className={
               image === activeImage
                 ? "game-display__gallery-display-img game-display__gallery-display-img--active"
@@ -27,7 +27,7 @@ const GameGallery = ({ gallery, title, id }) => {
       <div className="game-display__gallery-select">
         {gallery.map((image, index) => (
           <div
-            key={id}
+            key={image}
             onClick={() => selectImage(image)}
             className={
               image === activeImage
