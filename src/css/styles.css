@@ -409,6 +409,7 @@ BOTTOM NAVIGATION ON MOBILE VIEW
       color: #231f20; }
     .collection__list-btn {
       position: absolute;
+      cursor: pointer;
       bottom: 1rem;
       right: 1rem;
       outline: none;
@@ -418,6 +419,9 @@ BOTTOM NAVIGATION ON MOBILE VIEW
       background: #f15e55;
       border: none;
       font-size: 0.8rem; }
+  .collection__action-link {
+    text-decoration: none;
+    font-weight: bold; }
 
 .search {
   position: relative;

@@ -4,34 +4,81 @@ import React from "react";
 import GameList from "./GameList";
 import Loading from "../loading/Loading";
 
-const CollectionDisplay = ({ games, loading }) => {
-  const countTitle =
-    games.length > 0 ? `${games.length} in collection` : "0 in collection";
+const CollectionDisplay = React.forwardRef(
+  (
+    { games, loading, loadingType, totalGames, errorMessage, removeGame },
+    ref
+  ) => {
+    const countTitle =
+      games.length > 0 ? `${totalGames} in collection` : "0 in collection";
 
-  return (
-    <section className="collection">
-      {!loading ? (
-        <React.Fragment>
-          <span className="collection__count">{countTitle}</span>
-          <ul className="collection__list">
-            {games.map(game => (
-              <GameList title={game.title} image={game.image} />
-            ))}
-          </ul>
-        </React.Fragment>
-      ) : (
-        <Loading
-          styles={{
-            width: "10%",
-            position: "absolute",
-            left: "50%",
-            top: "10rem",
-            transform: "translateX(-50%)"
-          }}
-        />
-      )}
-    </section>
-  );
-};
+    return (
+      <section className="collection">
+        {/*** Error display ***/}
+        {errorMessage ? (
+          <div className="alert alert--error mb-sm ">Error</div>
+        ) : null}
+
+        {loading && loadingType === "main" ? (
+          <Loading
+            styles={{
+              width: "10%",
+              position: "absolute",
+              left: "50%",
+              top: "10rem",
+              transform: "translateX(-50%)"
+            }}
+          />
+        ) : (
+          <React.Fragment>
+            <span className="collection__count">{countTitle}</span>
+            <ul className="collection__list">
+              {games.map((game, index) => {
+                if (games.length === index + 1) {
+                  return (
+                    <GameList
+                      key={game.id}
+                      removeGame={removeGame}
+                      ref={ref}
+                      id={game.id}
+                      title={game.title}
+                      image={game.image}
+                      loading={loading}
+                      loadingType={loadingType}
+                    />
+                  );
+                } else {
+                  return (
+                    <GameList
+                      key={game.id}
+                      removeGame={removeGame}
+                      id={game.id}
+                      title={game.title}
+                      image={game.image}
+                      loading={loading}
+                      loadingType={loadingType}
+                    />
+                  );
+                }
+              })}
+              {loading && loadingType === "load more" ? (
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    width: "100%",
+                    marginBottom: "1rem"
+                  }}
+                >
+                  <Loading styles={{ width: "10%" }} />
+                </div>
+              ) : null}
+            </ul>
+          </React.Fragment>
+        )}
+      </section>
+    );
+  }
+);
 
 export default CollectionDisplay;
