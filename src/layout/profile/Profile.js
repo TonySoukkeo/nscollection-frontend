@@ -68,21 +68,21 @@ const Profile = () => {
           <h4>Edit Profile</h4>
         </Link>
 
-        <Link to="/collection" className="profile__collection">
+        <Link to="/collection?view=collection" className="profile__collection">
           <span>
             <i className="fas fa-box-open"></i>
           </span>
           <h4>My Collection</h4>
         </Link>
 
-        <Link to="/collection?wishlist=true" className="profile__wishlist">
+        <Link to="/collection?view=wishlist" className="profile__wishlist">
           <span>
             <i className="far fa-list-alt"></i>
           </span>
           <h4>Wishlist</h4>
         </Link>
 
-        <Link to="/collection?salewatch=true" className="profile__salewatch">
+        <Link to="/collection?view=salewatch" className="profile__salewatch">
           <span>
             <i className="fas fa-file-invoice-dollar"></i>
           </span>

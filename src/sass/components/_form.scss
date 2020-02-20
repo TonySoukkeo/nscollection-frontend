@@ -117,4 +117,78 @@
     border-radius: 50%;
     background-color: $color-red;
   }
+
+  &__checkbox-label {
+    cursor: pointer;
+    position: relative;
+
+    span {
+      position: absolute;
+      top: 50%;
+      margin-left: 1rem;
+      background-color: $color-light-2;
+      transform: translateY(-50%);
+      border-radius: 1rem;
+      width: 2rem;
+      height: 1rem;
+      border: 1px solid $color-dark;
+      overflow: hidden;
+
+      &,
+      &::before {
+        cursor: pointer;
+        transition: all 0.1s ease-in;
+      }
+
+      &::before {
+        content: "";
+        position: absolute;
+
+        height: 0.9rem;
+        width: 0.9rem;
+        background-color: $color-dark;
+        border-radius: 50%;
+      }
+    }
+  }
+
+  &__checkbox-input {
+    visibility: hidden;
+  }
+
+  &__checkbox-input:checked + &__checkbox-label > span {
+    background-color: $color-green-3;
+  }
+
+  &__checkbox-input:checked + &__checkbox-label > span::before {
+    transform: translateX(1rem);
+  }
+
+  // Styling for radio price range filters
+  &--filter-radio-label {
+    position: relative;
+
+    &,
+    span {
+      cursor: pointer;
+    }
+
+    span {
+      position: absolute;
+      margin-left: 1rem;
+      border: 1px solid $color-dark;
+      border-radius: 50%;
+      width: 1.3rem;
+      height: 1.3rem;
+      transition: background-color 0.1s ease-in;
+    }
+  }
+
+  &--filter-radio-input {
+    visibility: hidden;
+  }
+
+  &--filter-radio-input:checked + &--filter-radio-label > span {
+    background-color: $color-red;
+  }
 }

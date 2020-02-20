@@ -20,7 +20,7 @@ import useError from "../../hooks/useError";
 import useIsLoading from "../../hooks/useIsLoading";
 
 const Collection = () => {
-  const [collectionPath, setCollectionPath] = useState("collection");
+  const [collectionPath, setCollectionPath] = useState("");
 
   const [page, setPage] = useState(1);
 
@@ -42,6 +42,13 @@ const Collection = () => {
     const getUserLibrary = async () => {
       try {
         setLoading(true);
+
+        // Get query params
+        const params = new URLSearchParams(window.location.search);
+
+        const query = params.get("view");
+
+        setCollectionPath(query);
 
         // Get userId
         const userId = localStorage.getItem("userId");

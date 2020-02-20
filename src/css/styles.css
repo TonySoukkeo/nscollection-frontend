@@ -115,10 +115,36 @@ body {
     background-color: #9aca3b;
     color: #231f20; }
 
+.strike,
+.sale-price,
+.msrp {
+  font-weight: bold; }
+
 .strike {
-  color: #231f20;
+  color: #231f20 !important;
   text-decoration: line-through;
   margin-right: 1rem; }
+
+.sale-price {
+  color: #9aca3b; }
+
+.msrp {
+  color: #231f20; }
+
+.overlay {
+  position: absolute;
+  z-index: 20;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7); }
+
+.opacity-none {
+  opacity: 0; }
+
+.d-none {
+  display: none; }
 
 .main-nav {
   display: flex;
@@ -211,11 +237,11 @@ BOTTOM NAVIGATION ON MOBILE VIEW
   .sub-navigation--collection {
     text-align: center;
     justify-content: space-around; }
-    .sub-navigation--collection div {
-      cursor: pointer;
+    .sub-navigation--collection a {
+      text-decoration: none;
       width: 100%; }
-      .sub-navigation--collection div i,
-      .sub-navigation--collection div p {
+      .sub-navigation--collection a i,
+      .sub-navigation--collection a p {
         color: #8d8c8c;
         transition: all 0.2s ease-in; }
     .sub-navigation--collection div:not(:last-child) {
@@ -368,6 +394,53 @@ BOTTOM NAVIGATION ON MOBILE VIEW
     width: 0.8rem;
     height: 0.8rem;
     border-radius: 50%;
+    background-color: #f15e55; }
+  .form__checkbox-label {
+    cursor: pointer;
+    position: relative; }
+    .form__checkbox-label span {
+      position: absolute;
+      top: 50%;
+      margin-left: 1rem;
+      background-color: #eaeceb;
+      transform: translateY(-50%);
+      border-radius: 1rem;
+      width: 2rem;
+      height: 1rem;
+      border: 1px solid #231f20;
+      overflow: hidden; }
+      .form__checkbox-label span, .form__checkbox-label span::before {
+        cursor: pointer;
+        transition: all 0.1s ease-in; }
+      .form__checkbox-label span::before {
+        content: "";
+        position: absolute;
+        height: 0.9rem;
+        width: 0.9rem;
+        background-color: #231f20;
+        border-radius: 50%; }
+  .form__checkbox-input {
+    visibility: hidden; }
+  .form__checkbox-input:checked + .form__checkbox-label > span {
+    background-color: #a4f108; }
+  .form__checkbox-input:checked + .form__checkbox-label > span::before {
+    transform: translateX(1rem); }
+  .form--filter-radio-label {
+    position: relative; }
+    .form--filter-radio-label,
+    .form--filter-radio-label span {
+      cursor: pointer; }
+    .form--filter-radio-label span {
+      position: absolute;
+      margin-left: 1rem;
+      border: 1px solid #231f20;
+      border-radius: 50%;
+      width: 1.3rem;
+      height: 1.3rem;
+      transition: background-color 0.1s ease-in; }
+  .form--filter-radio-input {
+    visibility: hidden; }
+  .form--filter-radio-input:checked + .form--filter-radio-label > span {
     background-color: #f15e55; }
 
 .home {
@@ -892,3 +965,94 @@ BOTTOM NAVIGATION ON MOBILE VIEW
     margin-top: 1rem;
     color: #424141;
     font-weight: bold; }
+
+.browse {
+  position: relative;
+  padding: 4rem 1rem 5.5rem 1rem; }
+  .browse__filter {
+    position: sticky;
+    top: 4rem;
+    width: 100%;
+    background-color: #eaeceb;
+    font-size: 1.3rem;
+    padding: 0.8rem 1rem;
+    z-index: 50; }
+    .browse__filter i {
+      color: #f15e55; }
+  .browse__filter-list {
+    position: fixed;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    visibility: hidden;
+    padding: 6rem 1rem 7rem 1rem;
+    z-index: 50;
+    top: 0;
+    bottom: 0;
+    width: 0;
+    background: #f8fcfb;
+    transition: all 0.2s ease-in; }
+    .browse__filter-list p {
+      margin: 0.7rem 0;
+      font-weight: bold; }
+    .browse__filter-list--active {
+      visibility: visible;
+      width: 50%; }
+    .browse__filter-list--close {
+      cursor: pointer;
+      position: absolute;
+      right: 1rem; }
+    .browse__filter-list--btn-container {
+      display: flex;
+      flex-direction: column; }
+      .browse__filter-list--btn-container button {
+        cursor: pointer;
+        font-size: 1rem;
+        outline: none;
+        width: 90%;
+        padding: 0.3rem 0;
+        border-radius: 3px; }
+      .browse__filter-list--btn-container button:first-child {
+        background-color: #9aca3b;
+        margin-bottom: 0.7rem; }
+      .browse__filter-list--btn-container button:nth-child(2) {
+        background-color: #f8fcfb;
+        border: 1px solid grey; }
+  .browse__list {
+    list-style-type: none; }
+  .browse__item {
+    display: flex;
+    text-decoration: none;
+    color: #231f20;
+    width: 100%;
+    background-color: #f2f2f2;
+    box-shadow: 4px 6px 25px -4px rgba(0, 0, 0, 0.68);
+    padding: 1rem;
+    border-radius: 4px;
+    margin-bottom: 1rem; }
+    .browse__item-game-img {
+      height: 100%;
+      width: 20%; }
+    .browse__item-rating {
+      width: 10%;
+      margin-bottom: 2rem; }
+    .browse__item--meta {
+      position: relative;
+      padding-left: 1rem;
+      width: 100%; }
+      .browse__item--meta h4 {
+        margin-bottom: 1rem; }
+      .browse__item--meta-container {
+        position: absolute;
+        bottom: 0;
+        display: flex;
+        align-items: center;
+        width: calc(100% - 1rem); }
+      .browse__item--meta-online {
+        text-align: right;
+        justify-content: flex-end;
+        width: 100%; }
+      .browse__item--meta-cloud {
+        color: #10b0d5;
+        margin-left: 0.7rem; }
+      .browse__item--meta-online-play {
+        width: 20%; }

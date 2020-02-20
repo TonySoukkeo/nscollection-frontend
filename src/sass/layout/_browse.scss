@@ -1,0 +1,138 @@
+.browse {
+  position: relative;
+  padding: 4rem 1rem 5.5rem 1rem;
+
+  &__filter {
+    position: sticky;
+    top: 4rem;
+    width: 100%;
+    background-color: $color-light-2;
+
+    font-size: 1.3rem;
+    padding: 0.8rem 1rem;
+    z-index: 50;
+
+    i {
+      color: $color-red;
+    }
+  }
+
+  &__filter-list {
+    position: fixed;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    visibility: hidden;
+    padding: 6rem 1rem 7rem 1rem;
+    z-index: 50;
+    top: 0;
+    bottom: 0;
+    width: 0;
+    background: $color-light;
+    transition: all 0.2s ease-in;
+
+    p {
+      margin: 0.7rem 0;
+      font-weight: bold;
+    }
+
+    &--active {
+      visibility: visible;
+      width: 50%;
+    }
+
+    &--close {
+      cursor: pointer;
+      position: absolute;
+      right: 1rem;
+    }
+
+    &--btn-container {
+      display: flex;
+      flex-direction: column;
+
+      button {
+        cursor: pointer;
+        font-size: 1rem;
+        outline: none;
+        width: 90%;
+        padding: 0.3rem 0;
+        border-radius: 3px;
+      }
+
+      button:first-child {
+        background-color: $color-green;
+        margin-bottom: 0.7rem;
+      }
+
+      button:nth-child(2) {
+        background-color: $color-light;
+        border: 1px solid grey;
+      }
+    }
+  }
+
+  &__list {
+    list-style-type: none;
+  }
+
+  &__item {
+    display: flex;
+    text-decoration: none;
+    color: $color-dark;
+    width: 100%;
+    background-color: $color-light-4;
+    box-shadow: $box-shadow;
+    padding: 1rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+
+    &-game-img {
+      height: 100%;
+      width: 20%;
+    }
+
+    &-rating {
+      width: 10%;
+      margin-bottom: 2rem;
+      &--container {
+      }
+    }
+
+    &--meta {
+      position: relative;
+      padding-left: 1rem;
+      width: 100%;
+
+      h4 {
+        margin-bottom: 1rem;
+      }
+
+      &-container {
+        position: absolute;
+        bottom: 0;
+        display: flex;
+
+        align-items: center;
+        width: calc(100% - 1rem);
+      }
+
+      &-price {
+      }
+
+      &-online {
+        text-align: right;
+        justify-content: flex-end;
+        width: 100%;
+      }
+
+      &-cloud {
+        color: $color-blue-2;
+        margin-left: 0.7rem;
+      }
+
+      &-online-play {
+        width: 20%;
+      }
+    }
+  }
+}

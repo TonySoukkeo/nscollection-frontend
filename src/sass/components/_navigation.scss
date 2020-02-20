@@ -108,8 +108,8 @@ BOTTOM NAVIGATION ON MOBILE VIEW
     text-align: center;
     justify-content: space-around;
 
-    div {
-      cursor: pointer;
+    a {
+      text-decoration: none;
       width: 100%;
 
       i,

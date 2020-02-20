@@ -135,8 +135,42 @@
 }
 
 // Text
+.strike,
+.sale-price,
+.msrp {
+  font-weight: bold;
+}
+
 .strike {
-  color: $color-dark;
+  color: $color-dark !important;
   text-decoration: line-through;
   margin-right: 1rem;
+}
+
+.sale-price {
+  color: $color-green;
+}
+
+.msrp {
+  color: $color-dark;
+}
+
+// Overlay
+.overlay {
+  position: absolute;
+  z-index: 20;
+
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.opacity-none {
+  opacity: 0;
+}
+
+.d-none {
+  display: none;
 }

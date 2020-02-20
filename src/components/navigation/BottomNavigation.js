@@ -27,7 +27,10 @@ const BottomNavigation = () => {
         ></div>
       </Link>
 
-      <Link className="bottom-navigation__link" to="/collection">
+      <Link
+        className="bottom-navigation__link"
+        to="/collection?view=collection"
+      >
         <i
           className={
             path === "/collection"
@@ -48,14 +51,14 @@ const BottomNavigation = () => {
       <Link className="bottom-navigation__link" to="/search">
         <i
           className={
-            path === "/search"
+            path === "/search" || path === "/browse"
               ? "bottom-navigation--icon bottom-navigation--icon-active fas fa-search"
               : "bottom-navigation--icon fas fa-search"
           }
         ></i>
         <div
           className={
-            path === "/search"
+            path === "/search" || path === "/browse"
               ? "bottom-navigation__tab bottom-navigation__tab--active"
               : "bottom-navigation__tab"
           }
