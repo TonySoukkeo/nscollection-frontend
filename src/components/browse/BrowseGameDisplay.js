@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const BrowseGameDisplay = ({ game }) => {
+const BrowseGameDisplay = React.forwardRef(({ game }, ref) => {
   return (
-    <Link to={`/game?gameId=${game.id}`} className="browse__item">
+    <Link ref={ref} to={`/game?gameId=${game.id}`} className="browse__item">
       <img
         className="browse__item-game-img"
         src={game.image}
@@ -24,7 +24,7 @@ const BrowseGameDisplay = ({ game }) => {
           {/*** Display price / saleprice ***/}
           <div className="browse__item--meta-price">
             <span className={game.salePrice ? "strike" : "msrp"}>
-              ${game.price}
+              {game.price === 0 ? "Free" : !game.price ? "" : `${game.price}`}
             </span>
 
             {game.salePrice ? (
@@ -55,6 +55,6 @@ const BrowseGameDisplay = ({ game }) => {
       </div>
     </Link>
   );
-};
+});
 
 export default BrowseGameDisplay;

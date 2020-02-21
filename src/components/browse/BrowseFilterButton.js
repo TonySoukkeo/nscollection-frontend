@@ -1,6 +1,6 @@
 import React from "react";
 
-const BrowseFilterButton = ({ toggleFilter, hideButton }) => {
+const BrowseFilterButton = ({ toggleFilter, hideButton, totalGames }) => {
   return (
     <div
       className={hideButton ? "browse__filter opacity-none" : "browse__filter"}
@@ -9,6 +9,7 @@ const BrowseFilterButton = ({ toggleFilter, hideButton }) => {
         {" "}
         <i className="fas fa-filter"></i> Filter
       </span>
+      <span className="browse__filter-total">{totalGames} found</span>
     </div>
   );
 };
