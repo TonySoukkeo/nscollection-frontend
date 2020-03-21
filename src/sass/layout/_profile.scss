@@ -150,6 +150,10 @@
     margin-top: 2rem;
     width: 100%;
 
+    @include respond(medium) {
+      display: none;
+    }
+
     h4 {
       font-size: 2rem;
     }
@@ -173,10 +177,11 @@
     color: $color-dark;
     width: 2rem;
     height: 2rem;
-    background-color: $color-light-5;
+    background-color: $color-light-2;
+    box-shadow: $box-shadow;
 
-    &--green {
-      color: $color-green;
+    &--active {
+      color: $color-red;
     }
   }
 }

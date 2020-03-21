@@ -18,6 +18,7 @@ import Reset from "./layout/reset/Reset";
 import Browse from "./layout/browse/Browse";
 import EditProfile from "./layout/profile/EditProfile";
 import Footer from "./components/footer/Footer";
+import Notifications from "./layout/profile/Notifications";
 
 // Actions
 import { setAuth, setUser } from "./reducers/actions/AuthActions";
@@ -60,7 +61,12 @@ const App = () => {
           <Route exact path="/" component={Home} />
           <Route path="/collection" component={Collection} />
           <Route path="/search" component={Search} />
-          <Route path="/profile" component={Profile} />
+          <Route exact path="/profile" component={Profile} />
+          <Route
+            exact
+            path="/profile/notifications"
+            component={Notifications}
+          />
           <Route path="/edit-profile" component={EditProfile} />
           <Route path="/register" component={Register} />
           <Route path="/game" component={GameDisplay} />

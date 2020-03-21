@@ -95,7 +95,7 @@ const Profile = () => {
           <div
             className={
               user && user.notifications && user.notifications.count > 0
-                ? "profile__notifications-count profile__notifications-count--green"
+                ? "profile__notifications-count profile__notifications-count--active"
                 : "profile__notifications-count"
             }
           >

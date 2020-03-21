@@ -138,6 +138,7 @@
     }
 
     &__item {
+      position: relative;
       font-size: 1.4rem;
       color: $color-light;
       text-shadow: 0 0 2px #000;

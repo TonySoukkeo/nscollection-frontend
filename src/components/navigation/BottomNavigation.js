@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { StateContext } from "../../context/StateProvider";
 
 const BottomNavigation = () => {
-  const { path } = useContext(StateContext);
+  const { path, user } = useContext(StateContext);
 
   return (
     <nav className="bottom-navigation">
@@ -86,6 +86,15 @@ const BottomNavigation = () => {
               : "bottom-navigation__tab"
           }
         ></div>
+        <span
+          className={
+            user && user.notifications && user.notifications.count > 0
+              ? "notifications notifications--mobile-active"
+              : "notifications"
+          }
+        >
+          {user && user.notifications && user.notifications.count}
+        </span>
       </Link>
     </nav>
   );

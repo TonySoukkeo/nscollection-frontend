@@ -156,6 +156,25 @@ body {
 .d-none {
   display: none; }
 
+.notifications {
+  display: none; }
+  .notifications--desktop-active, .notifications--mobile-active {
+    display: block;
+    position: absolute;
+    border-radius: 4px;
+    background-color: #f15e55;
+    color: #f8fcfb;
+    padding: 0.2rem 0.4rem; }
+  .notifications--desktop-active {
+    top: 0;
+    right: -0.5rem;
+    font-size: 0.6rem; }
+  .notifications--mobile-active {
+    font-size: 0.8rem;
+    top: 0.7rem;
+    right: 2.4rem;
+    z-index: 25; }
+
 .main-nav {
   display: flex;
   align-items: center;
@@ -264,6 +283,7 @@ body {
         display: flex;
         align-items: center; } }
     .main-nav__user-list__item {
+      position: relative;
       font-size: 1.4rem;
       color: #f8fcfb;
       text-shadow: 0 0 2px #000; }
@@ -1345,6 +1365,9 @@ BOTTOM NAVIGATION ON MOBILE VIEW
     height: 10rem;
     margin-top: 2rem;
     width: 100%; }
+    @media only screen and (min-width: 60rem) {
+      .profile__notifications {
+        display: none; } }
     .profile__notifications h4 {
       font-size: 2rem; }
     .profile__notifications span {
@@ -1363,9 +1386,10 @@ BOTTOM NAVIGATION ON MOBILE VIEW
     color: #231f20;
     width: 2rem;
     height: 2rem;
-    background-color: #c9c8c8; }
-    .profile__notifications-count--green {
-      color: #9aca3b; }
+    background-color: #eaeceb;
+    box-shadow: 4px 6px 25px -4px rgba(0, 0, 0, 0.68); }
+    .profile__notifications-count--active {
+      color: #f15e55; }
 
 .confirm-email {
   display: flex;
@@ -1637,3 +1661,19 @@ BOTTOM NAVIGATION ON MOBILE VIEW
         margin-left: 0.7rem; }
       .browse__item--meta-online-play {
         width: 20%; }
+
+.profile-notifications {
+  padding-top: 9rem;
+  padding-bottom: 5.5rem; }
+  .profile-notifications__item {
+    display: flex;
+    text-decoration: none;
+    color: #231f20;
+    background-color: #dddddc;
+    padding: 0.5rem;
+    box-shadow: 4px 6px 25px -4px rgba(0, 0, 0, 0.68); }
+    .profile-notifications__item-image {
+      width: 20%;
+      margin-right: 1rem; }
+      .profile-notifications__item-image img {
+        width: 100%; }

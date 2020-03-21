@@ -186,3 +186,30 @@
 .d-none {
   display: none;
 }
+
+.notifications {
+  display: none;
+
+  &--desktop-active,
+  &--mobile-active {
+    display: block;
+    position: absolute;
+    border-radius: 4px;
+    background-color: $color-red;
+    color: $color-light;
+    padding: 0.2rem 0.4rem;
+  }
+
+  &--desktop-active {
+    top: 0;
+    right: -0.5rem;
+    font-size: 0.6rem;
+  }
+
+  &--mobile-active {
+    font-size: 0.8rem;
+    top: 0.7rem;
+    right: 2.4rem;
+    z-index: 25;
+  }
+}

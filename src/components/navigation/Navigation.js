@@ -24,11 +24,14 @@ const Navigation = () => {
   const { loading, setLoading } = useIsLoading();
   const { errorMessage, setError } = useError();
 
+  const hasNotifications = true;
+
   useEffect(() => {
     const search = async () => {
       try {
         const controller = new AbortController();
         const signal = controller.signal;
+        console.log("make search api call");
 
         setLoading(true);
 
@@ -152,6 +155,15 @@ const Navigation = () => {
 
         <Link className="main-nav__user-list__item" to="/notification">
           <i className="fas fa-envelope"></i>
+          <span
+            className={
+              user && user.notifications && user.notifications.count > 0
+                ? "notifications notifications--desktop-active"
+                : "notifications"
+            }
+          >
+            {user && user.notifications && user.notifications.count}
+          </span>
         </Link>
 
         <Link className="main-nav__user-list__item" to="/profile">
