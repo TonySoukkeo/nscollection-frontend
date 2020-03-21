@@ -11,7 +11,8 @@ const SearchDisplay = ({
   ownedBy,
   userId,
   checkUserLibrary,
-  id
+  id,
+  clearResults = null
 }) => {
   let priceDisplay;
 
@@ -32,7 +33,7 @@ const SearchDisplay = ({
 
   return (
     <Link to={`/game?gameId=${id}`}>
-      <li className="search__item">
+      <li onClick={clearResults} className="search__item">
         <img src={image} className="search__item-image" />
         <div className="search__item-content">
           <div className="search__item-title">{title}</div>

@@ -13,7 +13,7 @@ const GameActions = ({
   loadingType
 }) => {
   return (
-    <div className="game-display__action">
+    <div className="game-display__action container">
       <div className="game-display__addto">
         <span className="text-bold">Add to:</span>
 

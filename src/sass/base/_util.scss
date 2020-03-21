@@ -1,5 +1,9 @@
 .container {
   padding: 0 1rem;
+
+  @include respond(medium) {
+    padding: 0 4rem;
+  }
 }
 
 .logo {
@@ -45,6 +49,10 @@
   box-shadow: $box-shadow;
   transition: all 0.2s;
 
+  &--yellow {
+    background-color: $color-yellow;
+  }
+
   &--register {
     border: 1px solid $color-green;
     background-color: $color-light;
@@ -53,6 +61,11 @@
 
   &--login {
     color: $color-blue-2;
+  }
+
+  &--edit {
+    background-color: $color-blue-2;
+    color: $color-light;
   }
 
   &:active {
@@ -158,8 +171,7 @@
 // Overlay
 .overlay {
   position: absolute;
-  z-index: 20;
-
+  z-index: 25;
   top: 0;
   bottom: 0;
   left: 0;

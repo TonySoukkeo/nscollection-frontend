@@ -2,6 +2,21 @@
   position: relative;
   padding: 4rem 1rem 5.5rem 1rem;
 
+  &__sidenav {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 5rem;
+    height: 100%;
+    background-color: $color-light;
+    padding-top: 10rem;
+
+    @include respond(medium) {
+      display: block;
+    }
+  }
+
   &__filter {
     position: sticky;
     display: flex;
@@ -10,10 +25,22 @@
     top: 4rem;
     width: 100%;
     background-color: $color-light-2;
-
     font-size: 1.3rem;
     padding: 0.8rem 1rem;
-    z-index: 50;
+    z-index: 20;
+
+    @include respond(medium) {
+      position: fixed;
+      width: 3rem;
+      height: 100%;
+      top: 0;
+      left: 0;
+      text-align: center;
+      flex-direction: column;
+      background-color: $color-light;
+      padding: 6rem 3rem 0 3rem;
+      justify-content: initial;
+    }
 
     i {
       color: $color-red;
@@ -21,6 +48,10 @@
 
     &-total {
       font-size: 1rem;
+
+      @include respond(medium) {
+        margin-top: 2rem;
+      }
     }
   }
 
@@ -30,12 +61,17 @@
     -webkit-overflow-scrolling: touch;
     visibility: hidden;
     padding: 6rem 1rem 7rem 1rem;
-    z-index: 50;
+    z-index: 26;
     top: 0;
     bottom: 0;
     width: 0;
     background: $color-light;
     transition: all 0.2s ease-in;
+
+    @include respond(medium) {
+      height: 100%;
+      left: 0;
+    }
 
     p {
       margin: 0.7rem 0;
@@ -45,6 +81,10 @@
     &--active {
       visibility: visible;
       width: 50%;
+
+      @include respond(medium) {
+        width: 20%;
+      }
     }
 
     &--close {
@@ -84,6 +124,15 @@
     align-items: center;
     position: relative;
     list-style-type: none;
+
+    @include respond(medium) {
+      width: 93%;
+      flex-direction: row;
+      justify-content: space-between;
+      margin-left: auto;
+      flex-wrap: wrap;
+      align-items: initial;
+    }
   }
 
   &__item {
@@ -97,16 +146,28 @@
     border-radius: 4px;
     margin-bottom: 1rem;
 
+    @include respond(medium) {
+      width: 32%;
+      justify-content: space-between;
+
+      &:last-child {
+        margin-right: auto;
+        margin-left: 1.4rem;
+      }
+    }
+
     &-game-img {
-      height: 100%;
       width: 20%;
+      align-self: center;
+
+      @include respond(medium) {
+        width: 30%;
+      }
     }
 
     &-rating {
       width: 10%;
       margin-bottom: 2rem;
-      &--container {
-      }
     }
 
     &--meta {

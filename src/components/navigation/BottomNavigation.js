@@ -68,14 +68,20 @@ const BottomNavigation = () => {
       <Link className="bottom-navigation__link" to="/profile">
         <i
           className={
-            path === "/profile" || path === "/register" || path === "/login"
+            path === "/profile" ||
+            path === "/register" ||
+            path === "/login" ||
+            path === "/edit-profile"
               ? "bottom-navigation--icon bottom-navigation--icon-active fas fa-user"
               : "bottom-navigation--icon fas fa-user"
           }
         ></i>
         <div
           className={
-            path === "/profile" || path === "/register" || path === "/login"
+            path === "/profile" ||
+            path === "/register" ||
+            path === "/login" ||
+            path === "/edit-profile"
               ? "bottom-navigation__tab bottom-navigation__tab--active"
               : "bottom-navigation__tab"
           }

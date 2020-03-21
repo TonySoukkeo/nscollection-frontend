@@ -1,4 +1,275 @@
 .home {
   margin-top: 4rem;
   padding: 1rem 0 5.5rem 0;
+
+  @include respond(medium) {
+    margin-top: 0;
+    padding: 0;
+  }
+
+  /********
+    BANNER
+  *********/
+  &__banner {
+    display: none;
+    position: relative;
+    height: 80vh;
+    background-image: url("../assets/images/main_banner.jpg");
+    background-position: center;
+    background-size: cover;
+
+    @include respond(medium) {
+      display: block;
+    }
+
+    &-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      z-index: 10;
+
+      h1 {
+        color: $color-light;
+      }
+
+      h1:first-child {
+        margin-top: 1rem;
+        font-size: 3rem;
+      }
+
+      h1:nth-child(2) {
+        margin-top: -0.8rem;
+      }
+
+      h2 {
+        background-color: rgba(0, 0, 0, 0.8);
+        padding: 0.4rem 0.8rem;
+        border-radius: 3px;
+        color: $color-yellow;
+        margin: 2rem 0;
+      }
+
+      p {
+        margin-top: 0.7rem;
+        font-size: 1.3rem;
+        color: $color-light;
+
+        span {
+          color: $color-red;
+          font-style: italic;
+          font-weight: bold;
+        }
+      }
+    }
+
+    &-sub-text {
+      background-color: blue;
+      text-align: center;
+    }
+
+    &-form {
+      width: 50%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      input {
+        padding: 1rem;
+        border: none;
+        outline: none;
+        font-size: 1rem;
+        width: 80%;
+        border-radius: 1rem;
+        margin-right: 1rem;
+      }
+
+      a {
+        width: 20%;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: $color-dark;
+      }
+    }
+
+    // Gradient background
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-image: linear-gradient(to bottom left, #10b0d5, #006378);
+      opacity: 0.9;
+      z-index: 5;
+    }
+
+    svg {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      z-index: 10;
+    }
+
+    &-images {
+      margin-top: 4rem;
+      position: relative;
+      z-index: 14;
+
+      &-1,
+      &-2,
+      &-3 {
+        position: absolute;
+        height: 13rem;
+        width: 8rem;
+        background-position: center;
+        background-size: cover;
+        left: 50%;
+      }
+
+      &-1 {
+        background-image: url("../assets/images/astral_chain.png");
+        transform: translateX(-50%) scale(0.9);
+        z-index: 1;
+        margin-left: -6rem;
+      }
+
+      &-2 {
+        background-image: url("../assets/images/super_mario_maker_2.png");
+        transform: translateX(-50%) scale(1.2);
+        z-index: 2;
+      }
+
+      &-3 {
+        background-image: url("../assets/images/yoshis_crafted_world.png");
+        z-index: 1;
+        transform: translateX(-50%) scale(0.9);
+        margin-left: 6rem;
+      }
+    }
+  }
+
+  /**********
+    FEATURES
+  ***********/
+  &__features {
+    display: none;
+    position: relative;
+    background-image: linear-gradient(to bottom left, #10b0d5, #006378);
+    margin-top: 8rem;
+    padding: 4rem 0 6rem 0;
+
+    @include respond(medium) {
+      display: block;
+    }
+
+    svg {
+      position: absolute;
+      bottom: 0;
+    }
+
+    &-content {
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &-1,
+    &-2,
+    &-3 {
+      position: relative;
+      width: 32.33%;
+      height: 25rem;
+      border-radius: 4px;
+      background-size: cover;
+      background-position: center;
+      box-shadow: $box-shadow;
+
+      p {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        background-color: yellow;
+        width: 90%;
+        top: 13rem;
+        padding: 2rem;
+        min-height: 8.6rem;
+        background-color: $color-red;
+        color: $color-light;
+        z-index: 2;
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 1;
+      }
+    }
+
+    &-1 {
+      background-image: url("../assets/images/card_1.jpeg");
+    }
+
+    &-2 {
+      background-image: url("../assets/images/card_2.jpg");
+    }
+
+    &-3 {
+      background-image: url("../assets/images/card_3.jpeg");
+    }
+  }
+
+  /****************
+   SEARCH FEATURES
+  *****************/
+  &__search-features {
+    display: none;
+    padding-top: 4rem;
+
+    @include respond(medium) {
+      display: block;
+    }
+
+    h1 {
+      color: $color-red;
+      font-size: 1.5rem;
+    }
+  }
+
+  /********
+   SIGN UP
+  *********/
+  &__signup {
+    display: none;
+
+    @include respond(medium) {
+      display: block;
+      padding-top: 4rem;
+      padding-bottom: 4rem;
+      text-align: center;
+
+      h1 {
+        font-size: 2rem;
+        margin-bottom: 1.4rem;
+      }
+
+      a {
+        display: flex;
+        margin: 0 auto;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
+        background-color: $color-blue-2;
+        color: $color-light;
+      }
+    }
+  }
 }

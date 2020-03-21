@@ -42,27 +42,28 @@ const GameHeader = ({
           <span className="game-display__group-price">{priceDisplay}</span>
 
           <img src={rating} alt="ESRB Rating" />
+          <div className="game-display__group-details">
+            <p>
+              <span className="text-bold">Release Date:</span> {releaseDate}
+            </p>
 
-          <p>
-            <span className="text-bold">Release Date</span> {releaseDate}
-          </p>
+            <p>
+              <span className="text-bold">No. of Players:</span> {players}
+            </p>
 
-          <p>
-            <span className="text-bold">No. of Players</span> {players}
-          </p>
+            <p>
+              <span className="text-bold">Category:</span> {category}
+            </p>
 
-          <p>
-            <span className="text-bold">Category</span> {category}
-          </p>
+            <p>
+              <span className="text-bold">Publisher:</span> {publisher}
+            </p>
 
-          <p>
-            <span className="text-bold">Publisher</span> {publisher}
-          </p>
-
-          <p>
-            <span className="text-bold">Demo Available</span>{" "}
-            {demo ? "Yes" : "No"}
-          </p>
+            <p>
+              <span className="text-bold">Demo Available:</span>{" "}
+              {demo ? "Yes" : "No"}
+            </p>
+          </div>
         </div>
       </div>
       {onlinePlay || cloudSave ? (

@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Link, Route, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 // Context
 import { StateContext, DispatchContext } from "../../context/StateProvider";
@@ -9,9 +9,6 @@ import usePath from "../../hooks/usePath";
 
 // Actions
 import { setAuth } from "../../reducers/actions/AuthActions";
-
-// Components
-import Loading from "../../components/loading/Loading";
 
 const Profile = () => {
   const { isAuth, user } = useContext(StateContext);
@@ -61,7 +58,7 @@ const Profile = () => {
   } else if (user) {
     display = (
       <React.Fragment>
-        <Link to="/profile?edit=true" className="profile__edit">
+        <Link to="/edit-profile" className="profile__edit">
           <span>
             <i className="fas fa-cog"></i>
           </span>
@@ -90,10 +87,7 @@ const Profile = () => {
           <h4>Sale Watch</h4>
         </Link>
 
-        <Link
-          to="/profile?notifications=true"
-          className="profile__notifications"
-        >
+        <Link to="/profile/notifications" className="profile__notifications">
           <span>
             <i className="far fa-bell"></i>
           </span>
@@ -116,7 +110,7 @@ const Profile = () => {
   return (
     <React.Fragment>
       {isAuth ? (
-        <div className="profile__header">
+        <div className="profile__header container">
           <span className="profile__header-username">{user.userName}</span>
           <span onClick={logout} className="profile__header-signout">
             Sign out
@@ -124,7 +118,9 @@ const Profile = () => {
         </div>
       ) : null}
 
-      <section className={isAuth ? "profile d-flex col-2" : "profile"}>
+      <section
+        className={isAuth ? "profile d-flex col-2 container" : "profile"}
+      >
         {display}
       </section>
     </React.Fragment>

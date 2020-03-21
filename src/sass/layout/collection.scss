@@ -1,14 +1,24 @@
 .collection {
-  padding: 1rem;
   margin-top: 10rem;
+  padding-top: 1rem;
   padding-bottom: 5.5rem;
   width: 100%;
+
+  @include respond(medium) {
+    margin-top: 2rem;
+  }
 
   &__list {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     margin-top: 1rem;
+
+    @include respond(medium) {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-gap: 1rem;
+    }
 
     a {
       display: flex;
@@ -26,6 +36,10 @@
       box-shadow: $box-shadow;
       padding: 0.6rem;
       min-height: 7.5rem;
+
+      @include respond(medium) {
+        width: 100%;
+      }
     }
 
     &-image {
@@ -39,6 +53,10 @@
       width: 50%;
       left: 40%;
       color: $color-dark;
+
+      @include respond(medium) {
+        font-size: 1rem;
+      }
     }
 
     &-btn {

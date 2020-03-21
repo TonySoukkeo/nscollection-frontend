@@ -28,7 +28,7 @@ const GameList = React.forwardRef(
         {loading && loadingType === id ? (
           <Loading
             styles={{
-              width: "10%",
+              width: "3rem",
               position: "absolute",
               right: "1rem",
               bottom: "1rem"

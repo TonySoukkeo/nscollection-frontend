@@ -1,0 +1,8 @@
+@mixin respond($bp) {
+  @if $bp == medium {
+    @media only screen and (min-width: 60rem) {
+      // 960 px wide
+      @content;
+    }
+  }
+}

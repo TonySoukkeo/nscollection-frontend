@@ -11,6 +11,7 @@ import Overlay from "../../util/Overlay";
 import usePath from "../../hooks/usePath";
 import useError from "../../hooks/useError";
 import useIsLoading from "../../hooks/useIsLoading";
+import useWindow from "../../hooks/useWindow";
 
 const Browse = ({ location }) => {
   const [results, setResults] = useState([]);
@@ -20,6 +21,8 @@ const Browse = ({ location }) => {
   });
   const [toggleFilter, setToggleFilter] = useState(false);
   const [totalGames, setTotalGames] = useState(0);
+
+  const [width] = useWindow();
 
   const [filter, setFilter] = useState({
     all: false,
@@ -42,7 +45,6 @@ const Browse = ({ location }) => {
     let all, demo, sale, newRelease, comingSoon, dlc, cloudSave, onlinePlay;
 
     if (page === 1) {
-      console.log("load from location");
       all = location.state.all;
       demo = location.state.demo;
       sale = location.state.sale;
@@ -63,7 +65,6 @@ const Browse = ({ location }) => {
         sale: sale || false
       });
     } else {
-      console.log("load from state");
       all = filter.all;
       demo = filter.demo;
       sale = filter.sale;
@@ -116,8 +117,10 @@ const Browse = ({ location }) => {
         setResults(prevResult => [...prevResult, ...data.games]);
         setTotalGames(data.total);
         setLoading(false);
+        setLoadingType("");
       } catch (err) {
         setLoading(false);
+        setLoadingType("");
         setError({
           errorMessage: err.message
         });
@@ -240,8 +243,10 @@ const Browse = ({ location }) => {
       setLoadMore(data.loadMore);
       setPage(1);
       setLoading(false);
+      setLoadingType("");
     } catch (err) {
       setLoading(false);
+      setLoadingType("");
       setError({
         errorMessage: err.message
       });
@@ -291,9 +296,11 @@ const Browse = ({ location }) => {
 
               setResults(prevResult => [...prevResult, ...data.games]);
               setLoadMore(data.loadMore);
+              setLoadingType("");
               setLoading(false);
             } catch (err) {
               setLoading(false);
+              setLoadingType("");
               setError({
                 errorMessage: err.message
               });
@@ -309,13 +316,9 @@ const Browse = ({ location }) => {
     [loading, loadMore]
   );
 
-  const testing = () => {
-    console.log("It workds");
-  };
-
   return (
     <React.Fragment>
-      {!loading ? (
+      {loadingType !== "initial" ? (
         <BrowseFilterButton
           hideButton={toggleFilter}
           toggleFilter={showFilter}
@@ -332,12 +335,9 @@ const Browse = ({ location }) => {
         changePriceRange={changePriceRange}
       />
 
-      {/* <BrowseFilterDisplay /> */}
+      <Overlay onClick={() => setToggleFilter(false)} visible={toggleFilter} />
+
       <section className="browse">
-        <Overlay
-          onClick={() => setToggleFilter(false)}
-          visible={toggleFilter}
-        />
         {errorMessage ? (
           <div className="alert alert--error mb-sm">{errorMessage}</div>
         ) : null}
@@ -345,7 +345,7 @@ const Browse = ({ location }) => {
         {loading && loadingType === "initial" ? (
           <Loading
             styles={{
-              width: "10%",
+              width: "4rem",
               position: "absolute",
               left: "50%",
               transform: "translateX(-50%)",
@@ -367,8 +367,21 @@ const Browse = ({ location }) => {
                 return <BrowseGameDisplay key={result.id} game={result} />;
               }
             })}
+
             {loading && loadingType === "load more" ? (
-              <Loading styles={{ width: "10%", marginBottom: "1rem" }} />
+              <Loading
+                styles={
+                  width < 960
+                    ? { width: "4rem", marginBottom: "1rem" }
+                    : {
+                        width: "4rem",
+                        position: "absolute",
+                        left: "50%",
+                        bottom: "-7rem",
+                        marginBottom: "2rem"
+                      }
+                }
+              />
             ) : null}
           </ul>
         )}

@@ -13,7 +13,7 @@ const CollectionDisplay = React.forwardRef(
       games.length > 0 ? `${totalGames} in collection` : "0 in collection";
 
     return (
-      <section className="collection">
+      <section className="collection container">
         {/*** Error display ***/}
         {errorMessage ? (
           <div className="alert alert--error mb-sm ">Error</div>
@@ -22,7 +22,7 @@ const CollectionDisplay = React.forwardRef(
         {loading && loadingType === "main" ? (
           <Loading
             styles={{
-              width: "10%",
+              width: "3rem",
               position: "absolute",
               left: "50%",
               top: "10rem",
@@ -70,7 +70,7 @@ const CollectionDisplay = React.forwardRef(
                     marginBottom: "1rem"
                   }}
                 >
-                  <Loading styles={{ width: "10%" }} />
+                  <Loading styles={{ width: "3rem" }} />
                 </div>
               ) : null}
             </ul>

@@ -257,7 +257,7 @@ const Collection = () => {
           removeGame={removeGame}
         />
       ) : (
-        <div style={{ textAlign: "center" }} className="collection">
+        <div style={{ textAlign: "center" }} className="collection container">
           <span style={{ fontSize: "6rem", color: "#f15e55" }}>
             <i className="fas fa-frown-open"></i>
           </span>

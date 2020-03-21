@@ -3,6 +3,25 @@
   margin-top: 8rem;
   padding-bottom: 7rem;
 
+  @include respond(medium) {
+    margin-top: 1rem;
+
+    form {
+      margin: 0 auto;
+    }
+  }
+
+  &__title {
+    display: none;
+
+    @include respond(medium) {
+      display: block;
+      text-align: center;
+      margin-bottom: 1rem;
+      font-size: 2rem;
+    }
+  }
+
   h2 {
     font-size: 1.2rem;
   }
@@ -13,6 +32,10 @@
     justify-content: center;
     align-items: center;
     padding-top: calc(50% - 8rem);
+
+    @include respond(medium) {
+      padding-top: 6rem;
+    }
 
     &--icon {
       display: flex;

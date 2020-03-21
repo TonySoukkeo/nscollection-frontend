@@ -3,6 +3,18 @@
   margin-top: 8rem;
   padding-bottom: 5.5rem;
 
+  @include respond(medium) {
+    margin-top: 4rem;
+
+    h3 {
+      margin-left: 4.5rem;
+    }
+
+    form {
+      margin: 0 auto;
+    }
+  }
+
   &-btn {
     cursor: pointer;
     margin-bottom: 2rem;

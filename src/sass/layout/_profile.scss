@@ -1,7 +1,26 @@
 .profile {
-  padding: 9rem 1rem 5.5rem 1rem;
+  padding-top: 9rem;
   padding-bottom: 5.5rem;
   text-align: center;
+
+  &__edit-page {
+    text-align: left;
+
+    @include respond(medium) {
+      padding-top: 4rem;
+
+      form {
+        margin: 0 auto;
+      }
+    }
+
+    &__success {
+      background-color: $color-blue;
+      padding: 1rem;
+      border-radius: 4px;
+      margin-bottom: 1rem;
+    }
+  }
 
   &__header {
     display: flex;
@@ -9,7 +28,8 @@
     align-items: center;
     position: absolute;
     top: 4rem;
-    padding: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
     width: 100%;
     background-color: $color-light-3;
 
@@ -86,6 +106,9 @@
     width: 49%;
     height: 8rem;
     margin-bottom: 0.7rem;
+
+    @include respond(medium) {
+    }
 
     h4 {
       font-size: 1.5rem;

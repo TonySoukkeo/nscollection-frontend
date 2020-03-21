@@ -16,6 +16,8 @@ import ConfirmEmail from "./layout/auth/ConfirmEmail";
 import Login from "./layout/auth/Login";
 import Reset from "./layout/reset/Reset";
 import Browse from "./layout/browse/Browse";
+import EditProfile from "./layout/profile/EditProfile";
+import Footer from "./components/footer/Footer";
 
 // Actions
 import { setAuth, setUser } from "./reducers/actions/AuthActions";
@@ -59,6 +61,7 @@ const App = () => {
           <Route path="/collection" component={Collection} />
           <Route path="/search" component={Search} />
           <Route path="/profile" component={Profile} />
+          <Route path="/edit-profile" component={EditProfile} />
           <Route path="/register" component={Register} />
           <Route path="/game" component={GameDisplay} />
           <Route path="/confirm" component={ConfirmEmail} />
@@ -66,6 +69,7 @@ const App = () => {
           <Route path="/reset" component={Reset} />
           <Route path="/browse" component={Browse} />
         </Switch>
+        <Footer />
       </div>
     </Router>
   );

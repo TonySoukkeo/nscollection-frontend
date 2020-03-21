@@ -46,6 +46,17 @@ const Register = ({ history }) => {
   } = useInputs();
 
   useEffect(() => {
+    // Prepopulate email field if necessary
+    if (history.location.state && history.location.state.email) {
+      setInput(prevState => ({
+        ...prevState,
+        email: {
+          value: history.location.state.email,
+          focused: true
+        }
+      }));
+    }
+
     if (userName.value.length) {
       const validUsername = async () => {
         try {
@@ -172,22 +183,25 @@ const Register = ({ history }) => {
               ) : null}
 
               {!formSubmit ? (
-                <RegisterForm
-                  validUsername={validUsername}
-                  onChange={onChange}
-                  fieldErr={fieldErr}
-                  userName={userName}
-                  firstName={firstName}
-                  lastName={lastName}
-                  email={email}
-                  validEmail={validEmail}
-                  password={password}
-                  confirmPassword={confirmPassword}
-                  setAllowEmail={setAllowEmail}
-                  btnDisable={btnDisable}
-                  submitRegister={submitRegister}
-                  isLoading={loading}
-                />
+                <React.Fragment>
+                  <h1 className="register__title">Register</h1>
+                  <RegisterForm
+                    validUsername={validUsername}
+                    onChange={onChange}
+                    fieldErr={fieldErr}
+                    userName={userName}
+                    firstName={firstName}
+                    lastName={lastName}
+                    email={email}
+                    validEmail={validEmail}
+                    password={password}
+                    confirmPassword={confirmPassword}
+                    setAllowEmail={setAllowEmail}
+                    btnDisable={btnDisable}
+                    submitRegister={submitRegister}
+                    isLoading={loading}
+                  />
+                </React.Fragment>
               ) : (
                 <div className="register__confirmation">
                   <div className="register__confirmation--icon">

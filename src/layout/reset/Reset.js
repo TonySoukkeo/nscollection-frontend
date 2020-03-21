@@ -115,6 +115,7 @@ const Reset = () => {
             : "Resend email verification"}
         </h3>
         <form
+          className="form"
           onSubmit={
             update === "email" ? onSubmit("email") : onSubmit("password")
           }
