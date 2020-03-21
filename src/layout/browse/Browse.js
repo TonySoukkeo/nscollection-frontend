@@ -294,6 +294,14 @@ const Browse = ({ location }) => {
 
               const data = await results.json();
 
+              // Check for errors
+              if (data.status !== 200) {
+                const error = new Error();
+                error.message = data.message;
+
+                throw error;
+              }
+
               setResults(prevResult => [...prevResult, ...data.games]);
               setLoadMore(data.loadMore);
               setLoadingType("");
