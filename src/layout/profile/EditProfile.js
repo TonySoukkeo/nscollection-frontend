@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Route, Redirect } from "react-router-dom";
 
 // Components
@@ -16,14 +16,19 @@ import useError from "../../hooks/useError";
 import useIsLoading from "../../hooks/useIsLoading";
 
 const EditProfile = () => {
-  const { isAuth, token } = useContext(StateContext);
+  const [pwChanged, setPwChanged] = useState(false);
+  const [allowEmail, setAllowEmail] = useState(false);
+
+  const { isAuth, token, user } = useContext(StateContext);
 
   const { password, confirmPassword, setInput, input } = useInputs();
 
   const { errorMessage, setError } = useError();
-  const { loading, setLoading } = useIsLoading();
+  const { loading, setLoading, loadingType, setLoadingType } = useIsLoading();
 
-  const [pwChanged, setPwChanged] = useState(false);
+  useEffect(() => {
+    setAllowEmail(user && user.allowEmail);
+  }, [user]);
 
   usePath();
 
@@ -32,6 +37,7 @@ const EditProfile = () => {
     try {
       e.preventDefault();
       setLoading(true);
+      setLoadingType("change password");
       setError({
         errorMessage: ""
       });
@@ -74,9 +80,11 @@ const EditProfile = () => {
 
       setPwChanged(true);
 
+      setLoadingType("");
       setLoading(false);
     } catch (err) {
       setLoading(false);
+      setLoadingType("");
       setError({
         errorMessage: err.message
       });
@@ -91,6 +99,41 @@ const EditProfile = () => {
         value: e.target.value
       }
     });
+  };
+
+  const emailPermissionsOnChange = async e => {
+    try {
+      setLoading(true);
+      setLoadingType("allow email");
+
+      const permissions = await fetch(
+        `${process.env.REACT_APP_BASE_URL}/user/permissions`,
+        {
+          method: "PUT",
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        }
+      );
+
+      const permissionsData = await permissions.json();
+
+      // Check for errors
+      if (permissionsData.status !== 201) {
+        const error = new Error();
+        error.message = permissionsData.message;
+
+        throw error;
+      }
+
+      setAllowEmail(!allowEmail);
+      setLoading(false);
+      setLoadingType("");
+    } catch (err) {
+      setLoading(false);
+      setLoadingType("");
+      setError({ errorMessage: err.message });
+    }
   };
 
   let disabled = false;
@@ -115,6 +158,36 @@ const EditProfile = () => {
                 </div>
               ) : null}
 
+              {/**************************
+               * UPDATE EMAIL PERMISSIONS
+               ***************************/}
+              <div className="form__group">
+                <div className="email-permissions">
+                  <label
+                    className="email-permissions__label"
+                    htmlFor="allowEmail"
+                  >
+                    <h2>Email me when games go on sale</h2>
+                  </label>
+                  {loading && loadingType === "allow email" ? (
+                    <Loading styles={{ width: "2rem" }} />
+                  ) : (
+                    <input
+                      className="email-permissions__input"
+                      id="#allowEmail"
+                      type="checkbox"
+                      value={allowEmail}
+                      name="allowEmail"
+                      onChange={emailPermissionsOnChange}
+                      checked={allowEmail}
+                    />
+                  )}
+                </div>
+              </div>
+
+              {/*********************
+               * UPDATE PASSWORD FORM
+               **********************/}
               <form onSubmit={submitChanges} className="form">
                 {/*** Change password inputs ***/}
                 <ChangePassword
@@ -123,7 +196,7 @@ const EditProfile = () => {
                   password={password}
                   confirmPassword={confirmPassword}
                 />
-                {loading ? (
+                {loading && loadingType === "change password" ? (
                   <Loading styles={{ width: "3rem" }} />
                 ) : (
                   <button
@@ -131,7 +204,7 @@ const EditProfile = () => {
                     disabled={disabled}
                     className={disabled ? "btn btn--disabled" : "btn btn--edit"}
                   >
-                    Save
+                    Update password
                   </button>
                 )}
               </form>

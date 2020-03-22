@@ -176,6 +176,16 @@ body {
     z-index: 25;
     padding: 0.2rem 0.4rem; }
 
+.email-permissions {
+  display: flex;
+  align-items: center; }
+  .email-permissions__label {
+    margin-right: 1rem;
+    font-size: 0.8rem; }
+  .email-permissions__input {
+    cursor: pointer;
+    transform: scale(1.5); }
+
 .main-nav {
   display: flex;
   align-items: center;
@@ -1294,6 +1304,10 @@ BOTTOM NAVIGATION ON MOBILE VIEW
       padding: 1rem;
       border-radius: 4px;
       margin-bottom: 1rem; }
+    .profile__edit-page button {
+      width: max-content;
+      padding-right: 0.8rem;
+      padding-left: 0.8rem; }
   .profile__header {
     display: flex;
     justify-content: space-between;
