@@ -1,8 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
+
+// Context
+import { StateContext } from "../../context/StateProvider";
 
 const Banner = () => {
   const [email, setEmail] = useState("");
+  const { isAuth, user } = useContext(StateContext);
 
   const onChange = e => {
     const value = e.target.value;
@@ -16,30 +20,39 @@ const Banner = () => {
         <h1>Nintendo Switch</h1>
 
         <h1>Virtual Library Collection</h1>
+        {!isAuth ? (
+          <h2>Start adding to your collection today!</h2>
+        ) : (
+          <h3>
+            Welcome, {user.firstName} {user.lastName}
+          </h3>
+        )}
 
-        <h2>Start adding to your collection today!</h2>
+        {!isAuth ? (
+          <React.Fragment>
+            <div className="home__banner-form">
+              <input
+                onChange={onChange}
+                type="email"
+                placeholder="Enter your email address"
+                value={email}
+              />
+              <Link
+                to={{
+                  pathname: "/register",
+                  state: { email }
+                }}
+                className="btn btn--yellow"
+              >
+                Get Started
+              </Link>
+            </div>
 
-        <div className="home__banner-form">
-          <input
-            onChange={onChange}
-            type="email"
-            placeholder="Enter your email address"
-            value={email}
-          />
-          <Link
-            to={{
-              pathname: "/register",
-              state: { email }
-            }}
-            className="btn btn--yellow"
-          >
-            Get Started
-          </Link>
-        </div>
-
-        <p>
-          <span>Free</span> to signup and <span>free</span> to use!
-        </p>
+            <p>
+              <span>Free</span> to signup and <span>free</span> to use!
+            </p>
+          </React.Fragment>
+        ) : null}
       </div>
 
       <div className="home__banner-images">

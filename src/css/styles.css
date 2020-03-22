@@ -711,6 +711,11 @@ BOTTOM NAVIGATION ON MOBILE VIEW
         border-radius: 3px;
         color: #f1e918;
         margin: 2rem 0; }
+      .home__banner-content h3 {
+        font-size: 2rem;
+        color: #f8fcfb;
+        margin-top: 4rem;
+        margin-bottom: 3rem; }
       .home__banner-content p {
         margin-top: 0.7rem;
         font-size: 1.3rem;
@@ -1646,6 +1651,10 @@ BOTTOM NAVIGATION ON MOBILE VIEW
         .browse__item:last-child {
           margin-right: auto;
           margin-left: 1.4rem; } }
+    .browse__item-release-date {
+      margin-bottom: 0.7rem; }
+      .browse__item-release-date p {
+        font-size: 0.9rem; }
     .browse__item-game-img {
       width: 20%;
       align-self: center; }
@@ -1660,7 +1669,7 @@ BOTTOM NAVIGATION ON MOBILE VIEW
       padding-left: 1rem;
       width: 100%; }
       .browse__item--meta h4 {
-        margin-bottom: 1rem; }
+        margin-bottom: 0.5rem; }
       .browse__item--meta-container {
         position: absolute;
         bottom: 0;

@@ -25,7 +25,7 @@ const GameHeader = ({
     );
   } else if (price) {
     priceDisplay = `$${price}`;
-  } else {
+  } else if (price === 0) {
     priceDisplay = "Free";
   }
 

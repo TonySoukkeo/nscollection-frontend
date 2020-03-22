@@ -16,8 +16,8 @@ import useWindow from "../../hooks/useWindow";
 const Browse = ({ location }) => {
   const [results, setResults] = useState([]);
   const [priceRange, setPriceRange] = useState({
-    min: 0,
-    max: 5000
+    min: null,
+    max: null
   });
   const [toggleFilter, setToggleFilter] = useState(false);
   const [totalGames, setTotalGames] = useState(0);

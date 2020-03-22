@@ -156,6 +156,13 @@
       }
     }
 
+    &-release-date {
+      margin-bottom: 0.7rem;
+      p {
+        font-size: 0.9rem;
+      }
+    }
+
     &-game-img {
       width: 20%;
       align-self: center;
@@ -176,7 +183,7 @@
       width: 100%;
 
       h4 {
-        margin-bottom: 1rem;
+        margin-bottom: 0.5rem;
       }
 
       &-container {
@@ -186,9 +193,6 @@
 
         align-items: center;
         width: calc(100% - 1rem);
-      }
-
-      &-price {
       }
 
       &-online {

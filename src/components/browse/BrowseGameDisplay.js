@@ -12,7 +12,13 @@ const BrowseGameDisplay = React.forwardRef(({ game }, ref) => {
       <div className="browse__item--meta">
         <h4>{game.title}</h4>
 
-        <div className="browse__item-raing--container">
+        <div className="browse__item-release-date">
+          <p>
+            <span className="text-bold">Release Date:</span> {game.releaseDate}
+          </p>
+        </div>
+
+        <div className="browse__item-rating--container">
           <img
             className="browse__item-rating"
             src={game.rating}
@@ -24,7 +30,7 @@ const BrowseGameDisplay = React.forwardRef(({ game }, ref) => {
           {/*** Display price / saleprice ***/}
           <div className="browse__item--meta-price">
             <span className={game.salePrice ? "strike" : "msrp"}>
-              {game.price === 0 ? "Free" : !game.price ? "" : `${game.price}`}
+              {game.price === 0 ? "Free" : !game.price ? "" : `$${game.price}`}
             </span>
 
             {game.salePrice ? (

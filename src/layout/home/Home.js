@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 
 // Custom hooks
 import usePath from "../../hooks/usePath";
+
+// Context
+import { StateContext } from "../../context/StateProvider";
 
 // Components
 import ShowcaseDisplay from "../../components/home/ShowcaseDisplay";
@@ -11,6 +14,8 @@ import SearchFeatures from "../../components/home/SearchFeatures";
 import Signup from "../../components/home/Signup";
 
 const Home = () => {
+  const { isAuth } = useContext(StateContext);
+
   // Set path name for bottom navigation active items
   usePath();
 
@@ -27,7 +32,7 @@ const Home = () => {
       <ShowcaseDisplay />
 
       {/**** Signup ****/}
-      <Signup />
+      {!isAuth ? <Signup /> : null}
     </section>
   );
 };
