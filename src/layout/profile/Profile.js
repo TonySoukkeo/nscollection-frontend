@@ -8,10 +8,13 @@ import { StateContext, DispatchContext } from "../../context/StateProvider";
 import usePath from "../../hooks/usePath";
 
 // Actions
-import { setAuth } from "../../reducers/actions/AuthActions";
+import {
+  setAuth,
+  setNotificationCount
+} from "../../reducers/actions/AuthActions";
 
 const Profile = () => {
-  const { isAuth, user } = useContext(StateContext);
+  const { isAuth, user, notificationCount } = useContext(StateContext);
   const { authDispatch } = useContext(DispatchContext);
 
   // Set path name for bottom navigation active items
@@ -87,19 +90,23 @@ const Profile = () => {
           <h4>Sale Watch</h4>
         </Link>
 
-        <Link to="/profile/notifications" className="profile__notifications">
+        <Link
+          onClick={() => setNotificationCount(0, authDispatch)}
+          to="/profile/notifications"
+          className="profile__notifications"
+        >
           <span>
             <i className="far fa-bell"></i>
           </span>
 
           <div
             className={
-              user && user.notifications && user.notifications.count > 0
+              notificationCount > 0
                 ? "profile__notifications-count profile__notifications-count--active"
                 : "profile__notifications-count"
             }
           >
-            {user && user.notifications && user.notifications.count}
+            {notificationCount}
           </div>
           <h4>Notifications</h4>
         </Link>

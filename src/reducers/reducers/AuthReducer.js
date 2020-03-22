@@ -1,13 +1,14 @@
 import {
   SET_USER,
   SET_AUTH,
-  ADD_TO_COLLECTION
+  SET_NOTIFICATION_COUNT
 } from "../constants/AuthConstants";
 
 const authInitialState = {
   isAuth: false,
   token: "",
-  user: {}
+  user: {},
+  notificationCount: 0
 };
 
 const authReducer = (state = authInitialState, action) => {
@@ -18,6 +19,12 @@ const authReducer = (state = authInitialState, action) => {
         user: action.payload
       };
     }
+
+    case SET_NOTIFICATION_COUNT:
+      return {
+        ...state,
+        notificationCount: action.payload
+      };
 
     case SET_AUTH:
       return {

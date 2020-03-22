@@ -4,6 +4,10 @@
   padding-top: 9rem;
   padding-bottom: 5.5rem;
 
+  @include respond(medium) {
+    padding-top: 2rem;
+  }
+
   &__list {
     display: grid;
 
@@ -62,7 +66,6 @@
     margin-bottom: 1rem;
     font-weight: bold;
     text-decoration: underline;
-
     align-self: flex-start;
   }
 }

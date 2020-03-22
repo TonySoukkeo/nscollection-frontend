@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { StateContext } from "../../context/StateProvider";
 
 const BottomNavigation = () => {
-  const { path, user } = useContext(StateContext);
+  const { path, notificationCount } = useContext(StateContext);
 
   return (
     <nav className="bottom-navigation">
@@ -88,12 +88,12 @@ const BottomNavigation = () => {
         ></div>
         <span
           className={
-            user && user.notifications && user.notifications.count > 0
+            notificationCount > 0
               ? "notifications notifications--mobile-active"
               : "notifications"
           }
         >
-          {user && user.notifications && user.notifications.count}
+          {notificationCount}
         </span>
       </Link>
     </nav>

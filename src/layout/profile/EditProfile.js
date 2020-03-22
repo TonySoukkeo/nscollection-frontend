@@ -104,7 +104,7 @@ const EditProfile = () => {
         isAuth ? (
           <React.Fragment>
             <SubNavigation title="Edit Profile" />
-            <section className="profile profile__edit-page">
+            <section className="profile profile__edit-page container">
               {errorMessage ? (
                 <div className="alert alert--error">{errorMessage}</div>
               ) : null}

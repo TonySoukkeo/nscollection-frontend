@@ -6,6 +6,8 @@ import React, {
   useCallback
 } from "react";
 
+import { Route, Redirect } from "react-router-dom";
+
 // Components
 import SubNavigation from "../../components/navigation/SubNavigation";
 import NotificationsList from "../../components/profile/NotificationsList";
@@ -16,7 +18,10 @@ import useError from "../../hooks/useError";
 import useIsLoading from "../../hooks/useIsLoading";
 
 // Context
-import { StateContext } from "../../context/StateProvider";
+import { StateContext, DispatchContext } from "../../context/StateProvider";
+
+// Actions
+import { setUser } from "../../reducers/actions/AuthActions";
 
 const Notifications = () => {
   const [notifications, setNotifications] = useState([]);
@@ -136,9 +141,41 @@ const Notifications = () => {
 
   // Delete notification
   const deleteNotification = async id => {
-    setNotifications(prevState =>
-      prevState.filter(item => item.gameId._id !== id)
-    );
+    try {
+      setLoading(true);
+      setLoadingType("delete");
+
+      const removeMessage = await fetch(
+        `${process.env.REACT_APP_BASE_URL}/user/notifications`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
+          },
+          body: JSON.stringify({ gameId: id })
+        }
+      );
+
+      const removeMessageData = await removeMessage.json();
+
+      // Check for any errors
+      if (removeMessageData.status !== 201) {
+        const error = new Error();
+        error.message = removeMessageData.message;
+        throw error;
+      }
+
+      setLoading(false);
+      setLoadingType("");
+      setNotifications(prevState =>
+        prevState.filter(item => item.gameId._id !== id)
+      );
+    } catch (err) {
+      setLoading(false);
+      setLoadingType("");
+      setError({ errorMessage: err.message });
+    }
   };
 
   // Clear all notifications
@@ -148,7 +185,7 @@ const Notifications = () => {
       setLoadingType("clear all");
 
       const clear = await fetch(
-        `${process.env.REACT_APP_BASE_URL}/user/notifications`,
+        `${process.env.REACT_APP_BASE_URL}/user/clear`,
         {
           method: "DELETE",
           headers: {
@@ -178,66 +215,78 @@ const Notifications = () => {
   };
 
   return (
-    <React.Fragment>
-      <SubNavigation title="Notifications" />
-      <section className="profile-notifications container">
-        <span
-          onClick={clearNotifications}
-          className="profile-notifications__clear"
-        >
-          Clear all messages
-        </span>
+    <Route
+      render={() =>
+        isAuth ? (
+          <React.Fragment>
+            <SubNavigation title="Notifications" />
+            <section className="profile-notifications container">
+              <span
+                onClick={clearNotifications}
+                className="profile-notifications__clear"
+              >
+                Clear all messages
+              </span>
 
-        {errorMessage ? (
-          <div className="alert alert--error">{errorMessage}</div>
-        ) : null}
+              {errorMessage ? (
+                <div className="alert alert--error">{errorMessage}</div>
+              ) : null}
 
-        {loading && loadingType === "main" ? (
-          <Loading styles={{ width: "3rem", margin: "0 auto" }} />
-        ) : notifications.length > 0 ? (
-          <ul className="profile-notifications__list">
-            {notifications.map((message, index) => {
-              if (notifications.length === index + 1) {
-                return (
-                  <NotificationsList
-                    ref={lastElement}
-                    key={message._id}
-                    gameId={message.gameId._id}
-                    image={message.gameId.image}
-                    gameTitle={message.gameId.title}
-                    price={message.gameId.price}
-                    salePrice={message.gameId.salePrice}
-                    message={message.message}
-                    deleteNotification={deleteNotification}
-                  />
-                );
-              } else
-                return (
-                  <NotificationsList
-                    key={message._id}
-                    gameId={message.gameId._id}
-                    image={message.gameId.image}
-                    gameTitle={message.gameId.title}
-                    price={message.gameId.price}
-                    salePrice={message.gameId.salePrice}
-                    message={message.message}
-                    deleteNotification={deleteNotification}
-                  />
-                );
-            })}
+              {loading && loadingType === "main" ? (
+                <Loading styles={{ width: "3rem", margin: "0 auto" }} />
+              ) : notifications.length > 0 ? (
+                <ul className="profile-notifications__list">
+                  {notifications.map((message, index) => {
+                    if (notifications.length === index + 1) {
+                      return (
+                        <NotificationsList
+                          ref={lastElement}
+                          key={message._id}
+                          gameId={message.gameId._id}
+                          image={message.gameId.image}
+                          gameTitle={message.gameId.title}
+                          price={message.gameId.price}
+                          salePrice={message.gameId.salePrice}
+                          message={message.message}
+                          deleteNotification={deleteNotification}
+                        />
+                      );
+                    } else
+                      return (
+                        <NotificationsList
+                          key={message._id}
+                          gameId={message.gameId._id}
+                          image={message.gameId.image}
+                          gameTitle={message.gameId.title}
+                          price={message.gameId.price}
+                          salePrice={message.gameId.salePrice}
+                          message={message.message}
+                          deleteNotification={deleteNotification}
+                        />
+                      );
+                  })}
 
-            {loading && loadingType === "load more" ? (
-              <Loading
-                styles={{ width: "3rem", margin: "0 auto", gridColumn: "1/-1" }}
-              />
-            ) : null}
-          </ul>
+                  {loading && loadingType === "load more" ? (
+                    <Loading
+                      styles={{
+                        width: "3rem",
+                        margin: "0 auto",
+                        gridColumn: "1/-1"
+                      }}
+                    />
+                  ) : null}
+                </ul>
+              ) : (
+                <p>No notifications to display.</p>
+              )}
+            </section>
+            ;
+          </React.Fragment>
         ) : (
-          <p>No notifications to display.</p>
-        )}
-      </section>
-      ;
-    </React.Fragment>
+          <Redirect to="/" />
+        )
+      }
+    />
   );
 };
 

@@ -1,4 +1,8 @@
-import { SET_USER, SET_AUTH } from "../constants/AuthConstants";
+import {
+  SET_USER,
+  SET_AUTH,
+  SET_NOTIFICATION_COUNT
+} from "../constants/AuthConstants";
 
 /********
  SET USER
@@ -14,6 +18,16 @@ export const setAuth = (data, dispatch) => {
   dispatch({
     type: SET_AUTH,
     payload: { isAuth: data.isAuth, token: data.token }
+  });
+};
+
+/**********************
+ SET NOTIFICATION COUNT 
+ **********************/
+export const setNotificationCount = (count, dispatch) => {
+  dispatch({
+    type: SET_NOTIFICATION_COUNT,
+    payload: count
   });
 };
 

@@ -6,8 +6,11 @@ import { Link } from "react-router-dom";
 import SearchDisplay from "../../components/search/SearchDisplay";
 import Loading from "../../components/loading/Loading";
 
+// Actions
+import { setNotificationCount } from "../../reducers/actions/AuthActions";
+
 // Context
-import { StateContext } from "../../context/StateProvider";
+import { StateContext, DispatchContext } from "../../context/StateProvider";
 
 // Custom hooks
 import useError from "../../hooks/useError";
@@ -18,13 +21,13 @@ const Navigation = () => {
   const [title, setTitle] = useState("");
   const [results, setResults] = useState([]);
 
-  const { user } = useContext(StateContext);
+  const { user, notificationCount } = useContext(StateContext);
   const { checkUserLibrary } = useUser();
 
   const { loading, setLoading } = useIsLoading();
   const { errorMessage, setError } = useError();
 
-  const hasNotifications = true;
+  const { authDispatch } = useContext(DispatchContext);
 
   useEffect(() => {
     const search = async () => {
@@ -153,16 +156,20 @@ const Navigation = () => {
           <i className="fas fa-box"></i>
         </Link>
 
-        <Link className="main-nav__user-list__item" to="/notification">
+        <Link
+          onClick={() => setNotificationCount(0, authDispatch)}
+          className="main-nav__user-list__item"
+          to="/profile/notifications"
+        >
           <i className="fas fa-envelope"></i>
           <span
             className={
-              user && user.notifications && user.notifications.count > 0
+              notificationCount > 0
                 ? "notifications notifications--desktop-active"
                 : "notifications"
             }
           >
-            {user && user.notifications && user.notifications.count}
+            {notificationCount}
           </span>
         </Link>
 

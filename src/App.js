@@ -21,7 +21,11 @@ import Footer from "./components/footer/Footer";
 import Notifications from "./layout/profile/Notifications";
 
 // Actions
-import { setAuth, setUser } from "./reducers/actions/AuthActions";
+import {
+  setAuth,
+  setUser,
+  setNotificationCount
+} from "./reducers/actions/AuthActions";
 
 const App = () => {
   const { authDispatch } = useContext(DispatchContext);
@@ -42,6 +46,7 @@ const App = () => {
         if (data.status === 200) {
           setAuth({ isAuth: data.isAuth, token }, authDispatch);
 
+          setNotificationCount(data.user.notifications.count, authDispatch);
           setUser(data.user, authDispatch);
         }
       };

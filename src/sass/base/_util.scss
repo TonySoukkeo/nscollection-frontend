@@ -197,13 +197,13 @@
     border-radius: 4px;
     background-color: $color-red;
     color: $color-light;
-    padding: 0.2rem 0.4rem;
   }
 
   &--desktop-active {
     top: 0;
     right: -0.5rem;
     font-size: 0.6rem;
+    padding: 0.2rem;
   }
 
   &--mobile-active {
@@ -211,5 +211,6 @@
     top: 0.7rem;
     right: 2.4rem;
     z-index: 25;
+    padding: 0.2rem 0.4rem;
   }
 }
