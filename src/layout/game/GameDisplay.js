@@ -18,10 +18,10 @@ import useIsLoading from "../../hooks/useIsLoading";
 import useUser from "../../hooks/useUser";
 import useError from "../../hooks/useError";
 
-const GameDisplay = () => {
+const GameDisplay = ({ location }) => {
   const [gameId, setGameId] = useState("");
 
-  const { user, token, game } = useContext(StateContext);
+  const { token, game } = useContext(StateContext);
   const { gameDispatch } = useContext(DispatchContext);
 
   const { errorMessage, setError } = useError();
@@ -92,7 +92,7 @@ const GameDisplay = () => {
       setWanted(false);
       setWatched(false);
     };
-  }, []);
+  }, [location]);
 
   // Onclick to add game to user profile, depending on the type
   const modifyGameTo = async (type, method) => {
@@ -195,7 +195,7 @@ const GameDisplay = () => {
       ) : (
         <Loading
           styles={{
-            width: "10%",
+            width: "3rem",
             position: "absolute",
             top: "20%",
             left: "50%",
