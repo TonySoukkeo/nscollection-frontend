@@ -8,7 +8,16 @@
     margin-top: 2rem;
 
     form {
+      width: 50%;
       margin: 0 auto;
+      padding: 2rem 3rem 3rem 3rem;
+      border-radius: 4px;
+      background-color: $color-light;
+      box-shadow: $box-shadow;
+
+      input {
+        background-color: $color-light-2;
+      }
     }
   }
 

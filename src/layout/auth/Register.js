@@ -178,10 +178,6 @@ const Register = ({ history }) => {
             ) : null}
 
             <section className="register">
-              {errorMessage ? (
-                <div className="alert alert--error mb-sm">{errorMessage}</div>
-              ) : null}
-
               {!formSubmit ? (
                 <React.Fragment>
                   <h1 className="register__title">Register</h1>
@@ -200,6 +196,7 @@ const Register = ({ history }) => {
                     btnDisable={btnDisable}
                     submitRegister={submitRegister}
                     isLoading={loading}
+                    errorMessage={errorMessage}
                   />
                 </React.Fragment>
               ) : (

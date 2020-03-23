@@ -96,12 +96,11 @@ const Login = ({ history }) => {
           <React.Fragment>
             <SubNavigation history={history} />
             <section className="login">
-              {errorMessage ? (
-                <div className="alert alert--error mb-sm">{errorMessage}</div>
-              ) : null}
-
-              <h2>Login</h2>
               <form className="form" onSubmit={loginUser}>
+                <h2>Login</h2>
+                {errorMessage ? (
+                  <div className="alert alert--error mb-sm">{errorMessage}</div>
+                ) : null}
                 <div className="form__group">
                   <TextInput
                     placeholder="Email or Username"

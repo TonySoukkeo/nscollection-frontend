@@ -20,10 +20,15 @@ const RegisterForm = ({
   setAllowEmail,
   btnDisable,
   submitRegister,
-  isLoading
+  isLoading,
+  errorMessage
 }) => {
   return (
     <form autoComplete="off" onSubmit={submitRegister} className="form">
+      {errorMessage ? (
+        <div className="alert alert--error mb-sm">{errorMessage}</div>
+      ) : null}
+
       <TextInput
         validUsername={validUsername}
         focused={userName.focused}

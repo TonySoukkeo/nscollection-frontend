@@ -1095,6 +1095,10 @@ BOTTOM NAVIGATION ON MOBILE VIEW
             height: 10%; } }
       .game-display__group-meta h1 {
         font-size: 1.3rem; }
+        @media only screen and (min-width: 60rem) {
+          .game-display__group-meta h1 {
+            text-align: center;
+            font-size: 1.8rem; } }
       .game-display__group-meta * {
         margin-bottom: 1rem; }
   .game-display__online {
@@ -1299,7 +1303,14 @@ BOTTOM NAVIGATION ON MOBILE VIEW
     .register {
       margin-top: 1rem; }
       .register form {
-        margin: 0 auto; } }
+        width: 50%;
+        background-color: #f8fcfb;
+        margin: 0 auto;
+        padding: 2rem;
+        box-shadow: 4px 6px 25px -4px rgba(0, 0, 0, 0.68);
+        border-radius: 3px; }
+        .register form input {
+          background-color: #eaeceb; } }
   .register__title {
     display: none; }
     @media only screen and (min-width: 60rem) {
@@ -1501,7 +1512,14 @@ BOTTOM NAVIGATION ON MOBILE VIEW
     .login {
       margin-top: 2rem; }
       .login form {
-        margin: 0 auto; } }
+        width: 50%;
+        margin: 0 auto;
+        padding: 2rem 3rem 3rem 3rem;
+        border-radius: 4px;
+        background-color: #f8fcfb;
+        box-shadow: 4px 6px 25px -4px rgba(0, 0, 0, 0.68); }
+        .login form input {
+          background-color: #eaeceb; } }
   .login h2 {
     font-size: 1.7rem;
     margin-bottom: 1rem; }

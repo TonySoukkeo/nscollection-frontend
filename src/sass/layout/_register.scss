@@ -7,7 +7,16 @@
     margin-top: 1rem;
 
     form {
+      width: 50%;
+      background-color: $color-light;
       margin: 0 auto;
+      padding: 2rem;
+      box-shadow: $box-shadow;
+      border-radius: 3px;
+
+      input {
+        background-color: $color-light-2;
+      }
     }
   }
 
