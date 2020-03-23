@@ -18,7 +18,7 @@ const GameActions = ({
         <span className="text-bold">Add to:</span>
 
         {loading && loadingType === "collection" ? (
-          <Loading styles={{ width: "10%", marginRight: "1rem" }} />
+          <Loading styles={{ width: "3rem", marginRight: "1rem" }} />
         ) : (
           <button
             onClick={() => modifyGameTo("collection", owned ? "remove" : "add")}
@@ -33,7 +33,7 @@ const GameActions = ({
         )}
 
         {loading && loadingType === "wishlist" ? (
-          <Loading styles={{ width: "10%", marginLeft: "1rem" }} />
+          <Loading styles={{ width: "3rem", marginLeft: "1rem" }} />
         ) : (
           <button
             onClick={() => modifyGameTo("wishlist", wanted ? "remove" : "add")}
@@ -49,7 +49,7 @@ const GameActions = ({
       </div>
 
       {errorMessage ? (
-        <div className="alert alert--err">{errorMessage}</div>
+        <div className="alert alert--error mt-md">{errorMessage}</div>
       ) : null}
 
       <div className="horizontal-line"></div>
@@ -57,7 +57,7 @@ const GameActions = ({
       <p>Let me know when this game goes on sale</p>
       <div className="center">
         {loading && loadingType === "salewatch" ? (
-          <Loading styles={{ width: "10%" }} />
+          <Loading styles={{ width: "3rem" }} />
         ) : (
           <button
             onClick={() =>

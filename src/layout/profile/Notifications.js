@@ -18,12 +18,9 @@ import useError from "../../hooks/useError";
 import useIsLoading from "../../hooks/useIsLoading";
 
 // Context
-import { StateContext, DispatchContext } from "../../context/StateProvider";
+import { StateContext } from "../../context/StateProvider";
 
-// Actions
-import { setUser } from "../../reducers/actions/AuthActions";
-
-const Notifications = () => {
+const Notifications = ({ history }) => {
   const [notifications, setNotifications] = useState([]);
   const [page, setPage] = useState(1);
   const [loadMore, setLoadMore] = useState(false);
@@ -219,7 +216,7 @@ const Notifications = () => {
       render={() =>
         isAuth ? (
           <React.Fragment>
-            <SubNavigation title="Notifications" />
+            <SubNavigation title="Notifications" history={history} />
             <section className="profile-notifications container">
               <span
                 onClick={clearNotifications}

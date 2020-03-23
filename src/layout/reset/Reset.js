@@ -13,7 +13,7 @@ import { StateContext } from "../../context/StateProvider";
 import useError from "../../hooks/useError";
 import useIsLoading from "../../hooks/useIsLoading";
 
-const Reset = () => {
+const Reset = ({ history }) => {
   const [update, setUpdate] = useState("");
   const [email, setEmail] = useState("");
   const [success, setSuccess] = useState("");
@@ -161,7 +161,7 @@ const Reset = () => {
       render={() =>
         !isAuth ? (
           <React.Fragment>
-            {!success ? <SubNavigation /> : null}
+            {!success ? <SubNavigation history={history} /> : null}
 
             <section className="reset">{display}</section>
           </React.Fragment>

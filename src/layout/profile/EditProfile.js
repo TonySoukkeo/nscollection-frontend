@@ -15,7 +15,7 @@ import useInputs from "../../hooks/useInputs";
 import useError from "../../hooks/useError";
 import useIsLoading from "../../hooks/useIsLoading";
 
-const EditProfile = () => {
+const EditProfile = ({ history }) => {
   const [pwChanged, setPwChanged] = useState(false);
   const [allowEmail, setAllowEmail] = useState(false);
 
@@ -146,7 +146,7 @@ const EditProfile = () => {
       render={() =>
         isAuth ? (
           <React.Fragment>
-            <SubNavigation title="Edit Profile" />
+            <SubNavigation title="Edit Profile" history={history} />
             <section className="profile profile__edit-page container">
               {errorMessage ? (
                 <div className="alert alert--error">{errorMessage}</div>

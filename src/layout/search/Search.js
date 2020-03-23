@@ -15,7 +15,7 @@ import useUser from "../../hooks/useUser";
 // Context
 import { StateContext } from "../../context/StateProvider";
 
-const Search = () => {
+const Search = ({ history }) => {
   const [title, setTitle] = useState("");
   const [results, setResults] = useState([]);
 
@@ -84,7 +84,7 @@ const Search = () => {
 
   return (
     <React.Fragment>
-      <SubNavigation title="Search" />
+      <SubNavigation title="Search" history={history} />
       <section className="search">
         {errorMessage ? (
           <div className="alert alert--error mb-md">{errorMessage}</div>

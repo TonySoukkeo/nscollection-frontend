@@ -18,7 +18,7 @@ import useIsLoading from "../../hooks/useIsLoading";
 import { StateContext } from "../../context/StateProvider";
 import { DispatchContext } from "../../context/StateProvider";
 
-const Login = () => {
+const Login = ({ history }) => {
   const [loginInfo, setLoginInfo] = useState({
     loginHandle: "",
     password: ""
@@ -94,7 +94,7 @@ const Login = () => {
       render={() =>
         !isAuth ? (
           <React.Fragment>
-            <SubNavigation />
+            <SubNavigation history={history} />
             <section className="login">
               {errorMessage ? (
                 <div className="alert alert--error mb-sm">{errorMessage}</div>

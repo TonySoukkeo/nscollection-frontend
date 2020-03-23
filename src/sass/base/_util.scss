@@ -7,7 +7,7 @@
 }
 
 .logo {
-  height: 40%;
+  width: 8rem;
 }
 
 .text-box {
@@ -234,5 +234,37 @@
   &__input {
     cursor: pointer;
     transform: scale(1.5);
+  }
+}
+
+// Tooltip
+.tool-tip {
+  &--box {
+    display: none;
+    position: absolute;
+    font-size: 0.7rem;
+    font-weight: bold;
+    color: $color-dark;
+    text-shadow: none;
+    background-color: $color-light;
+    width: max-content;
+    padding: 0.3rem 0.8rem;
+    bottom: -2.4rem;
+    right: -0.8rem;
+
+    &::after {
+      content: "";
+      position: absolute;
+      width: 0.7rem;
+      height: 0.7rem;
+      background-color: inherit;
+      top: -0.3rem;
+      right: 1rem;
+      transform: rotate(45deg);
+    }
+  }
+
+  &:hover &--box {
+    display: block;
   }
 }

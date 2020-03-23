@@ -21,11 +21,11 @@ const Navigation = () => {
   const [title, setTitle] = useState("");
   const [results, setResults] = useState([]);
 
-  const { user, notificationCount } = useContext(StateContext);
+  const { user, notificationCount, isAuth } = useContext(StateContext);
   const { checkUserLibrary } = useUser();
 
   const { loading, setLoading } = useIsLoading();
-  const { errorMessage, setError } = useError();
+  const { setError } = useError();
 
   const { authDispatch } = useContext(DispatchContext);
 
@@ -86,7 +86,10 @@ const Navigation = () => {
 
   return (
     <nav className="main-nav container">
-      <img className="logo" src={Logo} alt="NSCollection logo" />
+      <Link to="/">
+        <img className="logo" src={Logo} alt="NSCollection logo" />
+      </Link>
+
       <div className="main-nav__search">
         <input
           value={title}
@@ -150,31 +153,39 @@ const Navigation = () => {
 
       <ul className="main-nav__user-list">
         <Link
-          className="main-nav__user-list__item"
+          className="main-nav__user-list__item tool-tip"
           to="/collection?view=collection"
         >
           <i className="fas fa-box"></i>
+
+          <span className="tool-tip--box">My collection</span>
         </Link>
 
-        <Link
-          onClick={() => setNotificationCount(0, authDispatch)}
-          className="main-nav__user-list__item"
-          to="/profile/notifications"
-        >
-          <i className="fas fa-envelope"></i>
-          <span
-            className={
-              notificationCount > 0
-                ? "notifications notifications--desktop-active"
-                : "notifications"
-            }
+        {isAuth ? (
+          <Link
+            onClick={() => setNotificationCount(0, authDispatch)}
+            className="main-nav__user-list__item tool-tip"
+            to="/profile/notifications"
           >
-            {notificationCount}
-          </span>
-        </Link>
+            <i className="fas fa-envelope"></i>
 
-        <Link className="main-nav__user-list__item" to="/profile">
+            <span className="tool-tip--box">Notifications</span>
+
+            <span
+              className={
+                notificationCount > 0
+                  ? "notifications notifications--desktop-active"
+                  : "notifications"
+              }
+            >
+              {notificationCount}
+            </span>
+          </Link>
+        ) : null}
+
+        <Link className="main-nav__user-list__item tool-tip" to="/profile">
           <i className="fas fa-user"></i>
+          <span className="tool-tip--box">My Profile</span>
         </Link>
       </ul>
       <a href="/" className="main-nav--about-icon">

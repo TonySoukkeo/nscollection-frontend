@@ -18,7 +18,7 @@ import useIsLoading from "../../hooks/useIsLoading";
 import useUser from "../../hooks/useUser";
 import useError from "../../hooks/useError";
 
-const GameDisplay = ({ location }) => {
+const GameDisplay = ({ location, history }) => {
   const [gameId, setGameId] = useState("");
 
   const { token, game } = useContext(StateContext);
@@ -156,7 +156,7 @@ const GameDisplay = ({ location }) => {
     <React.Fragment>
       {game && game.title ? (
         <React.Fragment>
-          <SubNavigation title={game.title} />
+          <SubNavigation title={game.title} history={history} />
           <section className={!loading ? "game-display" : ""}>
             <GameHeader
               image={game.image}
