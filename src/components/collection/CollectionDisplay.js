@@ -61,17 +61,15 @@ const CollectionDisplay = React.forwardRef(
                   );
                 }
               })}
+
               {loading && loadingType === "load more" ? (
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    width: "100%",
-                    marginBottom: "1rem"
+                <Loading
+                  styles={{
+                    width: "3rem",
+                    gridColumn: "1 / -1",
+                    margin: "0 auto"
                   }}
-                >
-                  <Loading styles={{ width: "3rem" }} />
-                </div>
+                />
               ) : null}
             </ul>
           </React.Fragment>

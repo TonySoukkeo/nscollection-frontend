@@ -9,10 +9,11 @@
   }
 
   &__list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1rem;
     margin-top: 1rem;
+    padding-bottom: 2rem;
 
     @include respond(medium) {
       display: grid;
@@ -29,8 +30,8 @@
     &-item {
       position: relative;
       display: flex;
-      width: 49%;
-      margin-bottom: 1rem;
+      width: 100%;
+      // margin-bottom: 1rem;
       background: $color-light-4;
       border-radius: 9px;
       box-shadow: $box-shadow;

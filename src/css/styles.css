@@ -918,10 +918,11 @@ BOTTOM NAVIGATION ON MOBILE VIEW
     .collection {
       margin-top: 2rem; } }
   .collection__list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin-top: 1rem; }
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1rem;
+    margin-top: 1rem;
+    padding-bottom: 2rem; }
     @media only screen and (min-width: 60rem) {
       .collection__list {
         display: grid;
@@ -934,8 +935,7 @@ BOTTOM NAVIGATION ON MOBILE VIEW
     .collection__list-item {
       position: relative;
       display: flex;
-      width: 49%;
-      margin-bottom: 1rem;
+      width: 100%;
       background: #f2f2f2;
       border-radius: 9px;
       box-shadow: 4px 6px 25px -4px rgba(0, 0, 0, 0.68);
