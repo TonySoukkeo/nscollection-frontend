@@ -11,15 +11,24 @@ BOX SHADOW
   padding: 0;
   box-sizing: border-box; }
 
+@media only screen and (min-width: 60rem) {
+  html,
+  body {
+    height: 100vh; } }
+
 html {
   box-sizing: border-box;
   font-family: "Lato", sans-serif; }
 
 body {
-  position: relative;
-  height: 100%;
   line-height: 1.5;
   background-color: #eaeceb; }
+
+@media only screen and (min-width: 60rem) {
+  .App {
+    position: relative;
+    min-height: 100vh;
+    padding-bottom: 11.8rem; } }
 
 .container {
   padding: 0 1rem; }
@@ -179,6 +188,10 @@ body {
 .email-permissions {
   display: flex;
   align-items: center; }
+  @media only screen and (min-width: 60rem) {
+    .email-permissions {
+      width: 90%;
+      margin: 2rem auto 0 auto; } }
   .email-permissions__label {
     margin-right: 1rem;
     font-size: 0.8rem; }
@@ -633,7 +646,10 @@ BOTTOM NAVIGATION ON MOBILE VIEW
 
 .footer {
   display: none;
-  position: relative;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
   background-color: #c9c8c8;
   padding-top: 2rem;
   padding-bottom: 2rem;

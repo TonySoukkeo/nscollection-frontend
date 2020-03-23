@@ -1,6 +1,9 @@
 .footer {
   display: none;
-  position: relative;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
   background-color: $color-light-5;
   padding-top: 2rem;
   padding-bottom: 2rem;

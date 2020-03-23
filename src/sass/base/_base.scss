@@ -31,14 +31,27 @@ $box-shadow-top: 3px -4px 25px -4px rgba(0, 0, 0, 0.68);
   box-sizing: border-box;
 }
 
+html,
+body {
+  @include respond(medium) {
+    height: 100vh;
+  }
+}
+
 html {
   box-sizing: border-box;
   font-family: "Lato", sans-serif;
 }
 
 body {
-  position: relative;
-  height: 100%;
   line-height: 1.5;
   background-color: $color-light-2;
+}
+
+.App {
+  @include respond(medium) {
+    position: relative;
+    min-height: 100vh;
+    padding-bottom: 11.8rem;
+  }
 }

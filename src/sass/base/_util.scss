@@ -220,6 +220,12 @@
 .email-permissions {
   display: flex;
   align-items: center;
+
+  @include respond(medium) {
+    width: 90%;
+    margin: 2rem auto 0 auto;
+  }
+
   &__label {
     margin-right: 1rem;
     font-size: 0.8rem;

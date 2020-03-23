@@ -158,33 +158,6 @@ const EditProfile = () => {
                 </div>
               ) : null}
 
-              {/**************************
-               * UPDATE EMAIL PERMISSIONS
-               ***************************/}
-              <div className="form__group">
-                <div className="email-permissions">
-                  <label
-                    className="email-permissions__label"
-                    htmlFor="allowEmail"
-                  >
-                    <h2>Email me when games go on sale</h2>
-                  </label>
-                  {loading && loadingType === "allow email" ? (
-                    <Loading styles={{ width: "2rem" }} />
-                  ) : (
-                    <input
-                      className="email-permissions__input"
-                      id="#allowEmail"
-                      type="checkbox"
-                      value={allowEmail}
-                      name="allowEmail"
-                      onChange={emailPermissionsOnChange}
-                      checked={allowEmail}
-                    />
-                  )}
-                </div>
-              </div>
-
               {/*********************
                * UPDATE PASSWORD FORM
                **********************/}
@@ -208,6 +181,34 @@ const EditProfile = () => {
                   </button>
                 )}
               </form>
+
+              {/**************************
+               * UPDATE EMAIL PERMISSIONS
+               ***************************/}
+
+              <div className="email-permissions">
+                <div className="form__group d-flex">
+                  <label
+                    className="email-permissions__label"
+                    htmlFor="allowEmail"
+                  >
+                    <h2>Email me when games go on sale</h2>
+                  </label>
+                  {loading && loadingType === "allow email" ? (
+                    <Loading styles={{ width: "2rem" }} />
+                  ) : (
+                    <input
+                      className="email-permissions__input"
+                      id="#allowEmail"
+                      type="checkbox"
+                      value={allowEmail}
+                      name="allowEmail"
+                      onChange={emailPermissionsOnChange}
+                      checked={allowEmail}
+                    />
+                  )}
+                </div>
+              </div>
             </section>
           </React.Fragment>
         ) : (
