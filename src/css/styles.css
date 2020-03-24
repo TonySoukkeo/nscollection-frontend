@@ -1795,3 +1795,17 @@ BOTTOM NAVIGATION ON MOBILE VIEW
     font-weight: bold;
     text-decoration: underline;
     align-self: flex-start; }
+
+.about {
+  padding-top: 4rem;
+  padding-bottom: 5.5rem; }
+  @media only screen and (min-width: 60rem) {
+    .about {
+      padding-top: 0;
+      padding-bottom: 0; } }
+  .about__intro {
+    background: #dddddc;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    color: #231f20;
+    border-bottom: 1px solid #10b0d5; }

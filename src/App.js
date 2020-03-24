@@ -19,6 +19,7 @@ import Browse from "./layout/browse/Browse";
 import EditProfile from "./layout/profile/EditProfile";
 import Footer from "./components/footer/Footer";
 import Notifications from "./layout/profile/Notifications";
+import About from "./layout/about/About";
 
 // Actions
 import {
@@ -79,6 +80,7 @@ const App = () => {
           <Route path="/login" component={Login} />
           <Route path="/reset" component={Reset} />
           <Route path="/browse" component={Browse} />
+          <Route exact path="/about" component={About} />
         </Switch>
         <Footer />
       </div>
