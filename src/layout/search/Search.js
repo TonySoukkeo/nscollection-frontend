@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
+import {Link} from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 
 // Components
@@ -95,7 +96,12 @@ const Search = ({ history }) => {
         {errorMessage ? (
           <div className="alert alert--error mb-md">{errorMessage}</div>
         ) : null}
-
+        <Link to={{
+          pathname: "/browse",
+          state: { all: true }
+        }}
+        className="search__all-games container"
+        >Browse all games</Link>
         <SearchBar onChange={gameSearch} />
 
         {!loading ? (

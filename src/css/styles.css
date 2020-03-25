@@ -979,6 +979,12 @@ BOTTOM NAVIGATION ON MOBILE VIEW
   margin-top: 8rem;
   padding-bottom: 5.5rem;
   text-align: center; }
+  .search__all-games {
+    text-decoration: none;
+    text-align: left;
+    color: #231f20;
+    font-weight: bold;
+    display: block; }
   .search__bar {
     border: none;
     outline: none;

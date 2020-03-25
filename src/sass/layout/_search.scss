@@ -5,6 +5,14 @@
   padding-bottom: 5.5rem;
   text-align: center;
 
+  &__all-games {
+    text-decoration: none;
+    text-align: left;
+    color: $color-dark;
+    font-weight: bold;
+    display: block;
+  }
+
   &__bar {
     border: none;
     outline: none;
