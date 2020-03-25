@@ -7,6 +7,8 @@ import React, {
 } from "react";
 import { Link } from "react-router-dom";
 
+import { Helmet } from 'react-helmet';
+
 // Components
 import CollectionSubNavigation from "../../components/navigation/CollectionSubNavigation";
 import CollectionDisplay from "../../components/collection/CollectionDisplay";
@@ -241,6 +243,10 @@ const Collection = () => {
 
   return (
     <React.Fragment>
+      <Helmet>
+      <title>NS Collection | Collection</title>
+      <meta name="description" content="Nintendo switch collection. Search for games to add onto your collection." />
+      </Helmet>
       <CollectionSubNavigation
         changeCollectionPath={changeCollectionPath}
         path={collectionPath}

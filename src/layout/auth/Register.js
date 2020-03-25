@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { Route, Redirect } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 // Components
 import SubNavigation from "../../components/navigation/SubNavigation";
@@ -180,6 +181,10 @@ const Register = ({ history }) => {
             ) : null}
 
             <section className="register">
+              <Helmet>
+                <title>NS Collection | Register</title>
+                <meta name="description" content="Register for a a free account today! Search for any Nintendo Switch game to add to your collection." />
+              </Helmet>  
               {!formSubmit ? (
                 <React.Fragment>
                   <h1 className="register__title">Register</h1>

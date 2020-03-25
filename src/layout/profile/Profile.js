@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import {Helmet} from 'react-helmet';
 
 // Context
 import { StateContext, DispatchContext } from "../../context/StateProvider";
@@ -116,6 +117,10 @@ const Profile = () => {
 
   return (
     <React.Fragment>
+      <Helmet>
+        <title>NS Collection | Profile</title>
+        <meta name="description" content="View your nintendo switch game collection" />
+      </Helmet>
       {isAuth ? (
         <div className="profile__header container">
           <span className="profile__header-username">{user.userName}</span>
@@ -128,6 +133,7 @@ const Profile = () => {
       <section
         className={isAuth ? "profile d-flex col-2 container" : "profile"}
       >
+      
         {display}
       </section>
     </React.Fragment>

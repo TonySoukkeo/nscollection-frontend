@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef, useCallback } from "react";
+import { Helmet } from "react-helmet";
 
 // Components
 import BrowseGameDisplay from "../../components/browse/BrowseGameDisplay";
@@ -327,6 +328,10 @@ const Browse = ({ location }) => {
 
   return (
     <React.Fragment>
+      <Helmet>
+        <title>NS Collection | Browse</title>
+        <meta name="description" content="Browse all nintendo switch games from NA. Filter out by price, dlc, demos, and more."/>
+        </Helmet>
       {loadingType !== "initial" ? (
         <BrowseFilterButton
           hideButton={toggleFilter}

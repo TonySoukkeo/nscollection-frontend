@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Route, Redirect, Link } from "react-router-dom";
+import { Helmet } from 'react-helmet';
 
 // Components
 import SubNavigation from "../../components/navigation/SubNavigation";
@@ -161,6 +162,9 @@ const Reset = ({ history }) => {
       render={() =>
         !isAuth ? (
           <React.Fragment>
+            <Helmet>
+              <title>NS Collection | Reset</title>
+            </Helmet>  
             {!success ? <SubNavigation history={history} /> : null}
 
             <section className="reset">{display}</section>

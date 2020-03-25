@@ -1,4 +1,5 @@
 import React from "react";
+import { Helmet } from 'react-helmet';
 
 // Components
 import Intro from "../../components/about/Intro";
@@ -12,6 +13,10 @@ import SubNavigation from "../../components/navigation/SubNavigation";
 const About = ({ history }) => {
   return (
     <React.Fragment>
+      <Helmet>
+        <title>NS Collection | About</title>
+        <meta name="description" content="Nintendo switch cirtual game library. Get notified when games goes on sale." />
+      </Helmet>
       <SubNavigation title="About" history={history} />
       <section className="about">
         <Intro />

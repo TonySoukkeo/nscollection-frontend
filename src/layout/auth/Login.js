@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { Route, Redirect } from "react-router-dom";
+import { Helmet } from 'react-helmet';
 
 // Components
 import TextInput from "../../components/inputs/TextInput";
@@ -94,6 +95,10 @@ const Login = ({ history }) => {
       render={() =>
         !isAuth ? (
           <React.Fragment>
+            <Helmet>
+              <title>NS Collection | Login</title>
+              <meta name="description" content="NS Collection Login. Don't have an account? Sign up for free today" />
+            </Helmet>  
             <SubNavigation history={history} />
             <section className="login">
               <form className="form" onSubmit={loginUser}>

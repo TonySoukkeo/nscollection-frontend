@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
+import { Helmet } from 'react-helmet';
 
 // Components
 import SubNavigation from "../../components/navigation/SubNavigation";
@@ -85,6 +86,10 @@ const Search = ({ history }) => {
 
   return (
     <React.Fragment>
+      <Helmet>
+        <title>NS Collection | Search</title>
+        <meta name="description" content="Search for nintendo switch games to add to your collection" />
+      </Helmet>  
       <SubNavigation title="Search" history={history} />
       <section className="search">
         {errorMessage ? (

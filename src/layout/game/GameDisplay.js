@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { StateContext, DispatchContext } from "../../context/StateProvider";
+import { Helmet } from "react-helmet";
 
 // Actions
 import { getGame } from "../../reducers/actions/GameActions";
@@ -157,6 +158,9 @@ const GameDisplay = ({ location, history }) => {
     <React.Fragment>
       {game && game.title ? (
         <React.Fragment>
+          <Helmet>
+            <title>NS Collection | {game.title}</title>
+          </Helmet>  
           <SubNavigation title={game.title} history={history} />
           <section className={!loading ? "game-display" : ""}>
             <GameHeader

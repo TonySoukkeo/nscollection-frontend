@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { Helmet } from 'react-helmet'
 
 // Custom hooks
 import usePath from "../../hooks/usePath";
@@ -21,6 +22,10 @@ const Home = () => {
 
   return (
     <section className="home">
+      <Helmet>
+        <title>NS Collection | Home</title>
+        <meta name="description" content="Nintendo Switch virtual game collection library. Search for any nintendo switch games and add them to your collection."/>
+      </Helmet>
       {/**** Banner ****/}
       <Banner />
 
