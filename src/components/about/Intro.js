@@ -4,8 +4,8 @@ const Intro = () => {
   return (
     <div className="about__intro">
       <div className="container">
-        <p>
-          Nintendo Switch ollection is a irtual game collection app, where you
+        <p className="about--header">
+          Nintendo Switch collection is a virtual game collection app, where you
           can keep track of all the games that you own!
         </p>
         <br />

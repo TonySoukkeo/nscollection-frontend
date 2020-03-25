@@ -188,7 +188,8 @@ body {
 
 .email-permissions {
   display: flex;
-  align-items: center; }
+  align-items: center;
+  margin-top: 2rem; }
   @media only screen and (min-width: 60rem) {
     .email-permissions {
       width: 90%;
@@ -1798,14 +1799,104 @@ BOTTOM NAVIGATION ON MOBILE VIEW
 
 .about {
   padding-top: 4rem;
-  padding-bottom: 5.5rem; }
+  padding-bottom: 5.5rem;
+  margin-top: 4rem; }
   @media only screen and (min-width: 60rem) {
     .about {
       padding-top: 0;
-      padding-bottom: 0; } }
+      padding-bottom: 0;
+      margin-top: 0; } }
+  .about--grid {
+    display: grid; }
+    @media only screen and (min-width: 60rem) {
+      .about--grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 2rem; } }
+  .about--header {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2rem; }
+  .about--image {
+    margin: 0 auto;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 40rem;
+    box-shadow: 4px 6px 25px -4px rgba(0, 0, 0, 0.68); }
+    .about--image-search {
+      background-image: url("../assets/images/filter.png");
+      width: 70%; }
+    .about--image-permissions {
+      background-image: url("../assets/images/email_permissions.png");
+      width: 100%;
+      height: 10rem; }
+      @media only screen and (min-width: 60rem) {
+        .about--image-permissions {
+          width: 70%; } }
+    .about--image-notifications {
+      background-image: url("../assets/images/notifications_mobile.png");
+      height: 4rem;
+      width: 100%; }
+      @media only screen and (min-width: 60rem) {
+        .about--image-notifications {
+          background-image: url("../assets/images/notifications_desktop.png");
+          background-position: right; } }
+    .about--image-collection {
+      background-image: url("../assets/images/collection_mobile.png"); }
+    .about--image-legend {
+      background-image: url("../assets/images/online_features_mobile.png");
+      background-position: right; }
+      @media only screen and (min-width: 60rem) {
+        .about--image-legend {
+          background-image: url("../assets/images/online_features_desktop.png"); } }
+  .about--header-text {
+    grid-row: 1 / 2;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 3rem;
+    border-top: 4px solid #f15e55;
+    padding-top: 1rem; }
+    @media only screen and (min-width: 60rem) {
+      .about--header-text {
+        position: relative;
+        grid-row: initial;
+        border-top: none;
+        padding-left: 1.5rem; }
+        .about--header-text::after {
+          content: "";
+          position: absolute;
+          width: 4px;
+          height: 10rem;
+          top: 50%;
+          left: 0;
+          background-color: #f15e55;
+          transform: translateY(-50%); } }
+  .about__intro, .about__search, .about__collection, .about__notifications, .about__contact, .about__legend {
+    padding-top: 3rem;
+    padding-bottom: 3rem; }
   .about__intro {
     background: #dddddc;
-    padding-top: 3rem;
-    padding-bottom: 3rem;
     color: #231f20;
     border-bottom: 1px solid #10b0d5; }
+  .about__search, .about__notifications {
+    background-image: linear-gradient(to left, #b4ddc8, #10b0d5); }
+  .about__search span {
+    display: block;
+    margin-top: 1rem;
+    font-size: 1rem;
+    color: #f8fcfb;
+    font-weight: bold; }
+  .about__search-content {
+    background-color: transparent; }
+    .about__search-content h2 {
+      margin-bottom: 4rem; }
+  .about__legend {
+    background-color: #f8fcfb; }
+  .about__notifications h2 {
+    margin-top: 2rem; }
+  .about__contact {
+    text-align: center; }
+    .about__contact span {
+      font-size: 1.5rem; }

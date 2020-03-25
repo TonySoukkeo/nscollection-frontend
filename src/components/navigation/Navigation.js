@@ -188,9 +188,9 @@ const Navigation = () => {
           <span className="tool-tip--box">My Profile</span>
         </Link>
       </ul>
-      <a href="/" className="main-nav--about-icon">
+      <Link to="/about" className="main-nav--about-icon">
         ?
-      </a>
+      </Link>
     </nav>
   );
 };
