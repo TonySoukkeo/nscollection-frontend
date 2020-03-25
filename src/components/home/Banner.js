@@ -69,7 +69,7 @@ const Banner = () => {
         y="0px"
         width="100%"
         viewBox="0 0 1940.426 176.218"
-        enable-background="new 0 0 1940.426 176.218"
+        enableBackground="new 0 0 1940.426 176.218"
       >
         <path
           fill="#EAECEB"

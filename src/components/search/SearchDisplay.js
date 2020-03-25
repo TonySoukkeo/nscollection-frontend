@@ -34,7 +34,7 @@ const SearchDisplay = ({
   return (
     <Link to={`/game?gameId=${id}`}>
       <li onClick={clearResults} className="search__item">
-        <img src={image} className="search__item-image" />
+        <img src={image} alt={title} className="search__item-image" />
         <div className="search__item-content">
           <div className="search__item-title">{title}</div>
           <div className="search__item-date">

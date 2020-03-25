@@ -34,7 +34,6 @@ const Navigation = () => {
       try {
         const controller = new AbortController();
         const signal = controller.signal;
-        console.log("make search api call");
 
         setLoading(true);
 
@@ -69,6 +68,7 @@ const Navigation = () => {
     };
 
     search();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [title]);
 
   // Onchange for search title

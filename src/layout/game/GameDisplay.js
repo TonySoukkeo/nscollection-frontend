@@ -92,6 +92,7 @@ const GameDisplay = ({ location, history }) => {
       setWanted(false);
       setWatched(false);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location]);
 
   // Onclick to add game to user profile, depending on the type

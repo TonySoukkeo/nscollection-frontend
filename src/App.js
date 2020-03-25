@@ -33,7 +33,6 @@ const App = () => {
 
   useEffect(() => {
     try {
-      console.log("Make API call");
       const userId = localStorage.getItem("userId");
       const token = localStorage.getItem("token");
 
@@ -56,6 +55,7 @@ const App = () => {
     } catch (err) {
       console.log(err);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

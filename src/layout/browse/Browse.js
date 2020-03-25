@@ -78,7 +78,6 @@ const Browse = ({ location }) => {
 
     // Make api call to get games based on filters
     const getGames = async () => {
-      console.log("make a call");
       setLoading(true);
       setLoadingType("initial");
       try {
@@ -128,6 +127,7 @@ const Browse = ({ location }) => {
     };
 
     getGames();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Set path name for bottom navigation active items
@@ -321,6 +321,7 @@ const Browse = ({ location }) => {
 
       if (node) observer.current.observe(node);
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [loading, loadMore]
   );
 

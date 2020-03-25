@@ -54,7 +54,6 @@ const Collection = () => {
         const userId = localStorage.getItem("userId");
 
         let library, data;
-        console.log("make collection api call");
 
         if (page !== 1) {
           setLoadingType("load more");
@@ -155,6 +154,7 @@ const Collection = () => {
     };
 
     getUserLibrary();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [collectionPath, page]);
 
   // Observer and ref for infinite loading

@@ -76,6 +76,7 @@ const Search = ({ history }) => {
       controller.abort();
       setResults([]);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [title]);
 
   const gameSearch = e => {

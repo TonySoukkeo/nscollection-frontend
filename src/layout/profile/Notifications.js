@@ -71,6 +71,7 @@ const Notifications = ({ history }) => {
     };
 
     getNotifications();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Observer and ref for infinite loading
@@ -133,6 +134,7 @@ const Notifications = ({ history }) => {
       });
       if (node) observer.current.observe(node);
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [loading, loadMore]
   );
 

@@ -16,7 +16,7 @@ const GameList = React.forwardRef(
       <li ref={ref} className="collection__list-item">
         {/*** Game Image ***/}
         <Link to={`/game?gameId=${id}`}>
-          <img className="collection__list-image" src={image} />
+          <img className="collection__list-image" src={image} alt={gameTitle} />
         </Link>
 
         {/**** Game Title ****/}

@@ -12,7 +12,7 @@ import SubNavigation from "../../components/navigation/SubNavigation";
 const About = ({ history }) => {
   return (
     <React.Fragment>
-      <SubNavigation title="about" history={history} />
+      <SubNavigation title="About" history={history} />
       <section className="about">
         <Intro />
         <SearchDetails />

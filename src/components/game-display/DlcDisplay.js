@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import uuidv4 from "uuid/v4";
 
 const DlcDisplay = ({ dlc }) => {
   const [check, setCheck] = useState({});
