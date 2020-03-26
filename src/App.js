@@ -38,7 +38,7 @@ const App = () => {
 
       const validate = async () => {
         const response = await fetch(
-          `http://localhost:3000/auth/validate?userId=${userId}&token=${token}`
+          `${process.env.REACT_APP_BASE_URL}/auth/validate?userId=${userId}&token=${token}`
         );
 
         const data = await response.json();
