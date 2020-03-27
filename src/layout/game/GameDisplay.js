@@ -160,7 +160,7 @@ const GameDisplay = ({ location, history }) => {
         <React.Fragment>
           <Helmet>
             <title>NS Collection | {game.title}</title>
-          </Helmet>  
+          </Helmet>
           <SubNavigation title={game.title} history={history} />
           <section className={!loading ? "game-display" : ""}>
             <GameHeader

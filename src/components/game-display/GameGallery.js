@@ -8,7 +8,7 @@ const GameGallery = ({ gallery, title, id }) => {
   };
 
   return (
-    <div className="game-display__gallery">
+    <div className="game-display__gallery container">
       <div className="game-display__gallery-display">
         {gallery.map((image, index) => (
           <img

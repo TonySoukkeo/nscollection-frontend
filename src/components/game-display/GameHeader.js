@@ -31,7 +31,7 @@ const GameHeader = ({
 
   return (
     <React.Fragment>
-      <div className="game-display__group">
+      <div className="game-display__group container">
         {/*** Game image ***/}
         <img src={image} alt={title} />
 

@@ -23,13 +23,16 @@ html {
 body {
   position: relative;
   line-height: 1.5;
-  background-color: #eaeceb; }
+  background-color: #eaeceb;
+  width: 100%; }
 
-@media only screen and (min-width: 60rem) {
-  .App {
-    position: relative;
-    min-height: 100vh;
-    padding-bottom: 11.8rem; } }
+.App {
+  width: 100%; }
+  @media only screen and (min-width: 60rem) {
+    .App {
+      position: relative;
+      min-height: 100vh;
+      padding-bottom: 11.8rem; } }
 
 .container {
   padding: 0 1rem; }
@@ -1045,21 +1048,17 @@ BOTTOM NAVIGATION ON MOBILE VIEW
 
 .game-display {
   padding-top: 2rem;
-  display: grid;
-  grid-template-columns: [full-start] 1rem [col-start] 1fr [col-end] 1rem [full-end];
   grid-row-gap: 2rem;
   margin-top: 8rem;
   padding-bottom: 7rem;
-  background-color: #f8fcfb;
-  width: 100%; }
+  background-color: #f8fcfb; }
   @media only screen and (min-width: 60rem) {
     .game-display {
-      margin-top: 0;
-      grid-template-columns: [full-start] 4rem [col-start] 1fr [col-end] 4rem [full-end]; } }
+      margin-top: 0; } }
   .game-display__group {
     display: flex;
     flex-wrap: wrap;
-    grid-column: col-start / col-end; }
+    padding-bottom: 2rem; }
     @media only screen and (min-width: 60rem) {
       .game-display__group {
         align-items: center;
@@ -1114,8 +1113,7 @@ BOTTOM NAVIGATION ON MOBILE VIEW
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    height: 2rem;
-    grid-column: col-start / col-end; }
+    height: 2rem; }
     .game-display__online span {
       text-align: right;
       display: block;
@@ -1135,9 +1133,9 @@ BOTTOM NAVIGATION ON MOBILE VIEW
     padding-top: 1rem;
     padding-bottom: 1rem;
     background: #dddddc;
-    grid-column: full-start / full-end;
     width: 100%;
-    box-shadow: 4px 6px 25px -4px rgba(0, 0, 0, 0.68); }
+    box-shadow: 4px 6px 25px -4px rgba(0, 0, 0, 0.68);
+    margin-bottom: 2rem; }
     .game-display__action p {
       text-align: center;
       font-weight: bold;
@@ -1174,7 +1172,7 @@ BOTTOM NAVIGATION ON MOBILE VIEW
       color: #424141; }
   .game-display__gallery {
     display: grid;
-    grid-column: col-start / col-end; }
+    margin-bottom: 2rem; }
     @media only screen and (min-width: 60rem) {
       .game-display__gallery {
         grid-template-columns: 60% 40%;
@@ -1231,7 +1229,6 @@ BOTTOM NAVIGATION ON MOBILE VIEW
         height: 100%;
         width: 100%; }
   .game-display__info {
-    grid-column: col-start / col-end;
     font-size: 1rem; }
     .game-display__info-list {
       margin-bottom: 1.2rem; }

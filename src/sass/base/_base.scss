@@ -47,9 +47,11 @@ body {
   position: relative;
   line-height: 1.5;
   background-color: $color-light-2;
+  width: 100%;
 }
 
 .App {
+  width: 100%;
   @include respond(medium) {
     position: relative;
     min-height: 100vh;
